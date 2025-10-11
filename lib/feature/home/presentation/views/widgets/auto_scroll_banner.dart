@@ -90,7 +90,7 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
               width: isActive ? 12 : 8,
               height: 8,
               decoration: BoxDecoration(
-                color: isActive ? Colors.red : Colors.grey,
+                color: isActive ? Colors.white : Colors.grey,
                 borderRadius: BorderRadius.circular(8),
               ),
             );

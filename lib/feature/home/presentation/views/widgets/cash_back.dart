@@ -8,7 +8,7 @@ class CashBack extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.grey[300],
+        color: Colors.grey[100],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -26,7 +26,7 @@ class CashBack extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 4),
-              Icon(Icons.money_off, color: Colors.amberAccent),
+              Icon(Icons.money_off, color: Colors.amber),
             ],
           ),
         ],

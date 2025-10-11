@@ -13,10 +13,10 @@ class CustomWalletInfoButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {},
-      
+
       height: 50,
       elevation: 0,
-      color: Colors.grey[200],
+      color: Colors.grey[100],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

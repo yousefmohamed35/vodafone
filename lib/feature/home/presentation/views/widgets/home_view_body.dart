@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vodafon/core/widgets/custom_container.dart';
+import 'package:vodafon/core/widgets/fit_hight.dart';
 import 'package:vodafon/feature/home/presentation/views/widgets/auto_scroll_banner.dart';
 
 import 'wallet_info.dart';
@@ -8,31 +10,35 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: const [
-            SizedBox(height: 50),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Welcome to Vodafon',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+    return FitHieght(
+      child: Column(
+        children: const [
+          SizedBox(height: 50),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Welcome to Vodafon',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
-              ],
+              ),
+            ],
+          ),
+          SizedBox(height: 20),
+          AutoScrollBanner(),
+          SizedBox(height: 20),
+          Expanded(
+            child: CustomContainer(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Column(children: [WalletInfo()]),
+              ),
             ),
-            SizedBox(height: 20),
-            AutoScrollBanner(),
-            SizedBox(height: 20),
-            WalletInfo(),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

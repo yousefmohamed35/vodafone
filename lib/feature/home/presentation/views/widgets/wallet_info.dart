@@ -13,7 +13,7 @@ class WalletInfo extends StatelessWidget {
       height: 170,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.red,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(

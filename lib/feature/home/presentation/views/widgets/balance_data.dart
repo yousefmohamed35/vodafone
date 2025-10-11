@@ -10,14 +10,14 @@ class BalanceData extends StatelessWidget {
       children: [
         Text(
           'Tab here to view',
-          style: TextStyle(fontSize: 14, color: Colors.black),
+          style: TextStyle(fontSize: 14, color: Colors.white),
         ),
         Text(
           'your balance',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ],
