@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vodafon/feature/total/presentation/views/add_total_view.dart';
+import 'package:vodafon/go_to_home.dart';
 
 class VodafonApp extends StatelessWidget {
   const VodafonApp({super.key});
@@ -9,7 +9,7 @@ class VodafonApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.red),
-      home: AddTotalView(),
+      home: const GoToHome(),
     );
   }
 }

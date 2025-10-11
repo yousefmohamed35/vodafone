@@ -32,14 +32,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.4.6
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
@@ -79,13 +74,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
 flutter_native_splash:
-  color: "#FFFFFF"       
+  color: "#FFFFFF"
   android: true
   ios: true
   web: false
   android_12:
-    color: "#FFFFFF"           
+    color: "#FFFFFF"
     icon_background_color: "#FFFFFF"
-    

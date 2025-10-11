@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vodafon/core/helper/cashe_helper.dart';
+import 'package:vodafon/feature/home/presentation/views/home_view.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({super.key});
@@ -14,13 +16,20 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   void _onChanged(String value) {
     setState(() {
-      _isButtonEnabled = value.trim().isNotEmpty && double.tryParse(value) != null;
+      _isButtonEnabled =
+          value.trim().isNotEmpty && double.tryParse(value) != null;
     });
   }
 
   void _onSubmit() {
     if (_formKey.currentState!.validate()) {
-      // تنفيذ الإجراء هنا
+      // Save the amount using SharedPrefHelper
+      SharedPrefHelper.saveAmount(double.parse(_controller.text.trim()));
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeView()));
+      // set bool for first time
+      SharedPrefHelper.setBoolean('is_first_time', true);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Total Added Successfully!')),
       );
@@ -70,8 +79,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             child: ElevatedButton(
               onPressed: _isButtonEnabled ? _onSubmit : null,
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    _isButtonEnabled ? Colors.red[700] : Colors.red[200],
+                backgroundColor: _isButtonEnabled
+                    ? Colors.red[700]
+                    : Colors.red[200],
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16.0),
