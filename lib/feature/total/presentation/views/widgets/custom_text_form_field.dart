@@ -29,7 +29,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         context,
       ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeView()));
       // set bool for first time
-      SharedPrefHelper.setBoolean('is_first_time', true);
+      SharedPrefHelper.setBoolean('is_first_time', false);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Total Added Successfully!')),
       );
