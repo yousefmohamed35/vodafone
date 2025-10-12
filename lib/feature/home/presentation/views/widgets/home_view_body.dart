@@ -7,6 +7,8 @@ import 'package:vodafon/feature/home/presentation/views/widgets/wallet_actions.d
 import 'ads_list_view_builder.dart';
 import 'ads_widget.dart';
 import 'all_vodafone_cash_services.dart';
+import 'meeza_logo.dart';
+import 'partener_list_view_builder.dart';
 import 'vodafone_cashe_services.dart';
 import 'wallet_info.dart';
 
@@ -48,6 +50,20 @@ class HomeViewBody extends StatelessWidget {
                     VodafoneCashServices(),
                     AllVodafoneCashServices(),
                     AdsListViewBuilder(),
+                    SizedBox(height: 10),
+                    MeezaLogo(),
+                    SizedBox(height: 20),
+                    Text(
+                      'Pay with Vodafone Cash at our Partners online stores:',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey[500],
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    PartenerListViewBuilder(),
+                    SizedBox(height: 50),
                   ],
                 ),
               ),
@@ -58,3 +74,4 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+
