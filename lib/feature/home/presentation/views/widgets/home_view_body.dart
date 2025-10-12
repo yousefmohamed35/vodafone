@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:vodafon/core/widgets/custom_container.dart';
 import 'package:vodafon/core/widgets/fit_hight.dart';
 import 'package:vodafon/feature/home/presentation/views/widgets/auto_scroll_banner.dart';
+import 'package:vodafon/feature/home/presentation/views/widgets/wallet_actions.dart';
 
+import 'ads_list_view_builder.dart';
+import 'ads_widget.dart';
+import 'all_vodafone_cash_services.dart';
+import 'vodafone_cashe_services.dart';
 import 'wallet_info.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -12,7 +17,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return FitHieght(
       child: Column(
-        children: const [
+        children: [
           SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -29,12 +34,22 @@ class HomeViewBody extends StatelessWidget {
           ),
           SizedBox(height: 20),
           AutoScrollBanner(),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Expanded(
             child: CustomContainer(
               child: Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Column(children: [WalletInfo()]),
+                child: Column(
+                  children: [
+                    WalletInfo(),
+                    SizedBox(height: 10),
+                    WalletActions(),
+                    AdsWidget(),
+                    VodafoneCashServices(),
+                    AllVodafoneCashServices(),
+                    AdsListViewBuilder(),
+                  ],
+                ),
               ),
             ),
           ),
