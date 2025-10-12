@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
 class CustomPinPut extends StatefulWidget {
-  const CustomPinPut({super.key});
-
+  const CustomPinPut({super.key, this.onCompleted});
+  final void Function(String)? onCompleted;
   @override
   State<CustomPinPut> createState() => _CustomPinPutState();
 }
@@ -55,6 +55,12 @@ class _CustomPinPutState extends State<CustomPinPut>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Pinput(
+                onCompleted: (value) {
+                  if (widget.onCompleted != null) {
+                    widget.onCompleted?.call(value);
+                    Navigator.of(context).pop();
+                  }
+                },
                 controller: _pinController,
                 length: 6,
                 obscureText: true,

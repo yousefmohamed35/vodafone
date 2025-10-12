@@ -22,16 +22,19 @@ class _BalanceDataState extends State<BalanceData> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
+      onTap: () {
         if (!getBalance) {
-          showCustomModalBottomSheet(context);
-          final getAmount = await SharedPrefHelper.getAmount();
-          balance = getAmount ?? 0;
-          setState(() {
-            getBalance = true;
-          });
+          showCustomModalBottomSheet(
+            context,
+            onCompleted: (value) async {
+              final getAmount = await SharedPrefHelper.getAmount();
+              balance = getAmount ?? 0;
+              setState(() {
+                getBalance = true;
+              });
+            },
+          );
         } else {
-          showCustomModalBottomSheet(context);
           return;
         }
       },
