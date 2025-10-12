@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vodafon/core/helper/cashe_helper.dart';
+import 'package:vodafon/core/widgets/custom_model_bottom_sheet.dart';
 
 class BalanceData extends StatefulWidget {
   const BalanceData({super.key});
@@ -23,12 +24,14 @@ class _BalanceDataState extends State<BalanceData> {
     return GestureDetector(
       onTap: () async {
         if (!getBalance) {
+          showCustomModalBottomSheet(context);
           final getAmount = await SharedPrefHelper.getAmount();
           balance = getAmount ?? 0;
           setState(() {
             getBalance = true;
           });
         } else {
+          showCustomModalBottomSheet(context);
           return;
         }
       },
