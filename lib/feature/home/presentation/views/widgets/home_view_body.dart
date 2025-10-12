@@ -8,6 +8,7 @@ import 'ads_list_view_builder.dart';
 import 'ads_widget.dart';
 import 'all_vodafone_cash_services.dart';
 import 'meeza_logo.dart';
+import 'more_services_card.dart';
 import 'partener_list_view_builder.dart';
 import 'vodafone_cashe_services.dart';
 import 'wallet_info.dart';
@@ -42,6 +43,7 @@ class HomeViewBody extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     WalletInfo(),
                     SizedBox(height: 10),
@@ -63,7 +65,29 @@ class HomeViewBody extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     PartenerListViewBuilder(),
-                    SizedBox(height: 50),
+                    SizedBox(height: 10),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 8,
+                      ),
+                      width: double.infinity,
+                      color: Colors.grey[200],
+                      child: Text(
+                        'More Services',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    MoreServicesCard(title: 'Create bin'),
+                    MoreServicesCard(title: 'Reset bin'),
+                    MoreServicesCard(title: 'Cash locator'),
+                    MoreServicesCard(title: 'Help and support'),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -74,4 +98,3 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
-
