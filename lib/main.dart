@@ -3,10 +3,14 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+import 'package:vodafon/vodafon_app.dart';
+
+import 'core/services/setup_services_locator.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  setupServiceLocator();
+  runApp(VodafonApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -130,39 +134,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                   ],
                 ),
               )
-            : Stack(
-                children: [
-                  Image.file(
-                    File(_sharedFiles[0].path),
-                    height: double.infinity,
-                    width: double.infinity,
-                    fit: BoxFit.fill,
-                    errorBuilder: (context, error, stackTrace) {
-                      log("❌ Image load error: $error");
-                      return Container(
-                        height: 200,
-                        color: Colors.grey[300],
-                        child: Center(child: Text("Error: $error")),
-                      );
-                    },
-                  ),
-                  Positioned(
-                    top: 16,
-                    right: 16,
-                    child: IconButton(
-                      icon: const Icon(Icons.close, color: Colors.white),
-                      onPressed: () => setState(() => _sharedFiles.clear()),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 16,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text("Share"),
-                    ),
-                  ),
-                ],
-              ),
+            : 
         // : ListView.builder(
         //     padding: const EdgeInsets.all(8),
         //     itemCount: _sharedFiles.length,
