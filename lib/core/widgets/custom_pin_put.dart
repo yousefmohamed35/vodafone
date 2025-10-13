@@ -56,10 +56,8 @@ class _CustomPinPutState extends State<CustomPinPut>
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Pinput(
                 onCompleted: (value) {
-                  if (widget.onCompleted != null) {
-                    widget.onCompleted?.call(value);
-                    Navigator.of(context).pop();
-                  }
+                  widget.onCompleted?.call(value);
+                  
                 },
                 controller: _pinController,
                 length: 6,

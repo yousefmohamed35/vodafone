@@ -27,8 +27,10 @@ class _BalanceDataState extends State<BalanceData> {
           showCustomModalBottomSheet(
             context,
             onCompleted: (value) async {
+              Navigator.of(context).pop();
               final getAmount = await SharedPrefHelper.getAmount();
               balance = getAmount ?? 0;
+
               setState(() {
                 getBalance = true;
               });

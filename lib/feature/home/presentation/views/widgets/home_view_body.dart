@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vodafon/core/widgets/custom_container.dart';
 import 'package:vodafon/core/widgets/fit_hight.dart';
-import 'package:vodafon/feature/home/presentation/views/widgets/auto_scroll_banner.dart';
 import 'package:vodafon/feature/home/presentation/views/widgets/wallet_actions.dart';
 
 import 'ads_list_view_builder.dart';
@@ -36,7 +35,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          AutoScrollBanner(),
+          // AutoScrollBanner(),
           SizedBox(height: 10),
           Expanded(
             child: CustomContainer(

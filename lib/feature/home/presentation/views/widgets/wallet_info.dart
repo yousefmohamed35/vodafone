@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vodafon/core/widgets/custom_model_bottom_sheet.dart';
 import 'package:vodafon/feature/home/presentation/views/widgets/balance_data.dart';
 import 'package:vodafon/feature/home/presentation/views/widgets/cash_back.dart';
 
+import '../../../../transaction/presentation/views/transaction_view.dart';
 import 'custom_wallet_info_button.dart';
 
 class WalletInfo extends StatelessWidget {
@@ -30,6 +32,7 @@ class WalletInfo extends StatelessWidget {
                 child: CustomWalletInfoButton(
                   text: 'my QR',
                   icon: Icons.qr_code,
+                  onPressed: () {},
                 ),
               ),
               SizedBox(width: 5),
@@ -37,6 +40,20 @@ class WalletInfo extends StatelessWidget {
                 child: CustomWalletInfoButton(
                   text: 'My Transactions',
                   icon: Icons.list,
+                  onPressed: () {
+                    showCustomModalBottomSheet(
+                      context,
+                      onCompleted: (value) {
+                        Navigator.of(context).pop();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const TransactionView(),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
             ],

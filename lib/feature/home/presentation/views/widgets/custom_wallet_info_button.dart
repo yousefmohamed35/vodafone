@@ -4,15 +4,15 @@ class CustomWalletInfoButton extends StatelessWidget {
   const CustomWalletInfoButton({
     super.key,
     required this.text,
-    required this.icon,
+    required this.icon, this.onPressed,
   });
   final String text;
   final IconData icon;
-
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {},
+      onPressed: onPressed,
 
       height: 50,
       elevation: 0,
