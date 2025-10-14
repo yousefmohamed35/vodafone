@@ -6,6 +6,7 @@ import 'package:vodafon/feature/home/presentation/views/widgets/wallet_actions.d
 import 'ads_list_view_builder.dart';
 import 'ads_widget.dart';
 import 'all_vodafone_cash_services.dart';
+import 'auto_scroll_banner.dart';
 import 'meeza_logo.dart';
 import 'more_services_card.dart';
 import 'partener_list_view_builder.dart';
@@ -35,7 +36,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          // AutoScrollBanner(),
+          AutoScrollBanner(),
           SizedBox(height: 10),
           Expanded(
             child: CustomContainer(
