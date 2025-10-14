@@ -1,6 +1,14 @@
-class ExtractedDataModel {
+import 'package:hive/hive.dart';
+
+part 'extracted_data_model.g.dart';
+
+@HiveType(typeId: 2)
+class ExtractedDataModel extends HiveObject {
+  @HiveField(0)
   final String keyEn;
+  @HiveField(1)
   final String keyAr;
+  @HiveField(2)
   final String value;
 
   ExtractedDataModel({

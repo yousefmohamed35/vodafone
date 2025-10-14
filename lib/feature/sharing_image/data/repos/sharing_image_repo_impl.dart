@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:mime/mime.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+import 'package:vodafon/feature/transaction/data/models/transaction_model.dart';
 
 import 'sharing_image_repo.dart';
 
@@ -64,12 +66,12 @@ class SharingImageRepoImpl implements SharingImageRepo {
   }
 
   @override
-  Future<void> extractInfoFromImage(SharedMediaFile sharedMediaFile) async {
+  Future<String?> extractInfoFromImage(SharedMediaFile sharedMediaFile) async {
     try {
       final apiKey = 'AIzaSyDJv9w7zVQs0-KwyDvMHhAZjvV79mhYhEM';
       final model = GenerativeModel(model: 'gemini-2.5-flash', apiKey: apiKey);
-      
-      final data =await extractPath(sharedMediaFile);
+
+      final data = await extractPath(sharedMediaFile);
       final prompt = """ 
       You are an expert in finacial data extractor.
       extract all key-value pairs (Arabic and English) from this transaction image.
@@ -81,24 +83,45 @@ class SharingImageRepoImpl implements SharingImageRepo {
       "extracted_data":[
       {"key_en": "Total Amount", "key_ar": "المبلغ الكلي", "value": "100"},]
       }
+      and give me only the json object withou json word in first start and end with {}.
       """;
 
       final response = await model.generateContent([
         Content.multi([TextPart(prompt), data]),
       ]);
-
+      // delete json word from start
+      final startIndex = response.text?.indexOf('{');
+      final endIndex = response.text?.lastIndexOf('}');
+      String editedText = '';
+      if (startIndex != null && endIndex != null) {
+        editedText = response.text?.substring(startIndex, endIndex + 1) ?? '';
+      }
       log("📝 Repository: Extracted data from image: ${response.text}");
+      return editedText;
     } catch (e) {
       log("❌ Repository: Error resetting - $e");
       rethrow;
     }
   }
-  
+
   @override
- Future<DataPart> extractPath(SharedMediaFile sharedMediaFile)async {
-   final file = File(sharedMediaFile.path);
-      final mimeType = lookupMimeType(sharedMediaFile.path);
-      final bytes = await file.readAsBytes();
-      return DataPart(mimeType!, bytes);
+  Future<DataPart> extractPath(SharedMediaFile sharedMediaFile) async {
+    final file = File(sharedMediaFile.path);
+    final mimeType = lookupMimeType(sharedMediaFile.path);
+    final bytes = await file.readAsBytes();
+    return DataPart(mimeType!, bytes);
+  }
+
+  @override
+  Future<TransactionModel> extractDataFromImage({
+    required SharedMediaFile sharedMediaFile,
+  }) async {
+    final data = await extractInfoFromImage(sharedMediaFile);
+    log('hello data is $data and type is ${data?.runtimeType}');
+
+    final decodedData = await json.decode(data!);
+
+    log('decoded data is $decodedData and type is ${decodedData.runtimeType}');
+    return TransactionModel.fromJson(decodedData);
   }
 }
