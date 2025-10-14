@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mime/mime.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:vodafon/feature/transaction/data/models/transaction_model.dart';
@@ -123,5 +124,13 @@ class SharingImageRepoImpl implements SharingImageRepo {
 
     log('decoded data is $decodedData and type is ${decodedData.runtimeType}');
     return TransactionModel.fromJson(decodedData);
+  }
+
+  @override
+  Future<void> saveTransaction({
+    required TransactionModel transactionModel,
+  }) async {
+    final box = Hive.box<TransactionModel>('transaction_box');
+    await box.add(transactionModel);
   }
 }

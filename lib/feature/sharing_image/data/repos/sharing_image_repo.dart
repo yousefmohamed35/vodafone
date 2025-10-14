@@ -15,5 +15,8 @@ abstract class SharingImageRepo {
   Future<void> dispose();
   Future<String?> extractInfoFromImage(SharedMediaFile sharedMediaFile);
   Future<DataPart> extractPath(SharedMediaFile sharedMediaFile);
-  Future<TransactionModel> extractDataFromImage({required SharedMediaFile sharedMediaFile});
+  Future<TransactionModel> extractDataFromImage({
+    required SharedMediaFile sharedMediaFile,
+  });
+  Future<void> saveTransaction({required TransactionModel transactionModel});
 }
