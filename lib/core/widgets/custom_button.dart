@@ -23,8 +23,8 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
-      onPressed: () {
-        context.read<ImageOcrExtractCubit>().extractDataFromImage(
+      onPressed: () async {
+        await context.read<ImageOcrExtractCubit>().extractDataFromImage(
           sharedMediaFile,
         );
         context.read<SharingImageCubit>().reset();
@@ -37,6 +37,9 @@ class CustomButton extends StatelessWidget {
             ).showSnackBar(SnackBar(content: Text(state.message)));
           }
           if (state is ImageOcrExtractLoaded) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Data Added Successfully!')),
+            );
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (_) => const GoToHome()),
             );

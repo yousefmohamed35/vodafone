@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vodafon/core/helper/cashe_helper.dart';
 import 'package:vodafon/feature/home/presentation/views/home_view.dart';
+import 'package:vodafon/go_to_home.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({super.key});
@@ -27,7 +28,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       SharedPrefHelper.saveAmount(double.parse(_controller.text.trim()));
       Navigator.of(
         context,
-      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeView()));
+      ).pushReplacement(MaterialPageRoute(builder: (_) => const GoToHome()));
       // set bool for first time
       SharedPrefHelper.setBoolean('is_first_time', false);
       ScaffoldMessenger.of(context).showSnackBar(

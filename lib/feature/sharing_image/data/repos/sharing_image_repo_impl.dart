@@ -7,6 +7,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mime/mime.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+import 'package:vodafon/core/helper/cashe_helper.dart';
 import 'package:vodafon/feature/transaction/data/models/transaction_model.dart';
 
 import 'sharing_image_repo.dart';
@@ -131,6 +132,35 @@ class SharingImageRepoImpl implements SharingImageRepo {
     required TransactionModel transactionModel,
   }) async {
     final box = Hive.box<TransactionModel>('transaction_box');
+    final rawAmount = transactionModel.extractedData
+        .firstWhere((value) => value.keyAr == 'المبلغ الكلي')
+        .value;
+    final cleanAmountString = rawAmount.replaceAll(RegExp(r'[^0-9.]'), '');
+    final amount = double.tryParse(cleanAmountString) ?? 0.0;
+    await updateTotalAmount(
+      amount: amount,
+      type: transactionModel.transactionTye == 'in',
+    );
     await box.add(transactionModel);
+  }
+
+  @override
+  Future<void> updateTotalAmount({
+    required double amount,
+    required bool type,
+  }) async {
+    try {
+      final value = await SharedPrefHelper.getAmount();
+      if (value != null) {
+        final newAmount = type ? value + amount : value - amount;
+        await SharedPrefHelper.saveAmount(newAmount);
+        log('Total amount updated to $newAmount');
+      } else {
+        log('No previous amount found, initializing...');
+        await SharedPrefHelper.saveAmount(amount);
+      }
+    } catch (e) {
+      log('Error while updating total amount: $e');
+    }
   }
 }

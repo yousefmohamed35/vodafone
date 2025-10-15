@@ -16,6 +16,7 @@ class ImageOcrExtractCubit extends Cubit<ImageOcrExtractState> {
       final transaction = await sharingImageRepo.extractDataFromImage(
         sharedMediaFile: sharedMediaFile,
       );
+      await sharingImageRepo.saveTransaction(transactionModel: transaction);
       emit(ImageOcrExtractLoaded(transactionModel: transaction));
     } catch (e) {
       emit(ImageOcrExtractError(e.toString()));
