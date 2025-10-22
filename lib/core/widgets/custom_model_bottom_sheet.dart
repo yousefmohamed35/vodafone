@@ -7,7 +7,7 @@ void showCustomModalBottomSheet(
 }) {
   showModalBottomSheet(
     context: context,
-    isScrollControlled: true, // ✅ lets it resize for keyboard
+    isScrollControlled: true, 
     backgroundColor: Colors.transparent,
     builder: (context) {
       return Padding(

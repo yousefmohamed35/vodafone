@@ -5,16 +5,16 @@ class ServicesModel {
 }
 
 final List<ServicesModel> services = [
-  ServicesModel(image: 'assets/atm.webp', title: 'Atm Transfer'),
-  ServicesModel(image: 'assets/bill.webp', title: 'Pay Bill'),
-  ServicesModel(image: 'assets/donation.webp', title: 'Donations'),
-  ServicesModel(image: 'assets/elec.webp', title: 'Electricity'),
-  ServicesModel(image: 'assets/gas.webp', title: 'Gas'),
-  ServicesModel(image: 'assets/instalments.webp', title: 'Installments'),
-  ServicesModel(image: 'assets/internet.webp', title: 'Internet'),
-  ServicesModel(image: 'assets/recharge.webp', title: 'Recharge'),
-  ServicesModel(image: 'assets/school.png', title: 'School'),
-  ServicesModel(image: 'assets/water.webp', title: 'Water'),
-  ServicesModel(image: 'assets/wallet.webp', title: 'Card Wallet'),
-  ServicesModel(image: 'assets/unver.jpg', title: 'University'),
+  ServicesModel(image: 'assets/atm.webp', title: 'عمليات ATM'),
+  ServicesModel(image: 'assets/bill.webp', title: 'ايداع بالكارت'),
+  ServicesModel(image: 'assets/donation.webp', title: 'تبرعات'),
+  ServicesModel(image: 'assets/elec.webp', title: 'كهرباء'),
+  ServicesModel(image: 'assets/gas.webp', title: 'غاز'),
+  ServicesModel(image: 'assets/instalments.webp', title: 'أقساط'),
+  ServicesModel(image: 'assets/internet.webp', title: 'انترنت'),
+  ServicesModel(image: 'assets/recharge.webp', title: 'الشحن'),
+  ServicesModel(image: 'assets/school.png', title: 'مدارس'),
+  ServicesModel(image: 'assets/water.webp', title: 'مياه'),
+  ServicesModel(image: 'assets/wallet.webp', title: 'شحن كارت'),
+  ServicesModel(image: 'assets/unver.jpg', title: 'رسوم جامعية'),
 ];

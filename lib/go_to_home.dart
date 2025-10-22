@@ -29,7 +29,7 @@ class _GoToHomeState extends State<GoToHome> {
         await SharedPrefHelper.getBoolean(key: 'is_first_time') ?? true;
     setState(() {});
     log('isFirstTime: $isFirstTime');
-    // تأكد إن الـ context جاهز بعد بناء الواجهة
+    
   }
 
   @override

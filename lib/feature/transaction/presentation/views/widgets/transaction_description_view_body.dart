@@ -22,7 +22,7 @@ class TransactionDescriptionViewBody extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    transactionType ? 'Recieved' : 'Send',
+                    transactionType ? 'استلام' : 'إرسال',
                     style: TextStyle(
                       color: transactionType ? Colors.green : Colors.red,
                       fontSize: 20,
@@ -35,7 +35,7 @@ class TransactionDescriptionViewBody extends StatelessWidget {
                     extractedData: transaction.extractedData,
                   ),
                   Text(
-                    "Thank you for using our service!",
+                    "شكرا لاستخدامكم خدماتنا!",
                     style: TextStyle(
                       color: transactionType
                           ? Colors.green[700]

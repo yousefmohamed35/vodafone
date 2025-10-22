@@ -44,13 +44,13 @@ class _BalanceDataState extends State<BalanceData> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            getBalance ? 'You have in your wallet' : 'Tab here to view',
-            style: TextStyle(fontSize: 14, color: Colors.white),
+            getBalance ? 'لديك في محفظتك' : 'اضغط هنا لاظهار',
+            style: TextStyle(fontSize: 18, color: Colors.white),
           ),
           Text(
             getBalance
-                ? '$balance LE'
-                : 'your balance', //'$balance.toString() : 'your balance',
+                ? '$balance جنيه'
+                : 'رصيدك', //'$balance.toString() : 'your balance',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,

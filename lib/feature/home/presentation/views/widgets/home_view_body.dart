@@ -26,7 +26,7 @@ class HomeViewBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Welcome to Vodafon',
+                'اهلا بك في فودافون كاش',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class HomeViewBody extends StatelessWidget {
                     MeezaLogo(),
                     SizedBox(height: 20),
                     Text(
-                      'Pay with Vodafone Cash at our Partners online stores:',
+                      'ادفع أونلاين بفودافون كاش عند شركائنا:',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -74,7 +74,7 @@ class HomeViewBody extends StatelessWidget {
                       width: double.infinity,
                       color: Colors.grey[200],
                       child: Text(
-                        'More Services',
+                        'المزيد من الخدمات',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.grey[800],
@@ -83,10 +83,10 @@ class HomeViewBody extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10),
-                    MoreServicesCard(title: 'Create bin'),
-                    MoreServicesCard(title: 'Reset bin'),
-                    MoreServicesCard(title: 'Cash locator'),
-                    MoreServicesCard(title: 'Help and support'),
+                    MoreServicesCard(title: 'انشئ رقم سري'),
+                    MoreServicesCard(title: 'تغيير الرقم السري'),
+                    MoreServicesCard(title: 'الفروع'),
+                    MoreServicesCard(title: 'المساعدة'),
                     SizedBox(height: 20),
                   ],
                 ),

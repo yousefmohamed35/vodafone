@@ -15,7 +15,7 @@ class TransactionRecieptDetailes extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  extractedData[index].keyEn,
+                  extractedData[index].keyAr,
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
                 Flexible(
@@ -27,7 +27,7 @@ class TransactionRecieptDetailes extends StatelessWidget {
                 ),
               ],
             ),
-            Divider(height: 30,),
+            Divider(height: 30),
           ],
         );
       }),

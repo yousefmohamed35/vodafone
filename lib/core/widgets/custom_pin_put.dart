@@ -47,7 +47,7 @@ class _CustomPinPutState extends State<CustomPinPut>
                 vertical: 8,
               ),
               child: const Text(
-                "Type Your PIN code",
+                "ادخل الرقم السري",
                 style: TextStyle(fontSize: 16),
               ),
             ),
@@ -57,7 +57,6 @@ class _CustomPinPutState extends State<CustomPinPut>
               child: Pinput(
                 onCompleted: (value) {
                   widget.onCompleted?.call(value);
-                  
                 },
                 controller: _pinController,
                 length: 6,
@@ -101,7 +100,7 @@ class _CustomPinPutState extends State<CustomPinPut>
               decoration: BoxDecoration(color: Colors.black87),
               width: double.infinity,
               child: Text(
-                'Type your 6 PIN to proceed',
+                'ادخل الرقم السري المكون من 6 ارقام',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white, fontSize: 16),
               ),

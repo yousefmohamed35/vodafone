@@ -4,7 +4,8 @@ class CustomWalletInfoButton extends StatelessWidget {
   const CustomWalletInfoButton({
     super.key,
     required this.text,
-    required this.icon, this.onPressed,
+    required this.icon,
+    this.onPressed,
   });
   final String text;
   final IconData icon;
@@ -22,7 +23,14 @@ class CustomWalletInfoButton extends StatelessWidget {
         children: [
           Icon(icon, color: Colors.black),
           const SizedBox(width: 8),
-          Text(text, style: TextStyle(color: Colors.black)),
+          Text(
+            text,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );

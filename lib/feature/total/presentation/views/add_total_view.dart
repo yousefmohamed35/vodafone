@@ -7,9 +7,7 @@ class AddTotalView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset('assets/Vodafonelogo.png', height: 100, width: 100),
-      ),
+     
       body: AddTotalViewBody(),
     );
   }

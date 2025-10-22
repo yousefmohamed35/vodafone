@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/core/widgets/custom_model_bottom_sheet.dart';
 import 'package:vodafon/feature/home/presentation/views/widgets/balance_data.dart';
 import 'package:vodafon/feature/home/presentation/views/widgets/cash_back.dart';
-import 'package:vodafon/feature/transaction/data/repos/transaction_repo_impl.dart';
-import 'package:vodafon/feature/transaction/presentation/manager/transaction_data_cubit.dart';
-
+import '../../../../../core/helper/cashe_helper.dart';
 import '../../../../transaction/presentation/views/transaction_view.dart';
 import 'custom_wallet_info_button.dart';
 
@@ -33,7 +30,7 @@ class WalletInfo extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomWalletInfoButton(
-                  text: 'my QR',
+                  text: 'كود ال QR',
                   icon: Icons.qr_code,
                   onPressed: () {},
                 ),
@@ -41,17 +38,20 @@ class WalletInfo extends StatelessWidget {
               SizedBox(width: 5),
               Expanded(
                 child: CustomWalletInfoButton(
-                  text: 'My Transactions',
+                  text: 'تاريخ المعاملات',
                   icon: Icons.list,
                   onPressed: () {
                     showCustomModalBottomSheet(
                       context,
-                      onCompleted: (value) {
+                      onCompleted: (value) async {
                         Navigator.of(context).pop();
+                        final amount =
+                            await SharedPrefHelper.getAmount() ?? 0.0;
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const TransactionView(),
+                            builder: (context) =>
+                                TransactionView(amount: amount),
                           ),
                         );
                       },

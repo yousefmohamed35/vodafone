@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image_cubit.dart';
 import 'package:vodafon/feature/sharing_image/presentation/views/sharing_image_view.dart';
 import 'package:vodafon/go_to_home.dart';
 import 'core/services/setup_services_locator.dart';
+import 'generated/l10n.dart';
 
 class VodafonApp extends StatelessWidget {
   const VodafonApp({super.key});
@@ -28,6 +30,15 @@ class VodafonApp extends StatelessWidget {
           }
         },
         child: MaterialApp(
+          locale: const Locale('ar'),
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [const Locale('ar')],
+
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           home: const GoToHome(),

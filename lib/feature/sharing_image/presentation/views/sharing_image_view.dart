@@ -31,7 +31,7 @@ class SharingImageView extends StatelessWidget {
                   return Container(
                     height: 200,
                     color: Colors.grey[300],
-                    child: Center(child: Text("Error: $error")),
+                    child: Center(child: Text("!حدث خطأ في تحميل الصورة")),
                   );
                 },
               ),
@@ -67,7 +67,10 @@ class SharingImageView extends StatelessWidget {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width - 32,
 
-                    child: CustomButton(title: 'Save', sharedMediaFile: sharedFiles,),
+                    child: CustomButton(
+                      title: 'حفظ الايصال',
+                      sharedMediaFile: sharedFiles,
+                    ),
                   ),
                 ),
               ),

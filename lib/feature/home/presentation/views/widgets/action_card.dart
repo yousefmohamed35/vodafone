@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ActionCard extends StatelessWidget {
-  const ActionCard({
-    super.key,
-  });
+  const ActionCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 4,
-    
+
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -25,12 +21,20 @@ class ActionCard extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'Money',
-              style: TextStyle(color: Colors.black, fontSize: 12),
+              'تحويل',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Text(
-              'Transfer',
-              style: TextStyle(color: Colors.black, fontSize: 12),
+              'الأموال',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),

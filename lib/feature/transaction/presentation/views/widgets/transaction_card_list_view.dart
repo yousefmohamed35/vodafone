@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vodafon/feature/transaction/presentation/views/transaction_description_view.dart';
-
 import '../../../data/models/transaction_model.dart';
+import 'transaction_card.dart';
 
 class TransactionCardListView extends StatelessWidget {
   const TransactionCardListView({super.key, required this.transactions});
@@ -10,13 +9,15 @@ class TransactionCardListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: transactions.length,
-      itemBuilder: (context, index) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
         final transaction = transactions[index];
+        final bool transactionType = transaction.transactionTye == 'in';
         String date = '';
         String name = '';
-        if (transaction.transactionTye == 'in') {
+        String amount = '';
+
+        if (transactionType) {
           date = transaction.extractedData
               .firstWhere((val) => val.keyAr == 'تاريخ المعاملة')
               .value;
@@ -27,56 +28,32 @@ class TransactionCardListView extends StatelessWidget {
           date = transaction.extractedData
               .firstWhere((val) => val.keyAr == 'التاريخ')
               .value;
-          name = 'From You';
+
+          name = transaction.extractedData
+              .firstWhere((val) => val.keyAr == 'اسم المستقبل')
+              .value;
         }
-        return Card(
-          child: ListTile(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => TransactionDescriptionView(transaction: transaction,),
-                ),
-              );
-            },
-            leading: CircleAvatar(
-              backgroundColor: transaction.transactionTye == 'in'
-                  ? Colors.green
-                  : Colors.red,
-              child: Text(
-                transaction.transactionTye == 'in' ? 'in' : 'out',
-                style: const TextStyle(color: Colors.white),
+        amount = transaction.extractedData
+            .firstWhere((val) => val.keyAr == 'المبلغ الكلي')
+            .value
+            .replaceAll(RegExp(r'[^0-9]'), '');
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          child: Column(
+            children: [
+              TransactionCard(
+                transaction: transaction,
+                name: name,
+                date: date,
+                transactionType: transactionType,
+                amount: amount,
               ),
-            ),
-            title: Text(
-              name,
-              style: TextStyle(
-                fontSize: 18,
-                color: transaction.transactionTye == 'in'
-                    ? Colors.green
-                    : Colors.red,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            subtitle: Text(
-              date,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            trailing: Icon(
-              transaction.transactionTye == 'in'
-                  ? Icons.arrow_upward
-                  : Icons.arrow_downward,
-              color: transaction.transactionTye == 'in'
-                  ? Colors.green
-                  : Colors.red,
-            ),
+              const Divider(),
+            ],
           ),
         );
-      },
+      }, childCount: transactions.length),
     );
   }
 }

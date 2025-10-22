@@ -14,11 +14,11 @@ class CashBack extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Cashback', style: TextStyle(fontSize: 12, color: Colors.black)),
+          Text('كاش باك', style: TextStyle(fontSize: 12, color: Colors.black)),
           Row(
             children: const [
               Text(
-                '0.00 EGP',
+                '0.0 جنيه',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -26,7 +26,7 @@ class CashBack extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 4),
-              Icon(Icons.money_off, color: Colors.amber),
+              Icon(Icons.money, color: Colors.amber),
             ],
           ),
         ],

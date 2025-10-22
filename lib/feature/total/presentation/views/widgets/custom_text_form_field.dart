@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vodafon/core/helper/cashe_helper.dart';
-import 'package:vodafon/feature/home/presentation/views/home_view.dart';
 import 'package:vodafon/go_to_home.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -31,9 +30,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       ).pushReplacement(MaterialPageRoute(builder: (_) => const GoToHome()));
       // set bool for first time
       SharedPrefHelper.setBoolean('is_first_time', false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Total Added Successfully!')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('تمت الاضافة بنجاح')));
     }
   }
 
@@ -47,7 +46,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             controller: _controller,
             onChanged: _onChanged,
             decoration: InputDecoration(
-              labelText: 'Enter Amount',
+              labelText: 'أدخل المبلغ',
               labelStyle: const TextStyle(color: Colors.red),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16.0),
@@ -61,15 +60,18 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 borderRadius: BorderRadius.circular(16.0),
                 borderSide: BorderSide(color: Colors.red.shade700, width: 1.5),
               ),
-              prefixIcon: const Icon(Icons.attach_money, color: Colors.red),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Text('ج.م', style: TextStyle(color: Colors.red)),
+              ),
             ),
             keyboardType: TextInputType.number,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
-                return 'Please enter an amount';
+                return 'من فضلك ادخل المبلغ';
               }
               if (double.tryParse(value) == null) {
-                return 'Please enter a valid number';
+                return 'المبلغ يجب ان يكون رقم';
               }
               return null;
             },
@@ -89,7 +91,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 ),
               ),
               child: Text(
-                'Add Total',
+                'اضافة المبلغ',
                 style: TextStyle(
                   fontSize: 18,
                   color: _isButtonEnabled ? Colors.white : Colors.white70,
