@@ -6,6 +6,7 @@ class TransactionDescriptionViewBody extends StatelessWidget {
   const TransactionDescriptionViewBody({super.key, required this.transaction});
   final TransactionModel transaction;
   @override
+
   Widget build(BuildContext context) {
     final bool transactionType = transaction.transactionTye == 'in';
     return SingleChildScrollView(

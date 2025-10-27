@@ -1,12 +1,9 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/core/helper/cashe_helper.dart';
-import 'package:vodafon/feature/home/presentation/views/home_view.dart';
 import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image_cubit.dart';
-import 'package:vodafon/feature/total/presentation/views/add_total_view.dart';
-
+import 'feature/first_home/presentation/view/first_home.dart';
 import 'feature/sharing_image/presentation/views/sharing_image_view.dart';
 
 class GoToHome extends StatefulWidget {
@@ -41,7 +38,7 @@ class _GoToHomeState extends State<GoToHome> {
           return SharingImageView(sharedFiles: state.mediaFiles.first);
         } else if (state is SharingImageLoaded && state.mediaFiles.isEmpty) {
           log('isFirstTime: $isFirstTime');
-          return isFirstTime ? const AddTotalView() : const HomeView();
+          return FirstHome();
         }
         return const Scaffold(body: SizedBox());
       },
