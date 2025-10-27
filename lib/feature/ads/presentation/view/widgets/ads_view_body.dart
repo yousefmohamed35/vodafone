@@ -66,7 +66,7 @@ class _AdsViewBodyState extends State<AdsViewBody> {
                     children: [
                       SizedBox(height: 10),
                       Text(
-                        'الصورة لازم تكون 500*500',
+                        'الصورة لازم تكون 400*130',
                         style: TextStyle(fontSize: 16, color: Colors.grey),
                       ),
                       const Center(

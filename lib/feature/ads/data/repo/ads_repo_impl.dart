@@ -25,5 +25,13 @@ class AdsRepoImpl implements AdsRepo {
       box.add(AdsModel(adsPath: ad.path));
     }
     log('ads saved');
+    getAds();
+  }
+
+  @override
+  List<AdsModel> getAds() {
+    final box = Hive.box<AdsModel>('ads_box');
+    log('adss: ${box.values.toList().first.adsPath}');
+    return box.values.toList();
   }
 }

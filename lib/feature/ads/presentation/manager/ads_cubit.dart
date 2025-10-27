@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../data/models/ads_model.dart';
 import '../../data/repo/ads_repo.dart';
 part 'ads_state.dart';
 
@@ -38,6 +41,7 @@ class AdsCubit extends Cubit<AdsState> {
       emit(AdsError(e.toString()));
     }
   }
+
   Future<void> saveAds() async {
     emit(AdsLoading());
     try {
@@ -45,6 +49,16 @@ class AdsCubit extends Cubit<AdsState> {
       emit(SaveAdsSuccess('Ads saved successfully'));
     } catch (e) {
       emit(SaveAdsError(e.toString()));
+    }
+  }
+
+  List<AdsModel> getAds() {
+    emit(GetAdsLoading());
+    try {
+      return adsRepo.getAds();
+    } catch (e) {
+      emit(GetAdsError(e.toString()));
+      return [];
     }
   }
 }

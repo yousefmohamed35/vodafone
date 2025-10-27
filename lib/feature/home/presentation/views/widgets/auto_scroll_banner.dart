@@ -1,5 +1,11 @@
 import 'dart:async';
+import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../ads/data/models/ads_model.dart';
+import '../../../../ads/presentation/manager/ads_cubit.dart';
 
 class AutoScrollBanner extends StatefulWidget {
   const AutoScrollBanner({super.key});
@@ -22,10 +28,13 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
   ];
 
   Timer? _timer;
-
+  List<AdsModel> ads = [];
   @override
   void initState() {
     super.initState();
+    ads = context
+        .read<AdsCubit>()
+        .getAds(); // Fetch ads when the widget is initialized>
     _startAutoScroll();
   }
 
@@ -57,20 +66,23 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
     return Column(
       children: [
         SizedBox(
-          height: 200,
+          height: 130,
+
           child: PageView.builder(
             controller: _pageController,
-            itemCount: _images.length,
+            itemCount: ads.length,
             onPageChanged: (index) {
               setState(() => _currentPage = index);
             },
             itemBuilder: (context, index) {
+              log('hi ${ads[index].adsPath}');
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(
-                    _images[index],
+                  child: Image.file(
+                    File(ads[index].adsPath),
+
                     fit: BoxFit.cover,
                     width: double.infinity,
                   ),
@@ -82,7 +94,7 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
         const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(_images.length, (index) {
+          children: List.generate(ads.length, (index) {
             bool isActive = index == _currentPage;
             return AnimatedContainer(
               duration: const Duration(milliseconds: 300),

@@ -8,7 +8,7 @@ Future<void> setupHive() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ExtractedDataModelAdapter());
   Hive.registerAdapter(TransactionModelAdapter());
-
+ Hive.registerAdapter(AdsModelAdapter());
   await Hive.openBox<TransactionModel>('transaction_box');
   await Hive.openBox<AdsModel>('ads_box');
 
