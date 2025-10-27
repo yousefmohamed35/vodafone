@@ -1,10 +1,8 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vodafon/feature/ads/presentation/manager/ads_cubit.dart';
-import '../../../data/repo/ads_repo_impl.dart';
 import 'ads_button.dart';
 
 class AdsViewBody extends StatefulWidget {
@@ -31,13 +29,20 @@ class _AdsViewBodyState extends State<AdsViewBody> {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(state.message)));
-        }
-        if (state is AdsLoaded) {
+        } else if (state is AdsLoaded) {
           ads = state.ads;
           setState(() {});
-        }
-        if (state is AdsLoading) {
+        } else if (state is AdsLoading) {
           ads = [];
+        }
+        if (state is SaveAdsError) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
+        } else if (state is SaveAdsSuccess) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
         }
       },
       child: SingleChildScrollView(
@@ -52,13 +57,22 @@ class _AdsViewBodyState extends State<AdsViewBody> {
                   context.read<AdsCubit>().fetchAds();
                 },
                 child: Container(
-                  height: 60,
+                  height: 90,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Center(
-                    child: Icon(Icons.add, size: 40, color: Colors.grey),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10),
+                      Text(
+                        'الصورة لازم تكون 500*500',
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                      ),
+                      const Center(
+                        child: Icon(Icons.add, size: 40, color: Colors.grey),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -80,7 +94,7 @@ class _AdsViewBodyState extends State<AdsViewBody> {
                             borderRadius: BorderRadius.circular(8),
                             image: DecorationImage(
                               image: FileImage(File(ads[index].path)),
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                             ),
                           ),
                         ),
@@ -119,7 +133,15 @@ class _AdsViewBodyState extends State<AdsViewBody> {
                   ),
                 ),
               SizedBox(height: 20),
-              Visibility(visible: ads.isNotEmpty, child: AdsButton()),
+              Visibility(
+                visible: ads.isNotEmpty,
+                child: AdsButton(
+                  onPressed: () {
+                    context.read<AdsCubit>().saveAds();
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
             ],
           ),
         ),

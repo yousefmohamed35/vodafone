@@ -38,4 +38,13 @@ class AdsCubit extends Cubit<AdsState> {
       emit(AdsError(e.toString()));
     }
   }
+  Future<void> saveAds() async {
+    emit(AdsLoading());
+    try {
+      await adsRepo.saveAds(ads);
+      emit(SaveAdsSuccess('Ads saved successfully'));
+    } catch (e) {
+      emit(SaveAdsError(e.toString()));
+    }
+  }
 }
