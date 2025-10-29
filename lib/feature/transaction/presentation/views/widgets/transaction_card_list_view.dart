@@ -36,7 +36,8 @@ class TransactionCardListView extends StatelessWidget {
         amount = transaction.extractedData
             .firstWhere((val) => val.keyAr == 'المبلغ الكلي')
             .value
-            .replaceAll(RegExp(r'[^0-9]'), '');
+            .replaceAll('ج.م', '')
+            .replaceAll(RegExp(r'[^0-9.]'), '');
 
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),

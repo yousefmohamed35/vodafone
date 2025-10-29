@@ -5,6 +5,7 @@ import 'package:vodafon/feature/ads/presentation/view/ads_view.dart';
 import 'package:vodafon/feature/home/presentation/views/home_view.dart';
 import 'package:vodafon/feature/total/presentation/views/add_total_view.dart';
 import '../../../../core/helper/cashe_helper.dart';
+import '../../../add_transaction/presentation/view/add_transaction_view.dart';
 import '../../data/models/navigate_card_model.dart';
 import 'widgets/navigate_card.dart';
 
@@ -115,7 +116,14 @@ class _FirstHomeState extends State<FirstHome> {
                           ),
                         );
                       }
-                    : () {},
+                    : () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddTransactionView(),
+                          ),
+                        );
+                      },
               ),
               SizedBox(width: 10),
               NavigationCard(

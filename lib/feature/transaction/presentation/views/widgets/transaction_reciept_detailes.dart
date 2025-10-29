@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:vodafon/feature/transaction/data/models/extracted_data_model.dart';
 
+import '../../../../../core/function/date_formate.dart';
+
 class TransactionRecieptDetailes extends StatelessWidget {
   const TransactionRecieptDetailes({super.key, required this.extractedData});
   final List<ExtractedDataModel> extractedData;
@@ -9,6 +11,11 @@ class TransactionRecieptDetailes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: List.generate(extractedData.length, (index) {
+        bool date = false;
+        if (extractedData[index].keyAr == 'التاريخ' ||
+            extractedData[index].keyAr == 'تاريخ المعاملة') {
+          date = true;
+        }
         return Column(
           children: [
             Row(
@@ -20,7 +27,11 @@ class TransactionRecieptDetailes extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    extractedData[index].value,
+                    date
+                        ? formatDateTime(
+                            parseTransactionDate(extractedData[index].value)!,
+                          )
+                        : extractedData[index].value,
                     textAlign: TextAlign.right,
                     style: const TextStyle(color: Colors.black87),
                   ),

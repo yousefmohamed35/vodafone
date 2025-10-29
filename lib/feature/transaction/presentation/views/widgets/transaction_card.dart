@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/function/date_formate.dart';
 import '../../../data/models/transaction_model.dart';
 import '../transaction_description_view.dart';
 
@@ -67,9 +68,9 @@ class TransactionCard extends StatelessWidget {
             ),
           ),
           Text(
-            date,
+            formatDateTime(parseTransactionDate(date)!),
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 12,
               color: Colors.grey,
               fontWeight: FontWeight.w500,
             ),
