@@ -16,9 +16,7 @@ class AdsModelAdapter extends TypeAdapter<AdsModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return AdsModel(
-      adsPath: fields[0] as String,
-    );
+    return AdsModel(adsPath: fields[0] as String);
   }
 
   @override

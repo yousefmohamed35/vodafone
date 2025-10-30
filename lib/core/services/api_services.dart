@@ -36,20 +36,19 @@ class ApiServices {
     final formData = FormData();
 
     for (int i = 0; i < images.length; i++) {
-      formData.files.add(MapEntry(
-        'images[$i]',
-        await MultipartFile.fromFile(
-          images[i].path,
-          filename: images[i].path.split('/').last,
+      formData.files.add(
+        MapEntry(
+          'images[$i]',
+          await MultipartFile.fromFile(
+            images[i].path,
+            filename: images[i].path.split('/').last,
+          ),
         ),
-      ));
+      );
     }
 
     try {
-      final response = await _dio.post(
-        'ocr',
-        data: formData,
-      );
+      final response = await _dio.post('ocr', data: formData);
       return response;
     } catch (e) {
       print('❌ Upload Error: $e');

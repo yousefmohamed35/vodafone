@@ -21,8 +21,7 @@ class VodafonApp extends StatelessWidget {
           if (state is SharingImageLoaded && state.mediaFiles.isNotEmpty) {
             navigatorKey.currentState?.pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (_) =>
-                    SharingImageView(sharedFiles: state.mediaFiles),
+                builder: (_) => SharingImageView(sharedFiles: state.mediaFiles),
               ),
               (route) => false,
             );

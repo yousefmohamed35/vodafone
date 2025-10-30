@@ -6,9 +6,6 @@ class AddTotalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-     
-      body: AddTotalViewBody(),
-    );
+    return Scaffold(body: AddTotalViewBody());
   }
 }

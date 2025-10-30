@@ -19,5 +19,5 @@ abstract class SharingImageRepo {
     required SharedMediaFile sharedMediaFile,
   });
   Future<void> saveTransaction({required TransactionModel transactionModel});
-  Future<void> updateTotalAmount({required double amount,required bool type});
+  Future<void> updateTotalAmount({required double amount, required bool type});
 }

@@ -7,7 +7,7 @@ void showCustomModalBottomSheet(
 }) {
   showModalBottomSheet(
     context: context,
-    isScrollControlled: true, 
+    isScrollControlled: true,
     backgroundColor: Colors.transparent,
     builder: (context) {
       return Padding(

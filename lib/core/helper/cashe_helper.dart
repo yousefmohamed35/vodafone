@@ -18,6 +18,7 @@ class SharedPrefHelper {
     final prefs = await _instance;
     return prefs.getDouble(_amountKey);
   }
+
   static void setBoolean(String key, bool value) async {
     final prefs = await _instance;
     await prefs.setBool(key, value);
@@ -27,12 +28,11 @@ class SharedPrefHelper {
     final prefs = await _instance;
     return prefs.getBool(key);
   }
-  
+
   static Future<void> clearAll() async {
     final prefs = await _instance;
     await prefs.clear();
   }
-  
 
   static Future<void> clearAmount() async {
     final prefs = await _instance;

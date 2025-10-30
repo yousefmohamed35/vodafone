@@ -24,8 +24,8 @@ class ExtractedDataModel extends HiveObject {
     );
   }
   Map<String, dynamic> toJson() => {
-        'key_en': keyEn,
-        'key_ar': keyAr,
-        'value': value,
-      };
+    'key_en': keyEn,
+    'key_ar': keyAr,
+    'value': value,
+  };
 }
