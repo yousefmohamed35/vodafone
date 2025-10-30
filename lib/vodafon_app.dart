@@ -22,7 +22,7 @@ class VodafonApp extends StatelessWidget {
             navigatorKey.currentState?.pushAndRemoveUntil(
               MaterialPageRoute(
                 builder: (_) =>
-                    SharingImageView(sharedFiles: state.mediaFiles.first),
+                    SharingImageView(sharedFiles: state.mediaFiles),
               ),
               (route) => false,
             );

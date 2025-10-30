@@ -12,7 +12,7 @@ import '../../data/repos/sharing_image_repo_impl.dart';
 
 class SharingImageView extends StatelessWidget {
   const SharingImageView({super.key, required this.sharedFiles});
-  final SharedMediaFile sharedFiles;
+  final List<SharedMediaFile> sharedFiles;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -21,19 +21,22 @@ class SharingImageView extends StatelessWidget {
         child: Scaffold(
           body: Stack(
             children: [
-              Image.file(
-                File(sharedFiles.path),
-                height: double.infinity,
-                width: double.infinity,
-                fit: BoxFit.fill,
-                errorBuilder: (context, error, stackTrace) {
-                  log("❌ Image load error: $error");
-                  return Container(
-                    height: 200,
-                    color: Colors.grey[300],
-                    child: Center(child: Text("!حدث خطأ في تحميل الصورة")),
-                  );
-                },
+              PageView.builder(
+                itemCount: sharedFiles.length,
+                itemBuilder: (context, index) => Image.file(
+                  File(sharedFiles[index].path),
+                  height: double.infinity,
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) {
+                    log("❌ Image load error: $error");
+                    return Container(
+                      height: 200,
+                      color: Colors.grey[300],
+                      child: Center(child: Text("!حدث خطأ في تحميل الصورة")),
+                    );
+                  },
+                ),
               ),
               Positioned(
                 top: 8,
@@ -56,7 +59,6 @@ class SharingImageView extends StatelessWidget {
                   ),
                 ),
               ),
-
               Positioned(
                 bottom: 16,
                 child: Padding(
@@ -69,7 +71,7 @@ class SharingImageView extends StatelessWidget {
 
                     child: CustomButton(
                       title: 'حفظ الايصال',
-                      sharedMediaFile: sharedFiles,
+                      sharedMediaFile: sharedFiles[0],
                     ),
                   ),
                 ),

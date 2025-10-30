@@ -19,7 +19,7 @@ class _GoToHomeState extends State<GoToHome> {
       builder: (context, state) {
         if (state is SharingImageLoaded && state.mediaFiles.isNotEmpty) {
           log('the first media: ${state.mediaFiles.first.type}');
-          return SharingImageView(sharedFiles: state.mediaFiles.first);
+          return SharingImageView(sharedFiles: state.mediaFiles);
         } else if (state is SharingImageLoaded && state.mediaFiles.isEmpty) {
           return FirstHome();
         }
