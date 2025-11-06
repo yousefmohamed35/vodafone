@@ -1,12 +1,16 @@
-import 'transaction.dart';
+import 'package:hive/hive.dart';
 
-class TrasnsactionRespone {
+import 'transaction.dart';
+part 'trasnsaction_respone.g.dart';
+@HiveType(typeId: 5)
+class TransactionResponse extends HiveObject {
+  @HiveField(0)
   List<Transaction>? transactions;
 
-  TrasnsactionRespone({this.transactions});
+  TransactionResponse({this.transactions});
 
-  factory TrasnsactionRespone.fromJson(Map<String, dynamic> json) {
-    return TrasnsactionRespone(
+  factory TransactionResponse.fromJson(Map<String, dynamic> json) {
+    return TransactionResponse(
       transactions: (json['transactions'] as List<dynamic>?)
           ?.map((e) => Transaction.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -17,7 +21,7 @@ class TrasnsactionRespone {
     'transactions': transactions?.map((e) => e.toJson()).toList(),
   };
 
-  TrasnsactionRespone copyWith({List<Transaction>? transactions}) {
-    return TrasnsactionRespone(transactions: transactions ?? this.transactions);
+  TransactionResponse copyWith({List<Transaction>? transactions}) {
+    return TransactionResponse(transactions: transactions ?? this.transactions);
   }
 }

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
 
@@ -9,11 +10,16 @@ class ApiServices {
     _dio.options.connectTimeout = const Duration(seconds: 30);
     _dio.options.receiveTimeout = const Duration(seconds: 30);
   }
+  Future<bool?> get() async {
+    final response = await _dio.get('https://live.my-compound.com/api/live');
+    log(response.toString());
+    return response.data['live'];
+  }
 
   /// 🔹 عام لأي POST request
   Future<Response> post({
     required String endpoint,
-    Map<String, dynamic>? data,
+    FormData? data,
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {

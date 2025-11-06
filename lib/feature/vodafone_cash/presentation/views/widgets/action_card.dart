@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vodafon/feature/vodafone_cash/presentation/views/widgets/wallet_actions.dart';
 
 class ActionCard extends StatelessWidget {
-  const ActionCard({super.key});
-
+  const ActionCard({super.key, required this.card});
+  final CardData card;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -14,28 +15,18 @@ class ActionCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            CircleAvatar(
-              radius: 25,
-              backgroundColor: Colors.grey[200],
-              child: Icon(Icons.wallet, color: Colors.red, size: 30),
-            ),
+            SizedBox(height: 20),
+            Image.asset(card.image, width: 50),
             const SizedBox(height: 8),
             Text(
-              'تحويل',
+              card.title,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              'الأموال',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            SizedBox(height: 20),
           ],
         ),
       ),

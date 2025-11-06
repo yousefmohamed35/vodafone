@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+import 'package:vodafon/feature/sharing_image/presentation/manager/ocrfromapi/ocrfromapi_cubit.dart';
 import 'package:vodafon/go_to_home.dart';
-
-import '../../feature/sharing_image/presentation/manager/image_ocr_extract_cubit.dart';
-import '../../feature/sharing_image/presentation/manager/sharing_image_cubit.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -13,7 +11,7 @@ class CustomButton extends StatelessWidget {
     required this.sharedMediaFile,
   });
   final String title;
-  final SharedMediaFile sharedMediaFile;
+  final List<SharedMediaFile> sharedMediaFile;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -24,19 +22,21 @@ class CustomButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       onPressed: () async {
-        await context.read<ImageOcrExtractCubit>().extractDataFromImage(
-          sharedMediaFile,
+        await context.read<OcrfromapiCubit>().getDataFromApi(
+          images: sharedMediaFile,
         );
-        context.read<SharingImageCubit>().reset();
+        // await context.read<ImageOcrExtractCubit>().extractDataFromImage(
+        //   sharedMediaFile,
+        // );
       },
-      child: BlocConsumer<ImageOcrExtractCubit, ImageOcrExtractState>(
+      child: BlocConsumer<OcrfromapiCubit, OcrfromapiState>(
         listener: (context, state) {
-          if (state is ImageOcrExtractError) {
+          if (state is OcrfromapiFailure) {
             ScaffoldMessenger.of(
               context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
+            ).showSnackBar(SnackBar(content: Text(state.error)));
           }
-          if (state is ImageOcrExtractLoaded) {
+          if (state is OcrfromapiSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Data Added Successfully!')),
             );
@@ -46,12 +46,9 @@ class CustomButton extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          if (state is ImageOcrExtractLoading) {
-            return Center(
-              child: const CircularProgressIndicator(color: Colors.white),
-            );
-          }
-          return Text(title);
+          return state is OcrfromapiLoading
+              ? Center(child: CircularProgressIndicator(color: Colors.white))
+              : Text(title);
         },
       ),
     );

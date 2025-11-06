@@ -1,6 +1,7 @@
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:vodafon/feature/transaction/data/models/transaction_model.dart';
+import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/trasnsaction_respone.dart';
 
 abstract class SharingImageRepo {
   Future<List<SharedMediaFile>> getInitialMedia();
@@ -20,4 +21,6 @@ abstract class SharingImageRepo {
   });
   Future<void> saveTransaction({required TransactionModel transactionModel});
   Future<void> updateTotalAmount({required double amount, required bool type});
+
+  Future<TransactionResponse> getDataFromApiOCR({required List<SharedMediaFile> images});
 }

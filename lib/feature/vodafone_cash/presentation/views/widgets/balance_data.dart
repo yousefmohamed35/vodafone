@@ -45,7 +45,7 @@ class _BalanceDataState extends State<BalanceData> {
         children: [
           Text(
             getBalance ? 'لديك في محفظتك' : 'اضغط هنا لاظهار',
-            style: TextStyle(fontSize: 18, color: Colors.white),
+            style: TextStyle(fontSize: 18, color: Colors.black),
           ),
           Text(
             getBalance
@@ -54,7 +54,7 @@ class _BalanceDataState extends State<BalanceData> {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vodafon/core/widgets/custom_model_bottom_sheet.dart';
-import 'package:vodafon/feature/home/presentation/views/widgets/balance_data.dart';
-import 'package:vodafon/feature/home/presentation/views/widgets/cash_back.dart';
+import 'package:vodafon/feature/vodafone_cash/presentation/views/widgets/balance_data.dart';
+import 'package:vodafon/feature/vodafone_cash/presentation/views/widgets/cash_back.dart';
 import '../../../../../core/helper/cashe_helper.dart';
 import '../../../../transaction/presentation/views/transaction_view.dart';
 import 'custom_wallet_info_button.dart';
@@ -15,14 +15,14 @@ class WalletInfo extends StatelessWidget {
       height: 170,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.red,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(children: [BalanceData(), Spacer(), CashBack()]),
           ),
           Spacer(),
@@ -33,6 +33,7 @@ class WalletInfo extends StatelessWidget {
                   text: 'كود ال QR',
                   icon: Icons.qr_code,
                   onPressed: () {},
+                  isLeft: false,
                 ),
               ),
               SizedBox(width: 5),
@@ -57,11 +58,11 @@ class WalletInfo extends StatelessWidget {
                       },
                     );
                   },
+                  isLeft: true,
                 ),
               ),
             ],
           ),
-          SizedBox(height: 8),
         ],
       ),
     );

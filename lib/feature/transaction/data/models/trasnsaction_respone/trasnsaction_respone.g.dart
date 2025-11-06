@@ -1,32 +1,32 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'ads_model.dart';
+part of 'trasnsaction_respone.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AdsModelAdapter extends TypeAdapter<AdsModel> {
+class TransactionResponseAdapter extends TypeAdapter<TransactionResponse> {
   @override
-  final int typeId = 3;
+  final int typeId = 5;
 
   @override
-  AdsModel read(BinaryReader reader) {
+  TransactionResponse read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return AdsModel(
-      adsPath: fields[0] as String,
+    return TransactionResponse(
+      transactions: (fields[0] as List?)?.cast<Transaction>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, AdsModel obj) {
+  void write(BinaryWriter writer, TransactionResponse obj) {
     writer
       ..writeByte(1)
       ..writeByte(0)
-      ..write(obj.adsPath);
+      ..write(obj.transactions);
   }
 
   @override
@@ -35,7 +35,7 @@ class AdsModelAdapter extends TypeAdapter<AdsModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AdsModelAdapter &&
+      other is TransactionResponseAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

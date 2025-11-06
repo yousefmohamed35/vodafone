@@ -3,12 +3,15 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mime/mime.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:vodafon/core/helper/cashe_helper.dart';
+import 'package:vodafon/core/services/api_services.dart';
 import 'package:vodafon/feature/transaction/data/models/transaction_model.dart';
+import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/trasnsaction_respone.dart';
 
 import 'sharing_image_repo.dart';
 
@@ -16,12 +19,15 @@ class SharingImageRepoImpl implements SharingImageRepo {
   final ReceiveSharingIntent _receiveSharingIntent;
   StreamSubscription? _intentSubscription;
   final StreamController<List<SharedMediaFile>> _mediaController;
+  final ApiServices apiServices;
 
-  SharingImageRepoImpl({ReceiveSharingIntent? receiveSharingIntent})
-    : _receiveSharingIntent =
-          receiveSharingIntent ?? ReceiveSharingIntent.instance,
+  SharingImageRepoImpl(
+    this.apiServices, {
+    ReceiveSharingIntent? receiveSharingIntent,
+  }) : _receiveSharingIntent =
+           receiveSharingIntent ?? ReceiveSharingIntent.instance,
 
-      _mediaController = StreamController<List<SharedMediaFile>>.broadcast() {
+       _mediaController = StreamController<List<SharedMediaFile>>.broadcast() {
     _intentSubscription = _receiveSharingIntent.getMediaStream().listen(
       (List<SharedMediaFile> files) {
         log("📲 New shared media received: ${files.length} files");
@@ -161,6 +167,35 @@ class SharingImageRepoImpl implements SharingImageRepo {
       }
     } catch (e) {
       log('Error while updating total amount: $e');
+    }
+  }
+
+  @override
+  Future<TransactionResponse> getDataFromApiOCR({
+    required List<SharedMediaFile> images,
+  }) async {
+    final formData = FormData();
+
+    for (int i = 0; i < images.length; i++) {
+      formData.files.add(
+        MapEntry(
+          'images[$i]',
+          await MultipartFile.fromFile(
+            images[i].path,
+            filename: images[i].path.split('/').last,
+          ),
+        ),
+      );
+    }
+
+    try {
+      final response = await apiServices.post(endpoint: 'ocr', data: formData);
+      log('✅ OCR Response: ${response.data}');
+      return TransactionResponse.fromJson(response.data);
+    } catch (e) {
+      log('❌ OCR Error: $e');
+     throw('error');
+      
     }
   }
 }
