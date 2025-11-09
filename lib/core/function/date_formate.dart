@@ -45,7 +45,7 @@ DateTime? parseTransactionDate(String raw) {
 
 String formatDateTime(
   DateTime dateTime, {
-  String pattern = 'dd-MM-yyyy hh:mm a',
+  String pattern = 'dd MMMM yyyy - hh:mm a',
 }) {
-  return DateFormat(pattern).format(dateTime);
+  return DateFormat(pattern, 'ar_EG').format(dateTime);
 }

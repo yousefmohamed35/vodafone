@@ -4,27 +4,14 @@ import '../../../../../core/function/date_formate.dart';
 import '../../../data/models/trasnsaction_respone/transaction.dart';
 
 class TransactionCard extends StatelessWidget {
-  const TransactionCard({
-    super.key,
-    required this.transaction,
-  });
+  const TransactionCard({super.key, required this.transaction});
 
   final Transaction transaction;
-  
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.all(8),
-      onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) =>
-        //         TransactionDescriptionView(transaction: transaction),
-        //   ),
-        // );
-      },
       leading: Container(
         width: 40,
         height: 40,
@@ -40,11 +27,11 @@ class TransactionCard extends StatelessWidget {
         ),
       ),
       title: Text(
-        transaction.receiverName!,
+        '${transaction.type!} أموال',
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
           fontSize: 18,
-          color: transaction.type == 'استلام' ? Colors.green : Colors.red,
+          color: Colors.black,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -52,17 +39,20 @@ class TransactionCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-           transaction.type == 'استلام'  ? 'الحالة: تم الاستلام' : 'الحالة: تم الارسال',
-            style: TextStyle(
-              fontSize: 14,
-              color: transaction.type == 'استلام'? Colors.green : Colors.red,
-              fontWeight: FontWeight.w500,
-            ),
+            transaction.receiverName!.isNotEmpty
+                ? transaction.receiverName!
+                : transaction.phone!.replaceAll('002', ''),
+            style: TextStyle(fontSize: 14, color: Colors.black),
           ),
+          if (transaction.fee != 0)
+            Text(
+              'رسوم العملية : ${transaction.fee} جنيه',
+              style: TextStyle(fontSize: 14, color: Colors.black),
+            ),
           Text(
             formatDateTime(parseTransactionDate(transaction.date!)!),
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               color: Colors.grey,
               fontWeight: FontWeight.w500,
             ),
@@ -74,18 +64,14 @@ class TransactionCard extends StatelessWidget {
         children: [
           Icon(
             transaction.type == 'استلام' ? Icons.add : Icons.remove,
-            color:transaction.type == 'استلام'
-                ? Colors.green
-                : Colors.red,
+            color: transaction.type == 'استلام' ? Colors.green : Colors.red,
             size: 20,
           ),
           Text(
             '${transaction.amount} جنيه',
             style: TextStyle(
               fontSize: 16,
-              color: transaction.type == 'استلام' 
-                  ? Colors.green
-                  : Colors.red,
+              color: transaction.type == 'استلام' ? Colors.green : Colors.red,
               fontWeight: FontWeight.bold,
             ),
           ),

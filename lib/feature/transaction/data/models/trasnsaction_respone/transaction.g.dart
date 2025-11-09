@@ -19,9 +19,9 @@ class TransactionAdapter extends TypeAdapter<Transaction> {
     return Transaction(
       status: fields[0] as String?,
       phone: fields[1] as String?,
-      amount: fields[2] as double?,
-      fee: fields[3] as double?,
-      total: fields[4] as double?,
+      amount: fields[2] as num?,
+      fee: fields[3] as num?,
+      total: fields[4] as num?,
       receiverName: fields[5] as String?,
       reference: fields[6] as String?,
       date: fields[7] as String?,

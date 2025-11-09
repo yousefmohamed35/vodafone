@@ -8,7 +8,6 @@ import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/tra
 class AddTransactionViewBody extends StatefulWidget {
   const AddTransactionViewBody({super.key});
 
-
   @override
   State<AddTransactionViewBody> createState() => _AddTransactionViewBodyState();
 }
@@ -20,7 +19,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
   TextEditingController fee = TextEditingController();
   TextEditingController referenceNumber = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  String transactionType = 'in';
+  String transactionType = 'استلام';
   @override
   void dispose() {
     name.dispose();
@@ -96,7 +95,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                     isSelected: isSelected,
                     onPressed: () {
                       setState(() {
-                        isSelected = !isSelected;
+                        isSelected = true;
                         transactionType = 'استلام';
                       });
                     },
@@ -106,7 +105,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                     isSelected: !isSelected,
                     onPressed: () {
                       setState(() {
-                        isSelected = !isSelected;
+                        isSelected = false;
                         transactionType = 'تحويل';
                       });
                     },
@@ -145,28 +144,28 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                         final date = DateTime.now().toString();
                         double totalAmount =
                             double.parse(amount.text) + double.parse(fee.text);
-                        final TransactionResponse transaction = TransactionResponse(
-                          transactions: [
-                            Transaction(
-                              status: 'تمت',
-                              phone: '',
-                              amount:  double.parse(amount.text) ,
-                              fee: double.parse(fee.text),
-                              total: totalAmount,
-                              receiverName: name.text,
-                              reference: referenceNumber.text,
-                              date: date,
-                              type: transactionType,
-                            )
-                          ],
-                        );
-                          context
-                              .read<AddtransactionstaticCubit>()
-                              .addTransaction(
-                                transaction: transaction,
-                                amount: totalAmount,
-                              );
-                      
+                        final TransactionResponse transaction =
+                            TransactionResponse(
+                              transactions: [
+                                Transaction(
+                                  status: 'تمت',
+                                  phone: '',
+                                  amount: double.parse(amount.text),
+                                  fee: double.parse(fee.text),
+                                  total: totalAmount,
+                                  receiverName: name.text,
+                                  reference: referenceNumber.text,
+                                  date: date,
+                                  type: transactionType,
+                                ),
+                              ],
+                            );
+                        context
+                            .read<AddtransactionstaticCubit>()
+                            .addTransaction(
+                              transaction: transaction,
+                              amount: totalAmount,
+                            );
                       }
                     },
                     child: Text(
