@@ -12,21 +12,23 @@ class ActionCard extends StatelessWidget {
       elevation: 4,
 
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 20),
         child: Column(
           children: [
-            SizedBox(height: 20),
-            Image.asset(card.image, width: 50),
-            const SizedBox(height: 8),
+            CircleAvatar(
+              radius: 25,
+              backgroundColor: Colors.grey[300],
+              child: Image.asset(card.image, width: 50),
+            ),
             Text(
               card.title,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 12,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w900,
               ),
             ),
-            SizedBox(height: 20),
           ],
         ),
       ),

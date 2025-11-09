@@ -1,5 +1,6 @@
-import '../models/transaction_model.dart';
+import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/transaction.dart';
+
 
 abstract class TransactionRepo {
-  List<TransactionModel> getAllTransaction();
+  List<Transaction> getAllTransaction();
 }

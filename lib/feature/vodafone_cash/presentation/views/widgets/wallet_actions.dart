@@ -18,9 +18,9 @@ class WalletActions extends StatelessWidget {
 }
 
 final List<CardData> cards = [
-  CardData(image: 'assets/exchange.png', title: 'تحويل أموال'),
-  CardData(image: "assets/mobile.png", title: "شحن الرصيد"),
-  CardData(image: "assets/flex.png", title: "تجديد فليكس"),
+  CardData(image: 'assets/exchange.png', title: 'تحويل\n أموال'),
+  CardData(image: "assets/mobile.png", title: "شحن\n الرصيد"),
+  CardData(image: "assets/flex.png", title: "تجديد\n فليكس"),
 ];
 
 class CardData {

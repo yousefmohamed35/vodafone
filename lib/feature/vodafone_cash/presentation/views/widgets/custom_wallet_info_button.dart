@@ -25,7 +25,7 @@ class CustomWalletInfoButton extends StatelessWidget {
       ),
       height: 60,
       elevation: 0,
-      color: Colors.grey[300],
+      color: Colors.grey[400],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -49,7 +49,7 @@ class CustomWalletInfoButton extends StatelessWidget {
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text('جديد'),
+              child: Text('جديد', style: TextStyle(color: Colors.white)),
             ),
         ],
       ),

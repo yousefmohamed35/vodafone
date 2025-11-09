@@ -6,20 +6,19 @@ class AllVodafoneCashServices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: GridView.count(
-        padding: EdgeInsets.zero,
-        physics: NeverScrollableScrollPhysics(),
-        crossAxisCount: 4,
-        shrinkWrap: true,
-        children: List.generate(services.length, (index) {
-          return ServiceCard(
+    return Wrap(
+      //  alignment: WrapAlignment.center,
+      // runSpacing: 8,
+      // spacing: 8,
+      children: List.generate(services.length, (index) {
+        return SizedBox(
+          width: MediaQuery.of(context).size.width / 4 - 8, // نفس فكرة GridView
+          child: ServiceCard(
             title: services[index].title,
             image: services[index].image,
-          );
-        }),
-      ),
+          ),
+        );
+      }),
     );
   }
 }
@@ -31,13 +30,14 @@ class ServiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: Image.asset(image, width: 60, height: 60),
+        Image.asset(image, width: 60, height: 60),
+        Text(
+          textAlign: TextAlign.center,
+          title,
+          style: TextStyle(fontSize: 14),
         ),
-
-        Text(title, style: TextStyle(fontSize: 14)),
       ],
     );
   }

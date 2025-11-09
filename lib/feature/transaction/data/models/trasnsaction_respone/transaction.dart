@@ -1,18 +1,18 @@
-
 import 'package:hive/hive.dart';
 part 'transaction.g.dart';
+
 @HiveType(typeId: 7)
-class Transaction  extends HiveObject {
+class Transaction extends HiveObject {
   @HiveField(0)
   String? status;
   @HiveField(1)
   String? phone;
   @HiveField(2)
-  double? amount;
+  num? amount;
   @HiveField(3)
-  double? fee;
+  num? fee;
   @HiveField(4)
-  double? total;
+  num? total;
   @HiveField(5)
   String? receiverName;
   @HiveField(6)
@@ -37,9 +37,9 @@ class Transaction  extends HiveObject {
   factory Transaction.fromJson(Map<String, dynamic> json) => Transaction(
     status: json['status'] as String?,
     phone: json['phone'] as String?,
-    amount: json['amount'] as double?,
-    fee: json['fee'] as double?,
-    total: json['total'] as double?,
+    amount: json['amount'] as num?,
+    fee: json['fee'] as num?,
+    total: json['total'] as num?,
     receiverName: json['receiver_name'] as String?,
     reference: json['reference'] as String?,
     date: json['date'] as String?,

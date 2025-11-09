@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/feature/add_transaction/presentation/manager/addtransactionstatic_cubit.dart';
 import 'package:vodafon/feature/add_transaction/presentation/view/widgets/custom_text_form_transaction.dart';
-import 'package:vodafon/feature/transaction/data/models/extracted_data_model.dart';
-
-import '../../../../transaction/data/models/transaction_model.dart';
+import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/transaction.dart';
+import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/trasnsaction_respone.dart';
 
 class AddTransactionViewBody extends StatefulWidget {
   const AddTransactionViewBody({super.key});
+
 
   @override
   State<AddTransactionViewBody> createState() => _AddTransactionViewBodyState();
@@ -97,7 +97,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                     onPressed: () {
                       setState(() {
                         isSelected = !isSelected;
-                        transactionType = 'in';
+                        transactionType = 'استلام';
                       });
                     },
                   ),
@@ -107,7 +107,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                     onPressed: () {
                       setState(() {
                         isSelected = !isSelected;
-                        transactionType = 'out';
+                        transactionType = 'تحويل';
                       });
                     },
                   ),
@@ -145,91 +145,28 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                         final date = DateTime.now().toString();
                         double totalAmount =
                             double.parse(amount.text) + double.parse(fee.text);
-                        if (transactionType == 'out') {
-                          final trnsaction = TransactionModel(
-                            transactionTye: transactionType,
-                            extractedData: [
-                              ExtractedDataModel(
-                                keyAr: 'اسم المستقبل',
-                                keyEn: 'receiver name',
-                                value: name.text,
-                              ),
-                              ExtractedDataModel(
-                                keyAr: 'المبلغ',
-                                keyEn: 'amount',
-                                value: amount.text,
-                              ),
-                              ExtractedDataModel(
-                                keyAr: 'رسوم المعامله',
-                                keyEn: 'fee',
-                                value: fee.text,
-                              ),
-                              ExtractedDataModel(
-                                keyAr: 'الرقم المرجعي',
-                                keyEn: 'referenceNumber',
-                                value: referenceNumber.text,
-                              ),
-                              ExtractedDataModel(
-                                keyEn: 'total amount',
-                                keyAr: 'المبلغ الكلي',
-                                value: totalAmount.toStringAsFixed(2),
-                              ),
-                              ExtractedDataModel(
-                                keyAr: 'التاريخ',
-                                keyEn: 'date',
-                                value: date,
-                              ),
-                            ],
-                          );
+                        final TransactionResponse transaction = TransactionResponse(
+                          transactions: [
+                            Transaction(
+                              status: 'تمت',
+                              phone: '',
+                              amount:  double.parse(amount.text) ,
+                              fee: double.parse(fee.text),
+                              total: totalAmount,
+                              receiverName: name.text,
+                              reference: referenceNumber.text,
+                              date: date,
+                              type: transactionType,
+                            )
+                          ],
+                        );
                           context
                               .read<AddtransactionstaticCubit>()
                               .addTransaction(
-                                transactionModel: trnsaction,
+                                transaction: transaction,
                                 amount: totalAmount,
                               );
-                        } else {
-                          final trnsaction = TransactionModel(
-                            transactionTye: transactionType,
-                            extractedData: [
-                              ExtractedDataModel(
-                                keyAr: 'إجمالي مبلغ المعاملة',
-                                keyEn: 'amount',
-                                value: amount.text,
-                              ),
-                              ExtractedDataModel(
-                                keyAr: 'رسوم المعامله',
-                                keyEn: 'fee',
-                                value: fee.text,
-                              ),
-                              ExtractedDataModel(
-                                keyAr: 'الرقم المرجعي',
-                                keyEn: 'referenceNumber',
-                                value: referenceNumber.text,
-                              ),
-                              ExtractedDataModel(
-                                keyEn: 'total amount',
-                                keyAr: 'المبلغ الكلي',
-                                value: totalAmount.toStringAsFixed(2),
-                              ),
-                              ExtractedDataModel(
-                                keyAr: 'تاريخ المعاملة',
-                                keyEn: 'date',
-                                value: date,
-                              ),
-                              ExtractedDataModel(
-                                keyAr: 'اسم المرسل',
-                                keyEn: 'sender name',
-                                value: name.text,
-                              ),
-                            ],
-                          );
-                          context
-                              .read<AddtransactionstaticCubit>()
-                              .addTransaction(
-                                transactionModel: trnsaction,
-                                amount: totalAmount,
-                              );
-                        }
+                      
                       }
                     },
                     child: Text(

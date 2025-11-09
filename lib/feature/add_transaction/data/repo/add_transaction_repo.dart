@@ -1,8 +1,8 @@
-import '../../../transaction/data/models/transaction_model.dart';
+import '../../../transaction/data/models/trasnsaction_respone/trasnsaction_respone.dart';
 
 abstract class AddTransactionRepo {
   Future<void> addTransaction({
-    required TransactionModel transactionModel,
+     required TransactionResponse transaction,
     required double amount,
   });
 }

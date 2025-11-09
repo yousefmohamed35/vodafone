@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../transaction/data/models/transaction_model.dart';
+import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/trasnsaction_respone.dart';
 import '../../data/repo/add_transaction_repo.dart';
 
 part 'addtransactionstatic_state.dart';
@@ -11,13 +10,13 @@ class AddtransactionstaticCubit extends Cubit<AddtransactionstaticState> {
   final AddTransactionRepo addTransactionRepo;
 
   Future<void> addTransaction({
-    required TransactionModel transactionModel,
+    required TransactionResponse transaction,
     required double amount,
   }) async {
     emit(Addtransactionstaticloading());
     try {
       await addTransactionRepo.addTransaction(
-        transactionModel: transactionModel,
+        transaction: transaction,
         amount: amount,
       );
       emit(AddtransactionstaticSuccess(message: 'تم الاضافة بنجاح'));

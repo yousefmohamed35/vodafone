@@ -19,6 +19,13 @@ class OcrfromapiCubit extends Cubit<OcrfromapiState> {
       final result = await sharingImageRepo.getDataFromApiOCR(images: images);
       log('hiiii ${result.transactions}');
       emit(OcrfromapiSuccess(transactionResponse: result));
+      for (var element in result.transactions!) {
+        await sharingImageRepo.updateTotalAmount(
+          amount: element.total!.toDouble(),
+          type: element.type == 'استلام',
+        );
+      }
+
       final box = Hive.box<TransactionResponse>('transaction_response_box');
       await box.add(result);
     } on Exception catch (e) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/transaction_model.dart';
+import '../../../data/models/trasnsaction_respone/transaction.dart';
 import 'sliver_dileget_app_bar.dart';
 import 'transaction_card_list_view.dart';
 
@@ -9,7 +9,7 @@ class TransactionViewBody extends StatelessWidget {
     required this.transactions,
     required this.amount,
   });
-  final List<TransactionModel> transactions;
+  final List<Transaction> transactions;
   final double amount;
 
   @override
