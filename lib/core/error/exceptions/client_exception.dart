@@ -2,12 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'application_exception.dart';
 part 'client_exception.freezed.dart';
 
-
 @freezed
-class ClientException extends ApplicationException
-    with _$ClientException {
- 
-
+class ClientException extends ApplicationException with _$ClientException {
   const factory ClientException.unknown({required String message}) = Unknown;
 
   const factory ClientException.resourceNotFound({

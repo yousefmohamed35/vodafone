@@ -2,10 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vodafon/core/services/api_services.dart';
 import 'package:vodafon/feature/ads/data/repo/ads_repo_impl.dart';
+import 'package:vodafon/feature/login/data/services/login_services.dart';
 import 'package:vodafon/feature/sharing_image/data/repos/sharing_image_repo_impl.dart';
 import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image_cubit.dart';
 
 import '../../feature/ads/presentation/manager/ads_cubit.dart';
+import '../../feature/login/data/services/login_services_impl.dart';
+import 'dio_services/dio_services.dart';
 
 final getIt = GetIt.instance;
 
@@ -15,4 +18,10 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton(AdsRepoImpl());
   getIt.registerFactory(() => AdsCubit(getIt<AdsRepoImpl>()));
+
+ getIt.registerLazySingleton<DioServices>(() => DioServices());
+getIt.registerLazySingleton<LoginServices>(
+  () => LoginServicesImpl(getIt<DioServices>()),
+);
+
 }

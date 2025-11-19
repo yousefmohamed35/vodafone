@@ -3,7 +3,7 @@ import 'client_exception.dart';
 import 'server_exception.dart';
 
 abstract class ApplicationException implements Exception {
-   const ApplicationException();
+  const ApplicationException();
 }
 
 class GenericApplicationException extends ApplicationException {
@@ -46,9 +46,7 @@ void decodeClientErrors(DioException e, {String resourceName = ''}) {
     case 401:
       throw const ClientException.unauthorizedAccess();
     case 403:
-      throw ClientException.forbiddenAccess(
-        message: '',
-      );
+      throw ClientException.forbiddenAccess(message: '');
     case 404:
       throw ClientException.resourceNotFound(
         resourceName: resourceName,
@@ -57,9 +55,7 @@ void decodeClientErrors(DioException e, {String resourceName = ''}) {
     case 400:
       throw ClientException.badRequest(message: '');
     case 406:
-      throw ClientException.notAcceptable(
-        message:'',
-      );
+      throw ClientException.notAcceptable(message: '');
     default:
       throw ClientException.unknown(message: 'حدث خطأ ما');
   }
