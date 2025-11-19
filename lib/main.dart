@@ -11,8 +11,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
   await setupHive();
-  final bool = await ApiServices(Dio()).get() ?? true;
-  runApp(bool ? VodafonApp() : NoMoneyApp());
+  final isPaid = await ApiServices(Dio()).get() ?? true;
+  runApp(isPaid ? VodafonApp() : NoMoneyApp());
 }
 
 class NoMoneyApp extends StatelessWidget {

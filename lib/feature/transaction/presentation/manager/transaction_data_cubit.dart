@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/transaction.dart';
-import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/trasnsaction_respone.dart';
 
-import '../../data/models/transaction_model.dart';
 import '../../data/repos/transaction_repo.dart';
 
 part 'transaction_data_state.dart';

@@ -11,9 +11,14 @@ class ApiServices {
     _dio.options.receiveTimeout = const Duration(seconds: 30);
   }
   Future<bool?> get() async {
-    final response = await _dio.get('https://live.my-compound.com/api/live');
-    log(response.toString());
-    return response.data['live'];
+    try {
+      final response = await _dio.get('https://live.my-compound.com/api/live');
+      log('🔹 API Response: ${response.data}');
+      return response.data['live'];
+    } catch (e, st) {
+      log('❌ API Error: $e\n$st');
+      return null;
+    }
   }
 
   /// 🔹 عام لأي POST request

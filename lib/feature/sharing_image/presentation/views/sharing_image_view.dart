@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:vodafon/core/services/setup_services_locator.dart';
-import 'package:vodafon/feature/sharing_image/presentation/manager/image_ocr_extract_cubit.dart';
 import 'package:vodafon/feature/sharing_image/presentation/manager/ocrfromapi/ocrfromapi_cubit.dart';
 import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image_cubit.dart';
 import 'package:vodafon/go_to_home.dart';

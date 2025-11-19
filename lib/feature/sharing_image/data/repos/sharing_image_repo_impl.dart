@@ -76,7 +76,7 @@ class SharingImageRepoImpl implements SharingImageRepo {
   @override
   Future<String?> extractInfoFromImage(SharedMediaFile sharedMediaFile) async {
     try {
-      final apiKey = 'AIzaSyDJv9w7zVQs0-KwyDvMHhAZjvV79mhYhEM';
+      final apiKey = '';
       final model = GenerativeModel(model: 'gemini-2.5-flash', apiKey: apiKey);
 
       final data = await extractPath(sharedMediaFile);
