@@ -8,6 +8,7 @@ import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image
 
 import '../../feature/ads/presentation/manager/ads_cubit.dart';
 import '../../feature/login/data/services/login_services_impl.dart';
+import '../../feature/login/presentation/manager/login_cubit/login_cubit.dart';
 import 'dio_services/dio_services.dart';
 
 final getIt = GetIt.instance;
@@ -23,4 +24,7 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<LoginServices>(
     () => LoginServicesImpl(getIt<DioServices>()),
   );
+  getIt.registerFactory<LoginCubit>(
+  () => LoginCubit(getIt<LoginServices>()),
+);
 }

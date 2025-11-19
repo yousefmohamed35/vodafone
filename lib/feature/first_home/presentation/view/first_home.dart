@@ -26,7 +26,7 @@ class _FirstHomeState extends State<FirstHome> {
 
   Future<void> _checkFirstTime() async {
     isFirstTime =
-        await SharedPrefHelper.getBoolean(key: 'is_first_time') ?? true;
+        await SharedPrefHelper.getBoolean( 'is_first_time') ?? true;
     setState(() {});
     log('isFirstTime: $isFirstTime');
   }
