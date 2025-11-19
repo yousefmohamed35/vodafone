@@ -4,12 +4,14 @@ class ReactiveButton extends StatelessWidget {
   final bool isActive;
   final String label;
   final VoidCallback? onPressed;
+  final bool isLoading;
 
   const ReactiveButton({
     super.key,
     required this.isActive,
     required this.label,
     this.onPressed,
+    required this.isLoading,
   });
 
   @override
@@ -28,14 +30,16 @@ class ReactiveButton extends StatelessWidget {
               : Colors.red.withOpacity(0.3), // أحمر شفاف
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Text(
-          label,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        child: isLoading
+            ? CircularProgressIndicator(color: Colors.white)
+            : Text(
+                label,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
       ),
     );
   }

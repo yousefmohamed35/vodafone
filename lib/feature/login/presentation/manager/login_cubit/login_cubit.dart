@@ -12,7 +12,6 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> loginWithPhone(String phone) async {
     emit(LoginLoading());
-
     final result = await loginServices.loginWithPhone(phone: phone);
 
     result.fold(

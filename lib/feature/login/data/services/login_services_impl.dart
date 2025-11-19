@@ -16,7 +16,7 @@ class LoginServicesImpl implements LoginServices {
     required String phone,
   }) async {
     try {
-      final response = await dio.postRequest("/public/api/clients/$phone");
+      final response = await dio.getRequest("/public/api/clients/$phone");
       final data = LoginModel.fromJson(response.data);
       return Right(data);
     } on ApplicationException catch (e) {
