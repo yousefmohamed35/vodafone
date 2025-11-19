@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 import 'transaction.dart';
 part 'trasnsaction_respone.g.dart';
+
 @HiveType(typeId: 5)
 class TransactionResponse extends HiveObject {
   @HiveField(0)

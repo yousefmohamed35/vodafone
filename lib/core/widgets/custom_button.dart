@@ -48,7 +48,7 @@ class CustomButton extends StatelessWidget {
         builder: (context, state) {
           return state is OcrfromapiLoading
               ? Center(child: CircularProgressIndicator(color: Colors.white))
-            : Text(title);
+              : Text(title);
         },
       ),
     );

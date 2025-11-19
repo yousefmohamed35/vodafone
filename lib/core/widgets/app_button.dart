@@ -23,7 +23,8 @@ class ReactiveButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: isActive
-              ? Colors.red          // أحمر كامل عند وجود كتابة
+              ? Colors
+                    .red // أحمر كامل عند وجود كتابة
               : Colors.red.withOpacity(0.3), // أحمر شفاف
           borderRadius: BorderRadius.circular(12),
         ),

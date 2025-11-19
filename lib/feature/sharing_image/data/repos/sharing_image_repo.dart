@@ -22,5 +22,7 @@ abstract class SharingImageRepo {
   Future<void> saveTransaction({required TransactionModel transactionModel});
   Future<void> updateTotalAmount({required double amount, required bool type});
 
-  Future<TransactionResponse> getDataFromApiOCR({required List<SharedMediaFile> images});
+  Future<TransactionResponse> getDataFromApiOCR({
+    required List<SharedMediaFile> images,
+  });
 }

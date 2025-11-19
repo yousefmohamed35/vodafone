@@ -12,7 +12,8 @@ part of 'client_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ClientException {
@@ -20,15 +21,14 @@ mixin _$ClientException {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
     required TResult Function(String message) cacheError,
     required TResult Function(String message) badRequest,
     required TResult Function(String message) notAcceptable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? unknown,
@@ -39,8 +39,7 @@ mixin _$ClientException {
     TResult? Function(String message)? cacheError,
     TResult? Function(String message)? badRequest,
     TResult? Function(String message)? notAcceptable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? unknown,
@@ -52,8 +51,7 @@ mixin _$ClientException {
     TResult Function(String message)? badRequest,
     TResult Function(String message)? notAcceptable,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Unknown value) unknown,
@@ -64,8 +62,7 @@ mixin _$ClientException {
     required TResult Function(CacheError value) cacheError,
     required TResult Function(BadRequest value) badRequest,
     required TResult Function(NotAcceptableRequest value) notAcceptable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Unknown value)? unknown,
@@ -76,8 +73,7 @@ mixin _$ClientException {
     TResult? Function(CacheError value)? cacheError,
     TResult? Function(BadRequest value)? badRequest,
     TResult? Function(NotAcceptableRequest value)? notAcceptable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Unknown value)? unknown,
@@ -89,15 +85,15 @@ mixin _$ClientException {
     TResult Function(BadRequest value)? badRequest,
     TResult Function(NotAcceptableRequest value)? notAcceptable,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ClientExceptionCopyWith<$Res> {
   factory $ClientExceptionCopyWith(
-          ClientException value, $Res Function(ClientException) then) =
-      _$ClientExceptionCopyWithImpl<$Res, ClientException>;
+    ClientException value,
+    $Res Function(ClientException) then,
+  ) = _$ClientExceptionCopyWithImpl<$Res, ClientException>;
 }
 
 /// @nodoc
@@ -114,8 +110,9 @@ class _$ClientExceptionCopyWithImpl<$Res, $Val extends ClientException>
 /// @nodoc
 abstract class _$$UnknownImplCopyWith<$Res> {
   factory _$$UnknownImplCopyWith(
-          _$UnknownImpl value, $Res Function(_$UnknownImpl) then) =
-      __$$UnknownImplCopyWithImpl<$Res>;
+    _$UnknownImpl value,
+    $Res Function(_$UnknownImpl) then,
+  ) = __$$UnknownImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -125,20 +122,21 @@ class __$$UnknownImplCopyWithImpl<$Res>
     extends _$ClientExceptionCopyWithImpl<$Res, _$UnknownImpl>
     implements _$$UnknownImplCopyWith<$Res> {
   __$$UnknownImplCopyWithImpl(
-      _$UnknownImpl _value, $Res Function(_$UnknownImpl) _then)
-      : super(_value, _then);
+    _$UnknownImpl _value,
+    $Res Function(_$UnknownImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$UnknownImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$UnknownImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -177,7 +175,7 @@ class _$UnknownImpl implements Unknown {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
@@ -283,9 +281,10 @@ abstract class Unknown implements ClientException {
 
 /// @nodoc
 abstract class _$$ResourceNotFoundImplCopyWith<$Res> {
-  factory _$$ResourceNotFoundImplCopyWith(_$ResourceNotFoundImpl value,
-          $Res Function(_$ResourceNotFoundImpl) then) =
-      __$$ResourceNotFoundImplCopyWithImpl<$Res>;
+  factory _$$ResourceNotFoundImplCopyWith(
+    _$ResourceNotFoundImpl value,
+    $Res Function(_$ResourceNotFoundImpl) then,
+  ) = __$$ResourceNotFoundImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String resourceName, String message});
 }
@@ -294,34 +293,36 @@ abstract class _$$ResourceNotFoundImplCopyWith<$Res> {
 class __$$ResourceNotFoundImplCopyWithImpl<$Res>
     extends _$ClientExceptionCopyWithImpl<$Res, _$ResourceNotFoundImpl>
     implements _$$ResourceNotFoundImplCopyWith<$Res> {
-  __$$ResourceNotFoundImplCopyWithImpl(_$ResourceNotFoundImpl _value,
-      $Res Function(_$ResourceNotFoundImpl) _then)
-      : super(_value, _then);
+  __$$ResourceNotFoundImplCopyWithImpl(
+    _$ResourceNotFoundImpl _value,
+    $Res Function(_$ResourceNotFoundImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? resourceName = null,
-    Object? message = null,
-  }) {
-    return _then(_$ResourceNotFoundImpl(
-      resourceName: null == resourceName
-          ? _value.resourceName
-          : resourceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? resourceName = null, Object? message = null}) {
+    return _then(
+      _$ResourceNotFoundImpl(
+        resourceName: null == resourceName
+            ? _value.resourceName
+            : resourceName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ResourceNotFoundImpl implements ResourceNotFound {
-  const _$ResourceNotFoundImpl(
-      {required this.resourceName, required this.message});
+  const _$ResourceNotFoundImpl({
+    required this.resourceName,
+    required this.message,
+  });
 
   @override
   final String resourceName;
@@ -351,14 +352,16 @@ class _$ResourceNotFoundImpl implements ResourceNotFound {
   @pragma('vm:prefer-inline')
   _$$ResourceNotFoundImplCopyWith<_$ResourceNotFoundImpl> get copyWith =>
       __$$ResourceNotFoundImplCopyWithImpl<_$ResourceNotFoundImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
@@ -454,9 +457,10 @@ class _$ResourceNotFoundImpl implements ResourceNotFound {
 }
 
 abstract class ResourceNotFound implements ClientException {
-  const factory ResourceNotFound(
-      {required final String resourceName,
-      required final String message}) = _$ResourceNotFoundImpl;
+  const factory ResourceNotFound({
+    required final String resourceName,
+    required final String message,
+  }) = _$ResourceNotFoundImpl;
 
   String get resourceName;
   String get message;
@@ -467,18 +471,20 @@ abstract class ResourceNotFound implements ClientException {
 
 /// @nodoc
 abstract class _$$UnAuthorizedAccessImplCopyWith<$Res> {
-  factory _$$UnAuthorizedAccessImplCopyWith(_$UnAuthorizedAccessImpl value,
-          $Res Function(_$UnAuthorizedAccessImpl) then) =
-      __$$UnAuthorizedAccessImplCopyWithImpl<$Res>;
+  factory _$$UnAuthorizedAccessImplCopyWith(
+    _$UnAuthorizedAccessImpl value,
+    $Res Function(_$UnAuthorizedAccessImpl) then,
+  ) = __$$UnAuthorizedAccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$UnAuthorizedAccessImplCopyWithImpl<$Res>
     extends _$ClientExceptionCopyWithImpl<$Res, _$UnAuthorizedAccessImpl>
     implements _$$UnAuthorizedAccessImplCopyWith<$Res> {
-  __$$UnAuthorizedAccessImplCopyWithImpl(_$UnAuthorizedAccessImpl _value,
-      $Res Function(_$UnAuthorizedAccessImpl) _then)
-      : super(_value, _then);
+  __$$UnAuthorizedAccessImplCopyWithImpl(
+    _$UnAuthorizedAccessImpl _value,
+    $Res Function(_$UnAuthorizedAccessImpl) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -505,7 +511,7 @@ class _$UnAuthorizedAccessImpl implements UnAuthorizedAccess {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
@@ -606,9 +612,10 @@ abstract class UnAuthorizedAccess implements ClientException {
 
 /// @nodoc
 abstract class _$$ForbiddenAccessImplCopyWith<$Res> {
-  factory _$$ForbiddenAccessImplCopyWith(_$ForbiddenAccessImpl value,
-          $Res Function(_$ForbiddenAccessImpl) then) =
-      __$$ForbiddenAccessImplCopyWithImpl<$Res>;
+  factory _$$ForbiddenAccessImplCopyWith(
+    _$ForbiddenAccessImpl value,
+    $Res Function(_$ForbiddenAccessImpl) then,
+  ) = __$$ForbiddenAccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -618,20 +625,21 @@ class __$$ForbiddenAccessImplCopyWithImpl<$Res>
     extends _$ClientExceptionCopyWithImpl<$Res, _$ForbiddenAccessImpl>
     implements _$$ForbiddenAccessImplCopyWith<$Res> {
   __$$ForbiddenAccessImplCopyWithImpl(
-      _$ForbiddenAccessImpl _value, $Res Function(_$ForbiddenAccessImpl) _then)
-      : super(_value, _then);
+    _$ForbiddenAccessImpl _value,
+    $Res Function(_$ForbiddenAccessImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$ForbiddenAccessImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$ForbiddenAccessImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -664,14 +672,16 @@ class _$ForbiddenAccessImpl implements ForbiddenAccess {
   @pragma('vm:prefer-inline')
   _$$ForbiddenAccessImplCopyWith<_$ForbiddenAccessImpl> get copyWith =>
       __$$ForbiddenAccessImplCopyWithImpl<_$ForbiddenAccessImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
@@ -779,8 +789,9 @@ abstract class ForbiddenAccess implements ClientException {
 /// @nodoc
 abstract class _$$NetworkErrorImplCopyWith<$Res> {
   factory _$$NetworkErrorImplCopyWith(
-          _$NetworkErrorImpl value, $Res Function(_$NetworkErrorImpl) then) =
-      __$$NetworkErrorImplCopyWithImpl<$Res>;
+    _$NetworkErrorImpl value,
+    $Res Function(_$NetworkErrorImpl) then,
+  ) = __$$NetworkErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -790,20 +801,21 @@ class __$$NetworkErrorImplCopyWithImpl<$Res>
     extends _$ClientExceptionCopyWithImpl<$Res, _$NetworkErrorImpl>
     implements _$$NetworkErrorImplCopyWith<$Res> {
   __$$NetworkErrorImplCopyWithImpl(
-      _$NetworkErrorImpl _value, $Res Function(_$NetworkErrorImpl) _then)
-      : super(_value, _then);
+    _$NetworkErrorImpl _value,
+    $Res Function(_$NetworkErrorImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$NetworkErrorImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$NetworkErrorImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -842,7 +854,7 @@ class _$NetworkErrorImpl implements NetworkError {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
@@ -950,8 +962,9 @@ abstract class NetworkError implements ClientException {
 /// @nodoc
 abstract class _$$CacheErrorImplCopyWith<$Res> {
   factory _$$CacheErrorImplCopyWith(
-          _$CacheErrorImpl value, $Res Function(_$CacheErrorImpl) then) =
-      __$$CacheErrorImplCopyWithImpl<$Res>;
+    _$CacheErrorImpl value,
+    $Res Function(_$CacheErrorImpl) then,
+  ) = __$$CacheErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -961,20 +974,21 @@ class __$$CacheErrorImplCopyWithImpl<$Res>
     extends _$ClientExceptionCopyWithImpl<$Res, _$CacheErrorImpl>
     implements _$$CacheErrorImplCopyWith<$Res> {
   __$$CacheErrorImplCopyWithImpl(
-      _$CacheErrorImpl _value, $Res Function(_$CacheErrorImpl) _then)
-      : super(_value, _then);
+    _$CacheErrorImpl _value,
+    $Res Function(_$CacheErrorImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$CacheErrorImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$CacheErrorImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1013,7 +1027,7 @@ class _$CacheErrorImpl implements CacheError {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
@@ -1120,8 +1134,9 @@ abstract class CacheError implements ClientException {
 /// @nodoc
 abstract class _$$BadRequestImplCopyWith<$Res> {
   factory _$$BadRequestImplCopyWith(
-          _$BadRequestImpl value, $Res Function(_$BadRequestImpl) then) =
-      __$$BadRequestImplCopyWithImpl<$Res>;
+    _$BadRequestImpl value,
+    $Res Function(_$BadRequestImpl) then,
+  ) = __$$BadRequestImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1131,20 +1146,21 @@ class __$$BadRequestImplCopyWithImpl<$Res>
     extends _$ClientExceptionCopyWithImpl<$Res, _$BadRequestImpl>
     implements _$$BadRequestImplCopyWith<$Res> {
   __$$BadRequestImplCopyWithImpl(
-      _$BadRequestImpl _value, $Res Function(_$BadRequestImpl) _then)
-      : super(_value, _then);
+    _$BadRequestImpl _value,
+    $Res Function(_$BadRequestImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$BadRequestImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$BadRequestImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1183,7 +1199,7 @@ class _$BadRequestImpl implements BadRequest {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
@@ -1289,9 +1305,10 @@ abstract class BadRequest implements ClientException {
 
 /// @nodoc
 abstract class _$$NotAcceptableRequestImplCopyWith<$Res> {
-  factory _$$NotAcceptableRequestImplCopyWith(_$NotAcceptableRequestImpl value,
-          $Res Function(_$NotAcceptableRequestImpl) then) =
-      __$$NotAcceptableRequestImplCopyWithImpl<$Res>;
+  factory _$$NotAcceptableRequestImplCopyWith(
+    _$NotAcceptableRequestImpl value,
+    $Res Function(_$NotAcceptableRequestImpl) then,
+  ) = __$$NotAcceptableRequestImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1300,21 +1317,22 @@ abstract class _$$NotAcceptableRequestImplCopyWith<$Res> {
 class __$$NotAcceptableRequestImplCopyWithImpl<$Res>
     extends _$ClientExceptionCopyWithImpl<$Res, _$NotAcceptableRequestImpl>
     implements _$$NotAcceptableRequestImplCopyWith<$Res> {
-  __$$NotAcceptableRequestImplCopyWithImpl(_$NotAcceptableRequestImpl _value,
-      $Res Function(_$NotAcceptableRequestImpl) _then)
-      : super(_value, _then);
+  __$$NotAcceptableRequestImplCopyWithImpl(
+    _$NotAcceptableRequestImpl _value,
+    $Res Function(_$NotAcceptableRequestImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$NotAcceptableRequestImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$NotAcceptableRequestImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1346,16 +1364,18 @@ class _$NotAcceptableRequestImpl implements NotAcceptableRequest {
   @override
   @pragma('vm:prefer-inline')
   _$$NotAcceptableRequestImplCopyWith<_$NotAcceptableRequestImpl>
-      get copyWith =>
-          __$$NotAcceptableRequestImplCopyWithImpl<_$NotAcceptableRequestImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$NotAcceptableRequestImplCopyWithImpl<_$NotAcceptableRequestImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String message) unknown,
     required TResult Function(String resourceName, String message)
-        resourceNotFound,
+    resourceNotFound,
     required TResult Function() unauthorizedAccess,
     required TResult Function(String message) forbiddenAccess,
     required TResult Function(String message) networkError,
@@ -1457,5 +1477,5 @@ abstract class NotAcceptableRequest implements ClientException {
   String get message;
   @JsonKey(ignore: true)
   _$$NotAcceptableRequestImplCopyWith<_$NotAcceptableRequestImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

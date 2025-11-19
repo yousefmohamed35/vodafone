@@ -14,9 +14,7 @@ class DioServices {
       endpoint,
       queryParameters: query,
       options: Options(
-        headers: {
-          if (token != null) "Authorization": "Bearer $token",
-        },
+        headers: {if (token != null) "Authorization": "Bearer $token"},
       ),
     );
   }
@@ -31,9 +29,7 @@ class DioServices {
       endpoint,
       data: data,
       options: Options(
-        headers: {
-          if (token != null) "Authorization": "Bearer $token",
-        },
+        headers: {if (token != null) "Authorization": "Bearer $token"},
       ),
     );
   }
@@ -48,9 +44,7 @@ class DioServices {
       endpoint,
       data: data,
       options: Options(
-        headers: {
-          if (token != null) "Authorization": "Bearer $token",
-        },
+        headers: {if (token != null) "Authorization": "Bearer $token"},
       ),
     );
   }
@@ -65,9 +59,7 @@ class DioServices {
       endpoint,
       data: data,
       options: Options(
-        headers: {
-          if (token != null) "Authorization": "Bearer $token",
-        },
+        headers: {if (token != null) "Authorization": "Bearer $token"},
       ),
     );
   }

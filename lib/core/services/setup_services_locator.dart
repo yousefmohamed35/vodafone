@@ -19,9 +19,8 @@ void setupServiceLocator() {
   getIt.registerSingleton(AdsRepoImpl());
   getIt.registerFactory(() => AdsCubit(getIt<AdsRepoImpl>()));
 
- getIt.registerLazySingleton<DioServices>(() => DioServices());
-getIt.registerLazySingleton<LoginServices>(
-  () => LoginServicesImpl(getIt<DioServices>()),
-);
-
+  getIt.registerLazySingleton<DioServices>(() => DioServices());
+  getIt.registerLazySingleton<LoginServices>(
+    () => LoginServicesImpl(getIt<DioServices>()),
+  );
 }

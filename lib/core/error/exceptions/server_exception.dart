@@ -4,8 +4,7 @@ import 'application_exception.dart';
 part 'server_exception.freezed.dart';
 
 @freezed
-class ServerException extends ApplicationException
-    with _$ServerException {
+class ServerException extends ApplicationException with _$ServerException {
   const factory ServerException.unknown({required String message}) = Unknown;
 
   const factory ServerException.internalError({required String message}) =

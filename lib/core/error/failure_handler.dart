@@ -17,7 +17,7 @@ abstract class FailureHandler {
 
 class NoInternetFailure extends ServerError {
   NoInternetFailure()
-      : super(errorMessage: 'No Internet Connection, check Your connection');
+    : super(errorMessage: 'No Internet Connection, check Your connection');
 }
 
 class ServerError extends FailureHandler {
@@ -36,17 +36,21 @@ class ServerError extends FailureHandler {
       case DioExceptionType.badResponse:
         debugPrint("DioError printDB ${dioError.response}");
         return ServerError.fromResponse(
-            dioError.response!.statusCode!, dioError.response!.data);
+          dioError.response!.statusCode!,
+          dioError.response!.data,
+        );
       case DioExceptionType.cancel:
         return ServerError(errorMessage: 'Connection to Server Canceled');
       case DioExceptionType.connectionError:
         return NoInternetFailure();
       case DioExceptionType.unknown:
         return ServerError(
-            errorMessage: dioError.message ?? 'Opps UnExpected Error');
+          errorMessage: dioError.message ?? 'Opps UnExpected Error',
+        );
       default:
         return ServerError(
-            errorMessage: dioError.message ?? 'Opps UnExpected Error');
+          errorMessage: dioError.message ?? 'Opps UnExpected Error',
+        );
     }
   }
 
@@ -64,16 +68,18 @@ class ServerError extends FailureHandler {
           response['status'].toString() == "false" ||
           response['code'].toString() == "406") {
         return ServerError(
-            errorMessage: extractErrorsAsString(response['error']));
+          errorMessage: extractErrorsAsString(response['error']),
+        );
       }
     } else {
       return ServerError(
-          errorMessage:
-              'Oops, an unexpected error occurred. Please try again.');
+        errorMessage: 'Oops, an unexpected error occurred. Please try again.',
+      );
     }
     debugPrint("fromResponse =========== end $response");
     return ServerError(
-        errorMessage: 'Oops, an unexpected error occurred. Please try again.');
+      errorMessage: 'Oops, an unexpected error occurred. Please try again.',
+    );
   }
 }
 

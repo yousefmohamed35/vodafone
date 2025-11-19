@@ -65,7 +65,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
               ),
               SizedBox(height: 20),
               CustomTextFormTransaction(
-                 isPrice: true,
+                isPrice: true,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'ادخل رسوم المعامله';

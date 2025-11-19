@@ -24,10 +24,7 @@ class CustomTextFormTransaction extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontSize: 20),
-            ),
+            Text(title, style: const TextStyle(fontSize: 20)),
             const Text('*', style: TextStyle(color: Colors.red)),
           ],
         ),
@@ -39,7 +36,8 @@ class CustomTextFormTransaction extends StatelessWidget {
               ? const TextInputType.numberWithOptions(decimal: true)
               : TextInputType.text,
           inputFormatters: [
-            if (isPrice) FilteringTextInputFormatter.allow(RegExp(r'[0-9.,٠-٩]+')),
+            if (isPrice)
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9.,٠-٩]+')),
             ArabicToEnglishDigitsFormatter(), // ✅ يحول الأرقام العربية لإنجليزية
           ],
           decoration: InputDecoration(

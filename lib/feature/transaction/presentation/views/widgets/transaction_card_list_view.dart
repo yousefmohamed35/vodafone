@@ -16,9 +16,7 @@ class TransactionCardListView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           child: Column(
             children: [
-              TransactionCard(
-                transaction: transaction,
-              ),
+              TransactionCard(transaction: transaction),
               const Divider(),
             ],
           ),

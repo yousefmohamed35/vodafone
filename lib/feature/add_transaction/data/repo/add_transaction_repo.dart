@@ -2,7 +2,7 @@ import '../../../transaction/data/models/trasnsaction_respone/trasnsaction_respo
 
 abstract class AddTransactionRepo {
   Future<void> addTransaction({
-     required TransactionResponse transaction,
+    required TransactionResponse transaction,
     required double amount,
   });
 }

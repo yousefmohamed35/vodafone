@@ -15,10 +15,8 @@ abstract class Failure {
 class GenericFailure extends Failure {
   final bool isAction;
 
-  GenericFailure({
-    required String message,
-    this.isAction = false,
-  }) : super(message);
+  GenericFailure({required String message, this.isAction = false})
+    : super(message);
 }
 
 Future<Failure> dioExceptionsDecoder(
@@ -33,11 +31,14 @@ Future<Failure> dioExceptionsDecoder(
           ClientFailure.unknown(message: message, isAction: isAnAction),
       resourceNotFound: (resourceName, message) =>
           ClientFailure.resourceNotFound(
-              message: message, isAction: isAnAction),
+            message: message,
+            isAction: isAnAction,
+          ),
       unauthorizedAccess: () async {
-       
         return ClientFailure.unauthorizedAccess(
-            isAction: isAnAction, message: '');
+          isAction: isAnAction,
+          message: '',
+        );
       },
       networkError: (String message) =>
           ClientFailure.networkError(message: message, isAction: isAnAction),
@@ -48,18 +49,22 @@ Future<Failure> dioExceptionsDecoder(
       forbiddenAccess: (String message) =>
           ClientFailure.forbiddenAccess(message: message, isAction: isAnAction),
       notAcceptable: (String message) => ClientFailure.notAcceptableRequest(
-          message: message, isAction: isAnAction),
+        message: message,
+        isAction: isAnAction,
+      ),
     );
   } else if (e is ServerException) {
     return e.when(
-        unknown: (message) =>
-            ServerFailure.unknown(message: message, isAction: isAnAction),
-        internalError: (message) =>
-            ServerFailure.internalError(message: message, isAction: isAnAction),
-        serviceUnavailable: (message) => ServerFailure.serviceUnavailable(
-            message: message, isAction: isAnAction));
+      unknown: (message) =>
+          ServerFailure.unknown(message: message, isAction: isAnAction),
+      internalError: (message) =>
+          ServerFailure.internalError(message: message, isAction: isAnAction),
+      serviceUnavailable: (message) => ServerFailure.serviceUnavailable(
+        message: message,
+        isAction: isAnAction,
+      ),
+    );
   } else {
-    return GenericFailure(
-        message:'حدث خطأ ما', isAction: isAnAction);
+    return GenericFailure(message: 'حدث خطأ ما', isAction: isAnAction);
   }
 }

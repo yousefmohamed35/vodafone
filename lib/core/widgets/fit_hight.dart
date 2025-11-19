@@ -11,10 +11,7 @@ class FitHieght extends StatelessWidget {
         return SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [child],
-            ),
+            child: Column(mainAxisSize: MainAxisSize.min, children: [child]),
           ),
         );
       },

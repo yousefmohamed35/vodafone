@@ -12,7 +12,8 @@ part of 'server_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ServerFailure {
@@ -23,45 +24,39 @@ mixin _$ServerFailure {
     required TResult Function(String message, bool isAction) unknown,
     required TResult Function(String message, bool isAction) internalError,
     required TResult Function(String message, bool isAction) serviceUnavailable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message, bool isAction)? unknown,
     TResult? Function(String message, bool isAction)? internalError,
     TResult? Function(String message, bool isAction)? serviceUnavailable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message, bool isAction)? unknown,
     TResult Function(String message, bool isAction)? internalError,
     TResult Function(String message, bool isAction)? serviceUnavailable,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Unknown value) unknown,
     required TResult Function(InternalError value) internalError,
     required TResult Function(ServiceUnavailable value) serviceUnavailable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Unknown value)? unknown,
     TResult? Function(InternalError value)? internalError,
     TResult? Function(ServiceUnavailable value)? serviceUnavailable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Unknown value)? unknown,
     TResult Function(InternalError value)? internalError,
     TResult Function(ServiceUnavailable value)? serviceUnavailable,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ServerFailureCopyWith<ServerFailure> get copyWith =>
@@ -71,8 +66,9 @@ mixin _$ServerFailure {
 /// @nodoc
 abstract class $ServerFailureCopyWith<$Res> {
   factory $ServerFailureCopyWith(
-          ServerFailure value, $Res Function(ServerFailure) then) =
-      _$ServerFailureCopyWithImpl<$Res, ServerFailure>;
+    ServerFailure value,
+    $Res Function(ServerFailure) then,
+  ) = _$ServerFailureCopyWithImpl<$Res, ServerFailure>;
   @useResult
   $Res call({String message, bool isAction});
 }
@@ -89,20 +85,20 @@ class _$ServerFailureCopyWithImpl<$Res, $Val extends ServerFailure>
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-    Object? isAction = null,
-  }) {
-    return _then(_value.copyWith(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAction: null == isAction
-          ? _value.isAction
-          : isAction // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  $Res call({Object? message = null, Object? isAction = null}) {
+    return _then(
+      _value.copyWith(
+            message: null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isAction: null == isAction
+                ? _value.isAction
+                : isAction // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -110,8 +106,9 @@ class _$ServerFailureCopyWithImpl<$Res, $Val extends ServerFailure>
 abstract class _$$UnknownImplCopyWith<$Res>
     implements $ServerFailureCopyWith<$Res> {
   factory _$$UnknownImplCopyWith(
-          _$UnknownImpl value, $Res Function(_$UnknownImpl) then) =
-      __$$UnknownImplCopyWithImpl<$Res>;
+    _$UnknownImpl value,
+    $Res Function(_$UnknownImpl) then,
+  ) = __$$UnknownImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, bool isAction});
@@ -122,25 +119,25 @@ class __$$UnknownImplCopyWithImpl<$Res>
     extends _$ServerFailureCopyWithImpl<$Res, _$UnknownImpl>
     implements _$$UnknownImplCopyWith<$Res> {
   __$$UnknownImplCopyWithImpl(
-      _$UnknownImpl _value, $Res Function(_$UnknownImpl) _then)
-      : super(_value, _then);
+    _$UnknownImpl _value,
+    $Res Function(_$UnknownImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-    Object? isAction = null,
-  }) {
-    return _then(_$UnknownImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAction: null == isAction
-          ? _value.isAction
-          : isAction // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? message = null, Object? isAction = null}) {
+    return _then(
+      _$UnknownImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isAction: null == isAction
+            ? _value.isAction
+            : isAction // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -266,8 +263,9 @@ abstract class Unknown implements ServerFailure {
 abstract class _$$InternalErrorImplCopyWith<$Res>
     implements $ServerFailureCopyWith<$Res> {
   factory _$$InternalErrorImplCopyWith(
-          _$InternalErrorImpl value, $Res Function(_$InternalErrorImpl) then) =
-      __$$InternalErrorImplCopyWithImpl<$Res>;
+    _$InternalErrorImpl value,
+    $Res Function(_$InternalErrorImpl) then,
+  ) = __$$InternalErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, bool isAction});
@@ -278,25 +276,25 @@ class __$$InternalErrorImplCopyWithImpl<$Res>
     extends _$ServerFailureCopyWithImpl<$Res, _$InternalErrorImpl>
     implements _$$InternalErrorImplCopyWith<$Res> {
   __$$InternalErrorImplCopyWithImpl(
-      _$InternalErrorImpl _value, $Res Function(_$InternalErrorImpl) _then)
-      : super(_value, _then);
+    _$InternalErrorImpl _value,
+    $Res Function(_$InternalErrorImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-    Object? isAction = null,
-  }) {
-    return _then(_$InternalErrorImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAction: null == isAction
-          ? _value.isAction
-          : isAction // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? message = null, Object? isAction = null}) {
+    return _then(
+      _$InternalErrorImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isAction: null == isAction
+            ? _value.isAction
+            : isAction // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -405,9 +403,10 @@ class _$InternalErrorImpl implements InternalError {
 }
 
 abstract class InternalError implements ServerFailure {
-  const factory InternalError(
-      {required final String message,
-      final bool isAction}) = _$InternalErrorImpl;
+  const factory InternalError({
+    required final String message,
+    final bool isAction,
+  }) = _$InternalErrorImpl;
 
   @override
   String get message;
@@ -422,9 +421,10 @@ abstract class InternalError implements ServerFailure {
 /// @nodoc
 abstract class _$$ServiceUnavailableImplCopyWith<$Res>
     implements $ServerFailureCopyWith<$Res> {
-  factory _$$ServiceUnavailableImplCopyWith(_$ServiceUnavailableImpl value,
-          $Res Function(_$ServiceUnavailableImpl) then) =
-      __$$ServiceUnavailableImplCopyWithImpl<$Res>;
+  factory _$$ServiceUnavailableImplCopyWith(
+    _$ServiceUnavailableImpl value,
+    $Res Function(_$ServiceUnavailableImpl) then,
+  ) = __$$ServiceUnavailableImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, bool isAction});
@@ -434,34 +434,36 @@ abstract class _$$ServiceUnavailableImplCopyWith<$Res>
 class __$$ServiceUnavailableImplCopyWithImpl<$Res>
     extends _$ServerFailureCopyWithImpl<$Res, _$ServiceUnavailableImpl>
     implements _$$ServiceUnavailableImplCopyWith<$Res> {
-  __$$ServiceUnavailableImplCopyWithImpl(_$ServiceUnavailableImpl _value,
-      $Res Function(_$ServiceUnavailableImpl) _then)
-      : super(_value, _then);
+  __$$ServiceUnavailableImplCopyWithImpl(
+    _$ServiceUnavailableImpl _value,
+    $Res Function(_$ServiceUnavailableImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-    Object? isAction = null,
-  }) {
-    return _then(_$ServiceUnavailableImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAction: null == isAction
-          ? _value.isAction
-          : isAction // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? message = null, Object? isAction = null}) {
+    return _then(
+      _$ServiceUnavailableImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isAction: null == isAction
+            ? _value.isAction
+            : isAction // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ServiceUnavailableImpl implements ServiceUnavailable {
-  const _$ServiceUnavailableImpl(
-      {required this.message, this.isAction = false});
+  const _$ServiceUnavailableImpl({
+    required this.message,
+    this.isAction = false,
+  });
 
   @override
   final String message;
@@ -492,7 +494,9 @@ class _$ServiceUnavailableImpl implements ServiceUnavailable {
   @pragma('vm:prefer-inline')
   _$$ServiceUnavailableImplCopyWith<_$ServiceUnavailableImpl> get copyWith =>
       __$$ServiceUnavailableImplCopyWithImpl<_$ServiceUnavailableImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -564,9 +568,10 @@ class _$ServiceUnavailableImpl implements ServiceUnavailable {
 }
 
 abstract class ServiceUnavailable implements ServerFailure {
-  const factory ServiceUnavailable(
-      {required final String message,
-      final bool isAction}) = _$ServiceUnavailableImpl;
+  const factory ServiceUnavailable({
+    required final String message,
+    final bool isAction,
+  }) = _$ServiceUnavailableImpl;
 
   @override
   String get message;

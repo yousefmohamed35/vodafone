@@ -194,8 +194,7 @@ class SharingImageRepoImpl implements SharingImageRepo {
       return TransactionResponse.fromJson(response.data);
     } catch (e) {
       log('❌ OCR Error: $e');
-     throw('error');
-      
+      throw ('error');
     }
   }
 }

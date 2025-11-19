@@ -11,10 +11,6 @@ class PhoneNumberTextField extends StatefulWidget {
 }
 
 class _PhoneNumberTextFieldState extends State<PhoneNumberTextField> {
-
-
- 
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
