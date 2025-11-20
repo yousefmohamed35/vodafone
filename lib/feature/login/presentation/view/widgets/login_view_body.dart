@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/feature/login/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:vodafon/feature/login/presentation/manager/login_cubit/login_state.dart';
+import 'package:vodafon/feature/login/presentation/view/sign_up_view.dart';
 import 'package:vodafon/go_to_home.dart';
 
 import '../../../../../core/widgets/app_button.dart';
@@ -71,7 +72,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     loading = true;
                     setState(() {});
                   } else if (state is LoginSuccess) {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => GoToHome()),
                     );
@@ -106,16 +107,24 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               SizedBox(height: 30),
               CustomLine(),
               SizedBox(height: 30),
-              Text(
-                'إضافة حساب جديد',
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUpView()),
+                  );
+                },
+                child: Text(
+                  'إضافة حساب جديد',
 
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  decorationThickness: 1.5,
-                  decorationColor: Colors.red,
-                  fontSize: 18,
-                  color: Colors.red,
-                  fontWeight: FontWeight.bold,
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    decorationThickness: 1.5,
+                    decorationColor: Colors.red,
+                    fontSize: 18,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
