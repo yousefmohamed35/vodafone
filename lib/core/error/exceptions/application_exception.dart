@@ -50,7 +50,7 @@ void decodeClientErrors(DioException e, {String resourceName = ''}) {
     case 404:
       throw ClientException.resourceNotFound(
         resourceName: resourceName,
-        message: '',
+        message: 'هذا المستخدم غير مسجل لدينا',
       );
     case 400:
       throw ClientException.badRequest(message: '');

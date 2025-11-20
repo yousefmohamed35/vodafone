@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:vodafon/feature/login/presentation/view/login_view.dart';
 import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image_cubit.dart';
 import 'package:vodafon/feature/sharing_image/presentation/views/sharing_image_view.dart';
-import 'package:vodafon/go_to_home.dart';
+import 'package:vodafon/start_app_view.dart';
 import 'core/services/setup_services_locator.dart';
 import 'generated/l10n.dart';
 
@@ -41,7 +40,7 @@ class VodafonApp extends StatelessWidget {
 
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
-          home: const LoginView(),
+          home: AppStartView(),
         ),
       ),
     );
