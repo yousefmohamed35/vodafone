@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/transaction.dart';
-
+import '../../data/models/transaction_api_model/transaction_api_model.dart';
 import '../../data/repos/transaction_repo.dart';
 
 part 'transaction_data_state.dart';
@@ -11,11 +10,11 @@ class TransactionDataCubit extends Cubit<TransactionDataState> {
 
   Future<void> getAllTransaction() async {
     emit(TransactionDataLoading());
-    try {
-      final transactions = transactionRepo.getAllTransaction();
-      emit(TransactionDataLoaded(transactions: transactions));
-    } catch (e) {
-      emit(TransactionDataError(message: e.toString()));
-    }
+
+    final transactions = await transactionRepo.getTransactionFromApi();
+    transactions.fold(
+      (failure) => emit(TransactionDataError(message: failure.toString())),
+      (data) => emit(TransactionDataLoaded(transactions: data)),
+    );
   }
 }

@@ -7,7 +7,7 @@ class TransactionDataInitial extends TransactionDataState {}
 class TransactionDataLoading extends TransactionDataState {}
 
 class TransactionDataLoaded extends TransactionDataState {
-  final List<Transaction> transactions;
+  final TransactionApiModel transactions;
   TransactionDataLoaded({required this.transactions});
 }
 
