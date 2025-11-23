@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vodafon/feature/transaction/data/repos/transaction_repo_impl.dart';
+import 'package:vodafon/core/services/setup_services_locator.dart';
 import 'package:vodafon/feature/transaction/presentation/manager/transaction_data_cubit.dart';
 import 'widgets/transaction_view_body.dart';
 
@@ -10,8 +10,7 @@ class TransactionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          TransactionDataCubit(TransactionRepoImpl())..getAllTransaction(),
+      create: (context) => getIt<TransactionDataCubit>()..getAllTransaction(),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: BlocBuilder<TransactionDataCubit, TransactionDataState>(
@@ -21,8 +20,8 @@ class TransactionView extends StatelessWidget {
             }
             if (state is TransactionDataLoaded) {
               return TransactionViewBody(
-                transactions: state.transactions.reversed.toList(),
-                amount: amount,
+                transactionHistories: state.transactions,
+                
               );
             }
             if (state is TransactionDataError) {

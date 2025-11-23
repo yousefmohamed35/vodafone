@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/trasnsaction_respone/transaction.dart';
+import '../../../data/models/transaction_api_model/history.dart';
 import 'transaction_card.dart';
 
 class TransactionCardListView extends StatelessWidget {
   const TransactionCardListView({super.key, required this.transactions});
 
-  final List<Transaction> transactions;
+  final List<History> transactions;
 
   @override
   Widget build(BuildContext context) {

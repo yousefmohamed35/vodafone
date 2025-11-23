@@ -34,7 +34,7 @@ class TransactionRepoImpl implements TransactionRepo {
    try {
     final id = await SharedPrefHelper.getInt('client_id');
    final response = await resolveOrThrow(
-        () => dio.getRequest("/public/api/clients/$id"),
+        () => dio.getRequest("/public/api/history/$id"),
       );
       final data = TransactionApiModel.fromJson(response.data);
 

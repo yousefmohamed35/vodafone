@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/trasnsaction_respone/transaction.dart';
+import '../../../data/models/transaction_api_model/transaction_api_model.dart';
 import 'sliver_dileget_app_bar.dart';
 import 'transaction_card_list_view.dart';
 
 class TransactionViewBody extends StatelessWidget {
   const TransactionViewBody({
     super.key,
-    required this.transactions,
-    required this.amount,
+    required this.transactionHistories,
+  
   });
-  final List<Transaction> transactions;
-  final double amount;
+  final TransactionApiModel transactionHistories;
+ 
 
   @override
   Widget build(BuildContext context) {
-    return transactions.isNotEmpty
+    return transactionHistories.data!.histories!.isNotEmpty
         ? CustomScrollView(
             slivers: [
               SliverPersistentHeader(
                 pinned: true,
                 floating: true,
-                delegate: SliverAppBarDelegate(amount: amount),
+                delegate: SliverAppBarDelegate(amount: double.parse(transactionHistories.data!.balance!)),
               ),
-              TransactionCardListView(transactions: transactions),
+              TransactionCardListView(transactions: transactionHistories.data!.histories!),
             ],
           )
         : Center(

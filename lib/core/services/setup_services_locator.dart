@@ -7,6 +7,7 @@ import 'package:vodafon/feature/login/presentation/manager/sign_up_cubit/sign_up
 import 'package:vodafon/feature/sharing_image/data/repos/sharing_image_repo_impl.dart';
 import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image_cubit.dart';
 import 'package:vodafon/feature/transaction/data/repos/transaction_repo.dart';
+import 'package:vodafon/feature/transaction/presentation/manager/transaction_data_cubit.dart';
 
 import '../../feature/ads/presentation/manager/ads_cubit.dart';
 import '../../feature/login/data/services/login_services_impl.dart';
@@ -32,4 +33,5 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<TransactionRepo>(
     () => TransactionRepoImpl(getIt<DioServices>()),
   );
+  getIt.registerFactory<TransactionDataCubit>(() => TransactionDataCubit(getIt<TransactionRepo>()));
 }

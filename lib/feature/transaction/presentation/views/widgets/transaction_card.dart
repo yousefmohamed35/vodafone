@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/function/date_formate.dart';
-import '../../../data/models/trasnsaction_respone/transaction.dart';
+import '../../../data/models/transaction_api_model/history.dart';
 
 class TransactionCard extends StatelessWidget {
   const TransactionCard({super.key, required this.transaction});
 
-  final Transaction transaction;
+  final History transaction;
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +17,10 @@ class TransactionCard extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: transaction.type == 'استلام' ? Colors.green : Colors.red,
+          color: transaction.type == 'in' ? Colors.green : Colors.red,
         ),
         child: Icon(
-          transaction.type == 'استلام'
-              ? Icons.arrow_downward
-              : Icons.arrow_upward,
+          transaction.type == 'in' ? Icons.arrow_downward : Icons.arrow_upward,
           color: Colors.white,
         ),
       ),
@@ -39,18 +37,16 @@ class TransactionCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            transaction.receiverName!.isNotEmpty
-                ? transaction.receiverName!
-                : transaction.phone!.replaceAll('002', ''),
+            transaction.name ?? '--',
             style: TextStyle(fontSize: 14, color: Colors.black),
           ),
-          if (transaction.fee != 0)
-            Text(
-              'رسوم العملية : ${transaction.fee} جنيه',
-              style: TextStyle(fontSize: 14, color: Colors.black),
-            ),
+
           Text(
-            formatDateTime(parseTransactionDate(transaction.date!)!),
+            formatDateTime(
+              parseTransactionDate(
+                transaction.time ?? transaction.createdAt!.toIso8601String(),
+              )!,
+            ),
             style: const TextStyle(
               fontSize: 14,
               color: Colors.grey,
@@ -63,15 +59,15 @@ class TransactionCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
-            transaction.type == 'استلام' ? Icons.add : Icons.remove,
-            color: transaction.type == 'استلام' ? Colors.green : Colors.red,
+            transaction.type == 'in' ? Icons.add : Icons.remove,
+            color: transaction.type == 'in' ? Colors.green : Colors.red,
             size: 20,
           ),
           Text(
             '${transaction.amount} جنيه',
             style: TextStyle(
               fontSize: 16,
-              color: transaction.type == 'استلام' ? Colors.green : Colors.red,
+              color: transaction.type == 'in' ? Colors.green : Colors.red,
               fontWeight: FontWeight.bold,
             ),
           ),
