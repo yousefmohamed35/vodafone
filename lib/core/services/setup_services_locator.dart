@@ -13,6 +13,9 @@ import '../../feature/ads/presentation/manager/ads_cubit.dart';
 import '../../feature/login/data/services/login_services_impl.dart';
 import '../../feature/login/presentation/manager/login_cubit/login_cubit.dart';
 import '../../feature/transaction/data/repos/transaction_repo_impl.dart';
+import '../../feature/vodafone_cash/presentation/manager/second_ads_cubit.dart';
+import '../../feature/vodafone_cash/repo/vodafone_cache_repo.dart';
+import '../../feature/vodafone_cash/repo/vodafone_cache_repo_impl.dart';
 import 'dio_services/dio_services.dart';
 
 final getIt = GetIt.instance;
@@ -35,5 +38,11 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<TransactionDataCubit>(
     () => TransactionDataCubit(getIt<TransactionRepo>()),
+  );
+  getIt.registerLazySingleton<VodafoneCacheRepo>(
+    () => VodafoneCacheRepoImpl(getIt<DioServices>()),
+  );
+  getIt.registerFactory<SecondAdsCubit>(
+    () => SecondAdsCubit(getIt<VodafoneCacheRepo>()),
   );
 }
