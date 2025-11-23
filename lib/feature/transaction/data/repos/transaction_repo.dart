@@ -7,5 +7,4 @@ import '../../../../core/error/failure/failure.dart';
 abstract class TransactionRepo {
   List<Transaction> getAllTransaction();
   Future<Either<Failure, TransactionApiModel>> getTransactionFromApi();
-
 }

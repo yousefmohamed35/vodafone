@@ -33,5 +33,7 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<TransactionRepo>(
     () => TransactionRepoImpl(getIt<DioServices>()),
   );
-  getIt.registerFactory<TransactionDataCubit>(() => TransactionDataCubit(getIt<TransactionRepo>()));
+  getIt.registerFactory<TransactionDataCubit>(
+    () => TransactionDataCubit(getIt<TransactionRepo>()),
+  );
 }

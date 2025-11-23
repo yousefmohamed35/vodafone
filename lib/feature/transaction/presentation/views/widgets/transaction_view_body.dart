@@ -4,13 +4,8 @@ import 'sliver_dileget_app_bar.dart';
 import 'transaction_card_list_view.dart';
 
 class TransactionViewBody extends StatelessWidget {
-  const TransactionViewBody({
-    super.key,
-    required this.transactionHistories,
-  
-  });
+  const TransactionViewBody({super.key, required this.transactionHistories});
   final TransactionApiModel transactionHistories;
- 
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +15,13 @@ class TransactionViewBody extends StatelessWidget {
               SliverPersistentHeader(
                 pinned: true,
                 floating: true,
-                delegate: SliverAppBarDelegate(amount: double.parse(transactionHistories.data!.balance!)),
+                delegate: SliverAppBarDelegate(
+                  amount: double.parse(transactionHistories.data!.balance!),
+                ),
               ),
-              TransactionCardListView(transactions: transactionHistories.data!.histories!),
+              TransactionCardListView(
+                transactions: transactionHistories.data!.histories!,
+              ),
             ],
           )
         : Center(

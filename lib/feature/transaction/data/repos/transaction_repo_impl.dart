@@ -15,7 +15,7 @@ import '../models/trasnsaction_respone/transaction.dart';
 import 'transaction_repo.dart';
 
 class TransactionRepoImpl implements TransactionRepo {
-   final DioServices dio;
+  final DioServices dio;
 
   TransactionRepoImpl(this.dio);
   @override
@@ -30,16 +30,16 @@ class TransactionRepoImpl implements TransactionRepo {
   }
 
   @override
-   Future<Either<Failure, TransactionApiModel>> getTransactionFromApi() async{
-   try {
-    final id = await SharedPrefHelper.getInt('client_id');
-   final response = await resolveOrThrow(
+  Future<Either<Failure, TransactionApiModel>> getTransactionFromApi() async {
+    try {
+      final id = await SharedPrefHelper.getInt('client_id');
+      final response = await resolveOrThrow(
         () => dio.getRequest("/public/api/history/$id"),
       );
       final data = TransactionApiModel.fromJson(response.data);
 
-     return Right(data);
-   } on ApplicationException catch (e) {
+      return Right(data);
+    } on ApplicationException catch (e) {
       return Left(await dioExceptionsDecoder(e));
     } catch (e) {
       return Left(ClientFailure.unknown(message: 'حدث خطأ ما'));

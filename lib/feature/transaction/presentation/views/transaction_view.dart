@@ -21,7 +21,6 @@ class TransactionView extends StatelessWidget {
             if (state is TransactionDataLoaded) {
               return TransactionViewBody(
                 transactionHistories: state.transactions,
-                
               );
             }
             if (state is TransactionDataError) {
