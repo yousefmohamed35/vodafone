@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../core/function/date_formate.dart';
 import '../../../data/models/transaction_api_model/history.dart';
 
@@ -25,7 +24,7 @@ class TransactionCard extends StatelessWidget {
         ),
       ),
       title: Text(
-        '${transaction.type!} أموال',
+        transaction.type == 'in' ? 'استلام أموال' : 'تحويل أموال',
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
           fontSize: 18,
