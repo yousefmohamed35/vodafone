@@ -36,7 +36,7 @@ class LoginServicesImpl implements LoginServices {
     required String balance,
   }) async {
     try {
-       await resolveOrThrow(
+      await resolveOrThrow(
         () => dio.postRequest(
           "/public/api/clients",
           data: {"phone": phone, "balance": balance},

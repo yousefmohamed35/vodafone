@@ -30,6 +30,7 @@ class SharedPrefHelper {
     final prefs = await _instance;
     return prefs.getString(key);
   }
+
   static Future<void> saveInt(String key, int value) async {
     final prefs = await _instance;
     await prefs.setInt(key, value);
