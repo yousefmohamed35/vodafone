@@ -17,10 +17,32 @@ class LoginServicesImpl implements LoginServices {
     required String phone,
   }) async {
     try {
-      final response = await resolveOrThrow(()=>dio.getRequest("/public/api/clients/$phone"));
-       
+      final response = await resolveOrThrow(
+        () => dio.getRequest("/public/api/clients/$phone"),
+      );
+
       final data = LoginModel.fromJson(response.data);
       return Right(data);
+    } on ApplicationException catch (e) {
+      return Left(await dioExceptionsDecoder(e));
+    } catch (e) {
+      return Left(ClientFailure.unknown(message: 'حدث خطأ ما'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> signUp({
+    required String phone,
+    required String balance,
+  }) async {
+    try {
+       await resolveOrThrow(
+        () => dio.postRequest(
+          "/public/api/clients",
+          data: {"phone": phone, "balance": balance},
+        ),
+      );
+      return Right(true);
     } on ApplicationException catch (e) {
       return Left(await dioExceptionsDecoder(e));
     } catch (e) {

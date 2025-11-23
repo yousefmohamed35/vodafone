@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vodafon/feature/login/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import 'package:vodafon/feature/login/presentation/manager/sign_up_cubit/sign_up_state.dart';
 import 'package:vodafon/feature/login/presentation/view/widgets/number_text_field.dart';
 
 import '../../../../../core/widgets/app_button.dart';
@@ -47,13 +50,43 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
             Image.asset('assets/voda.png', width: 100, height: 100),
             PhoneNumberTextField(controller: phoneController),
             CustomTextFormField(controller: controller),
-            ReactiveButton(
-              isLoading: loading,
-              isActive: hasText,
-              label: 'استمرار',
-              onPressed: () {
-                if (_formKey.currentState?.validate() ?? false) {}
+            BlocListener<SignUpCubit, SignUpState>(
+              listener: (context, state) {
+                if (state is SignUpLoading) {
+                  loading = true;
+                  setState(() {});
+                } else if (state is SignUpSuccess) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text('تم تسجيل الرقم و الرصيد بنجاح'),
+                    ),
+                  );
+                  Navigator.pop(context);
+                } else if (state is SignUpFailed) {
+                  loading = false;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text(state.message),
+                    ),
+                  );
+                  setState(() {});
+                }
               },
+              child: ReactiveButton(
+                isLoading: loading,
+                isActive: hasText,
+                label: 'استمرار',
+                onPressed: () {
+                  if (_formKey.currentState?.validate() ?? false) {
+                    context.read<SignUpCubit>().signUp(
+                      phone: phoneController.text,
+                      balance: controller.text,
+                    );
+                  }
+                },
+              ),
             ),
           ],
         ),

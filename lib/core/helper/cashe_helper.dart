@@ -20,6 +20,14 @@ class SharedPrefHelper {
     final prefs = await _instance;
     return prefs.getDouble(amountKey);
   }
+  static Future<void> saveString(String key, String value) async {
+    final prefs = await _instance;
+    await prefs.setString(key, value);
+  }
+  static Future<String?> getString(String key) async {
+    final prefs = await _instance;
+    return prefs.getString(key);
+  }
 
   // Save Boolean
   static Future<void> setBoolean(String key, bool value) async {
