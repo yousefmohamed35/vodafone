@@ -33,7 +33,9 @@ class FirstHome extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AdsView()),
+                    MaterialPageRoute(
+                      builder: (context) => AdsView(type: 'first'),
+                    ),
                   );
                 },
               ),
@@ -50,6 +52,18 @@ class FirstHome extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => AddTransactionView(),
+                    ),
+                  );
+                },
+              ),
+              SizedBox(width: 10),
+              NavigationCard(
+                cardModel: navigationCards[3],
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AdsView(type: 'second'),
                     ),
                   );
                 },

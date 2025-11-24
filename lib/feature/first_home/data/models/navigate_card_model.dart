@@ -19,7 +19,7 @@ final List<NavigationCardModel> navigationCards = [
     icon: Icons.home,
   ),
   NavigationCardModel(
-    title: 'الإعلانات',
+    title: 'الإعلان الأول',
     color: Colors.red,
     icon: Icons.campaign,
   ),
@@ -29,8 +29,8 @@ final List<NavigationCardModel> navigationCards = [
     icon: Icons.add,
   ),
   NavigationCardModel(
-    title: 'إضافة الرصيد',
-    color: Colors.orange,
-    icon: Icons.account_balance_wallet,
+    title: 'الإعلان الثاني',
+    color: Colors.blueGrey,
+    icon: Icons.campaign,
   ),
 ];

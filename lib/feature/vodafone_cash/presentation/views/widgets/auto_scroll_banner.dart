@@ -1,12 +1,6 @@
 import 'dart:async';
-import 'dart:developer';
-import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../ads/data/models/ads_model.dart';
-import '../../../../ads/presentation/manager/ads_cubit.dart';
 import '../../../models/second_ads_model/datum.dart';
 
 class AutoScrollBanner extends StatefulWidget {

@@ -6,8 +6,8 @@ import 'package:vodafon/feature/ads/presentation/manager/ads_cubit.dart';
 import 'widgets/ads_view_body.dart';
 
 class AdsView extends StatelessWidget {
-  const AdsView({super.key});
-
+  const AdsView({super.key, required this.type});
+  final String type;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
