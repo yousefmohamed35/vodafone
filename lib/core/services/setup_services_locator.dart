@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vodafon/core/services/api_services.dart';
 import 'package:vodafon/feature/ads/data/repo/ads_repo_impl.dart';
+import 'package:vodafon/feature/home/data/repos/home_repo.dart';
+import 'package:vodafon/feature/home/data/repos/home_repo_impl.dart';
+import 'package:vodafon/feature/home/presentation/manager/first_ads_cubit.dart';
 import 'package:vodafon/feature/login/data/services/login_services.dart';
 import 'package:vodafon/feature/login/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:vodafon/feature/sharing_image/data/repos/sharing_image_repo_impl.dart';
@@ -44,5 +47,11 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<SecondAdsCubit>(
     () => SecondAdsCubit(getIt<VodafoneCacheRepo>()),
+  );
+  getIt.registerLazySingleton<HomeRepo>(
+    () => HomeRepoImpl(getIt<DioServices>()),
+  );
+  getIt.registerFactory<FirstAdsCubit>(
+    () => FirstAdsCubit(getIt<HomeRepo>()),
   );
 }
