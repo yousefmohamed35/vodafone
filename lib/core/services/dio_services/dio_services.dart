@@ -34,6 +34,20 @@ class DioServices {
     );
   }
 
+   Future<Response> postRequestFormData(
+    String endpoint, {
+    FormData? data,
+    String? token,
+  }) async {
+    return await _dio.post(
+      endpoint,
+      data: data,
+      options: Options(
+        headers: {if (token != null) "Authorization": "Bearer $token"},
+      ),
+    );
+  }
+
   // PUT
   Future<Response> putRequest(
     String endpoint, {

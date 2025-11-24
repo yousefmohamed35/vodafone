@@ -27,10 +27,10 @@ void setupServiceLocator() {
   getIt.registerFactory<SharingImageCubit>(
     () => SharingImageCubit(SharingImageRepoImpl(ApiServices(Dio()))),
   );
-  getIt.registerSingleton(AdsRepoImpl());
-  getIt.registerFactory(() => AdsCubit(getIt<AdsRepoImpl>()));
 
   getIt.registerLazySingleton<DioServices>(() => DioServices());
+  getIt.registerSingleton(AdsRepoImpl(getIt<DioServices>()));
+  getIt.registerFactory(() => AdsCubit(getIt<AdsRepoImpl>()));
   getIt.registerLazySingleton<LoginServices>(
     () => LoginServicesImpl(getIt<DioServices>()),
   );
@@ -51,7 +51,5 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<HomeRepo>(
     () => HomeRepoImpl(getIt<DioServices>()),
   );
-  getIt.registerFactory<FirstAdsCubit>(
-    () => FirstAdsCubit(getIt<HomeRepo>()),
-  );
+  getIt.registerFactory<FirstAdsCubit>(() => FirstAdsCubit(getIt<HomeRepo>()));
 }

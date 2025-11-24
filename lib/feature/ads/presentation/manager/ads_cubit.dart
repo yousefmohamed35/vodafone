@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../data/models/ads_model.dart';
+import '../../data/models/add_ads_model.dart';
 import '../../data/repo/ads_repo.dart';
 part 'ads_state.dart';
 
@@ -29,33 +29,27 @@ class AdsCubit extends Cubit<AdsState> {
     }
   }
 
-  Future<void> deleteAllAds() async {
-    emit(AdsLoading());
-    try {
-      ads = [];
-      emit(AdsLoaded(ads));
-    } catch (e) {
-      emit(AdsError(e.toString()));
-    }
-  }
+  // Future<void> deleteAllAds() async {
+  //   emit(AdsLoading());
+  //   try {
+  //     ads = [];
+  //     emit(AdsLoaded(ads));
+  //   } catch (e) {
+  //     emit(AdsError(e.toString()));
+  //   }
+  // }
 
-  Future<void> saveAds() async {
+  Future<void> saveAds({required String type}) async {
     emit(AdsLoading());
     try {
-      await adsRepo.saveAds(ads);
-      emit(SaveAdsSuccess('Ads saved successfully'));
+      final addAdsModel = AddAdsModel(
+        type: type,
+        imagePaths: ads.map((e) => e.path).toList(),
+      );
+      await adsRepo.addAds(addAdsModel: addAdsModel);
+      emit(SaveAdsSuccess('تم إضافة الإعلانات بنجاح'));
     } catch (e) {
       emit(SaveAdsError(e.toString()));
-    }
-  }
-
-  List<AdsModel> getAds() {
-    emit(GetAdsLoading());
-    try {
-      return adsRepo.getAds();
-    } catch (e) {
-      emit(GetAdsError(e.toString()));
-      return [];
     }
   }
 }

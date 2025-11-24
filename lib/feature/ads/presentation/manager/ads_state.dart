@@ -26,14 +26,7 @@ class SaveAdsError extends AdsState {
   SaveAdsError(this.message);
 }
 
-class GetAdsLoading extends AdsState {}
 
-class GetAdsLoaded extends AdsState {
-  final List<AdsModel> ads;
-  GetAdsLoaded(this.ads);
-}
 
-class GetAdsError extends AdsState {
-  final String message;
-  GetAdsError(this.message);
-}
+
+
