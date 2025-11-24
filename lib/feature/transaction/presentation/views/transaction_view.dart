@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/core/services/setup_services_locator.dart';
+import 'package:vodafon/core/widgets/loading_widget.dart';
 import 'package:vodafon/feature/transaction/presentation/manager/transaction_data_cubit.dart';
 import 'widgets/transaction_view_body.dart';
 
@@ -16,7 +17,7 @@ class TransactionView extends StatelessWidget {
         body: BlocBuilder<TransactionDataCubit, TransactionDataState>(
           builder: (context, state) {
             if (state is TransactionDataLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return LoadingWidget();
             }
             if (state is TransactionDataLoaded) {
               return TransactionViewBody(

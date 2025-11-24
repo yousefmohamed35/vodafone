@@ -33,7 +33,7 @@ class HomeView extends StatelessWidget {
                 SizedBox(height: 20),
                 FlexWidget(),
                 SizedBox(height: 10),
-                consumptionCard(),
+                ConsumptionCard(),
                 SizedBox(height: 10),
                 Row(
                   children: [
@@ -154,8 +154,8 @@ class VodafoneCashCard extends StatelessWidget {
   }
 }
 
-class consumptionCard extends StatelessWidget {
-  const consumptionCard({super.key});
+class ConsumptionCard extends StatelessWidget {
+  const ConsumptionCard({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/feature/vodafone_cash/presentation/manager/second_ads_cubit.dart';
 
+
 class AdsWidget extends StatelessWidget {
   const AdsWidget({super.key});
 
@@ -10,9 +11,7 @@ class AdsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SecondAdsCubit, SecondAdsState>(
       builder: (context, state) {
-        if (state is SecondAdsLoading) {
-          return Center(child: CircularProgressIndicator());
-        } else if (state is SecondAdsError) {
+        if (state is SecondAdsError) {
           return Center(child: Text('Error: ${state.message}'));
         } else if (state is SecondAdsLoaded) {
           final ads = state.secondAds.data;
