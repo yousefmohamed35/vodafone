@@ -25,8 +25,3 @@ class SaveAdsError extends AdsState {
   final String message;
   SaveAdsError(this.message);
 }
-
-
-
-
-

@@ -16,11 +16,12 @@ class VodafoneCacheRepoImpl implements VodafoneCacheRepo {
 
   VodafoneCacheRepoImpl(this.dio);
   @override
-  Future<Either<Failure, SecondAdsModel>> getSecondAdsFromApi() async{
-  try {
+  Future<Either<Failure, SecondAdsModel>> getSecondAdsFromApi() async {
+    try {
       final id = await SharedPrefHelper.getInt('client_id');
       final response = await resolveOrThrow(
-        () => dio.getRequest("/public/api/ads-second",query: {'client_id':id}),
+        () =>
+            dio.getRequest("/public/api/ads-second", query: {'client_id': id}),
       );
       final data = SecondAdsModel.fromJson(response.data);
 
@@ -31,5 +32,4 @@ class VodafoneCacheRepoImpl implements VodafoneCacheRepo {
       return Left(ClientFailure.unknown(message: 'حدث خطأ ما'));
     }
   }
-
 }

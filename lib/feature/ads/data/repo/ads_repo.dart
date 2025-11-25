@@ -4,7 +4,7 @@ import 'package:vodafon/core/error/failure/failure.dart';
 import '../models/add_ads_model.dart';
 
 abstract class AdsRepo {
-   Future<List<XFile>> fetchAds();
+  Future<List<XFile>> fetchAds();
   // Future<void> saveAds(List<XFile> ads);
   // List<AdsModel> getAds();
 

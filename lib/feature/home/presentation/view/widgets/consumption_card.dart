@@ -75,4 +75,3 @@ class ConsumptionCard extends StatelessWidget {
     );
   }
 }
-

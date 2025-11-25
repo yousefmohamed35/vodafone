@@ -19,7 +19,7 @@ class AdsView extends StatelessWidget {
           leading: BackButton(color: Colors.white),
           title: Text('الإعلانات', style: TextStyle(color: Colors.white)),
         ),
-        body: AdsViewBody(type: type,),
+        body: AdsViewBody(type: type),
       ),
     );
   }

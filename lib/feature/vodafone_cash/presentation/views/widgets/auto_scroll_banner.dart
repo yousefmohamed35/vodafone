@@ -21,24 +21,24 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
   @override
   void initState() {
     super.initState(); // Fetch ads when the widget is initialized>
-  //  _startAutoScroll();
+    _startAutoScroll();
   }
 
-  // void _startAutoScroll() {
-  //   _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
-  //     if (_currentPage < widget.ads.length - 1) {
-  //       _currentPage++;
-  //     } else {
-  //       _currentPage = 0;
-  //     }
+  void _startAutoScroll() {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      if (_currentPage < widget.ads.length - 1) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
 
-  //     _pageController.animateToPage(
-  //       _currentPage,
-  //       duration: const Duration(milliseconds: 400),
-  //       curve: Curves.easeInOut,
-  //     );
-  //   });
-  // }
+      _pageController.animateToPage(
+        _currentPage,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
 
   @override
   void dispose() {
@@ -69,8 +69,7 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
                     child: CachedNetworkImage(
                       imageUrl: widget.ads[index].imageUrl!,
                       fit: BoxFit.fill,
-                      placeholder: (context, url) =>
-                          Center(child: CircularProgressIndicator()),
+
                       errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
                   ),

@@ -1,8 +1,11 @@
-import '../../../transaction/data/models/trasnsaction_respone/trasnsaction_respone.dart';
+import 'package:dartz/dartz.dart';
+import 'package:vodafon/core/error/failure/failure.dart';
+
+import '../models/add_transaction_model.dart';
 
 abstract class AddTransactionRepo {
-  Future<void> addTransaction({
-    required TransactionResponse transaction,
-    required double amount,
+  Future<Either<Failure,bool>> addTransaction({
+    required AddTransactionModel transaction,
+    
   });
 }

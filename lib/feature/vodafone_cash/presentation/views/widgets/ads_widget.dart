@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/feature/vodafone_cash/presentation/manager/second_ads_cubit.dart';
 
-
 class AdsWidget extends StatelessWidget {
   const AdsWidget({super.key});
 

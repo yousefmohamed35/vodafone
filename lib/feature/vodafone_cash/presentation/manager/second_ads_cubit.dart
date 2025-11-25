@@ -1,12 +1,9 @@
-
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/second_ads_model/second_ads_model.dart';
 import '../../repo/vodafone_cache_repo.dart';
 
 part 'second_ads_state.dart';
-
 
 class SecondAdsCubit extends Cubit<SecondAdsState> {
   final VodafoneCacheRepo _vodafoneCacheRepo;

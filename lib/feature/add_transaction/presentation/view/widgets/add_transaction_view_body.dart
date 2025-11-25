@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/feature/add_transaction/presentation/manager/addtransactionstatic_cubit.dart';
 import 'package:vodafon/feature/add_transaction/presentation/view/widgets/custom_text_form_transaction.dart';
-import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/transaction.dart';
-import 'package:vodafon/feature/transaction/data/models/trasnsaction_respone/trasnsaction_respone.dart';
+
+import '../../../data/models/add_transaction_model.dart';
 
 class AddTransactionViewBody extends StatefulWidget {
   const AddTransactionViewBody({super.key});
@@ -19,7 +19,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
   TextEditingController fee = TextEditingController();
   TextEditingController referenceNumber = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  String transactionType = 'استلام';
+  String transactionType = 'in';
   @override
   void dispose() {
     name.dispose();
@@ -64,19 +64,19 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                 controller: amount,
               ),
               SizedBox(height: 20),
-              CustomTextFormTransaction(
-                isPrice: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'ادخل رسوم المعامله';
-                  }
-                  return null;
-                },
-                label: 'رسوم المعامله',
-                title: 'رسوم المعامله',
-                controller: fee,
-              ),
-              SizedBox(height: 20),
+              // CustomTextFormTransaction(
+              //   isPrice: true,
+              //   validator: (value) {
+              //     if (value!.isEmpty) {
+              //       return 'ادخل رسوم المعامله';
+              //     }
+              //     return null;
+              //   },
+              //   label: 'رسوم المعامله',
+              //   title: 'رسوم المعامله',
+              //   controller: fee,
+              // ),
+              //SizedBox(height: 20),
               CustomTextFormTransaction(
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -98,7 +98,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                     onPressed: () {
                       setState(() {
                         isSelected = true;
-                        transactionType = 'استلام';
+                        transactionType = 'in';
                       });
                     },
                   ),
@@ -108,7 +108,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                     onPressed: () {
                       setState(() {
                         isSelected = false;
-                        transactionType = 'تحويل';
+                        transactionType = 'out';
                       });
                     },
                   ),
@@ -144,30 +144,17 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         final date = DateTime.now().toString();
-                        double totalAmount =
-                            double.parse(amount.text) + double.parse(fee.text);
-                        final TransactionResponse transaction =
-                            TransactionResponse(
-                              transactions: [
-                                Transaction(
-                                  status: 'تمت',
-                                  phone: '',
-                                  amount: double.parse(amount.text),
-                                  fee: double.parse(fee.text),
-                                  total: totalAmount,
-                                  receiverName: name.text,
-                                  reference: referenceNumber.text,
-                                  date: date,
-                                  type: transactionType,
-                                ),
-                              ],
-                            );
-                        context
-                            .read<AddtransactionstaticCubit>()
-                            .addTransaction(
-                              transaction: transaction,
-                              amount: totalAmount,
-                            );
+                        final transaction = AddTransactionModel(
+                          name: name.text,
+                          amount: int.parse(amount.text),
+
+                          reference: referenceNumber.text,
+                          type: transactionType,
+                          time: date,
+                        );
+                        BlocProvider.of<AddtransactionstaticCubit>(
+                          context,
+                        ).addTransaction(transaction: transaction);
                       }
                     },
                     child: Text(

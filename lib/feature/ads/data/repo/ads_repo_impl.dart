@@ -30,7 +30,7 @@ class AdsRepoImpl implements AdsRepo {
   }) async {
     try {
       final formData = await addAdsModel.toFormData();
-       await resolveOrThrow(
+      await resolveOrThrow(
         () => dio.postRequestFormData('/public/api/ads', data: formData),
       );
       return Right(true);

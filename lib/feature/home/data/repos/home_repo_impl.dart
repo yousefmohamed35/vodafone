@@ -16,11 +16,11 @@ class HomeRepoImpl implements HomeRepo {
 
   HomeRepoImpl(this.dio);
   @override
-  Future<Either<Failure, SecondAdsModel>> getFirstAds() async{
+  Future<Either<Failure, SecondAdsModel>> getFirstAds() async {
     try {
       final id = await SharedPrefHelper.getInt('client_id');
       final response = await resolveOrThrow(
-        () => dio.getRequest("/public/api/ads-first",query: {'client_id':id}),
+        () => dio.getRequest("/public/api/ads-first", query: {'client_id': id}),
       );
       final data = SecondAdsModel.fromJson(response.data);
 

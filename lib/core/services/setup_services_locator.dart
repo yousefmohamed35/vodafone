@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vodafon/core/services/api_services.dart';
+import 'package:vodafon/feature/add_transaction/data/repo/add_transaction_repo.dart';
+import 'package:vodafon/feature/add_transaction/presentation/manager/addtransactionstatic_cubit.dart';
 import 'package:vodafon/feature/ads/data/repo/ads_repo_impl.dart';
 import 'package:vodafon/feature/home/data/repos/home_repo.dart';
 import 'package:vodafon/feature/home/data/repos/home_repo_impl.dart';
@@ -12,6 +14,7 @@ import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image
 import 'package:vodafon/feature/transaction/data/repos/transaction_repo.dart';
 import 'package:vodafon/feature/transaction/presentation/manager/transaction_data_cubit.dart';
 
+import '../../feature/add_transaction/data/repo/add_transaction_repo_impl.dart';
 import '../../feature/ads/presentation/manager/ads_cubit.dart';
 import '../../feature/login/data/services/login_services_impl.dart';
 import '../../feature/login/presentation/manager/login_cubit/login_cubit.dart';
@@ -52,4 +55,9 @@ void setupServiceLocator() {
     () => HomeRepoImpl(getIt<DioServices>()),
   );
   getIt.registerFactory<FirstAdsCubit>(() => FirstAdsCubit(getIt<HomeRepo>()));
+
+  getIt.registerLazySingleton<AddTransactionRepo>(
+    () => AddTransactionRepoImpl(getIt<DioServices>()),
+  );
+  getIt.registerFactory<AddtransactionstaticCubit>(() => AddtransactionstaticCubit(getIt<AddTransactionRepo>()));
 }

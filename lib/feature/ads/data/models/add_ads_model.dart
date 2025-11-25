@@ -4,15 +4,10 @@ class AddAdsModel {
   final String type;
   final List<String> imagePaths; // paths of images from gallery or camera
 
-  AddAdsModel({
-    required this.type,
-    required this.imagePaths,
-  });
+  AddAdsModel({required this.type, required this.imagePaths});
 
   Future<FormData> toFormData() async {
-    final Map<String, dynamic> map = {
-      "type": type,
-    };
+    final Map<String, dynamic> map = {"type": type};
 
     // Add images[i]
     for (int i = 0; i < imagePaths.length; i++) {

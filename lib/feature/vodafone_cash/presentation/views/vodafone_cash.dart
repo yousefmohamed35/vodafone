@@ -12,7 +12,8 @@ class VodafoneCash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SecondAdsCubit(getIt<VodafoneCacheRepo>())..fetchSecondAds(),
+      create: (context) =>
+          SecondAdsCubit(getIt<VodafoneCacheRepo>())..fetchSecondAds(),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
