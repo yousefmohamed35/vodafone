@@ -47,10 +47,6 @@ class ServerError extends FailureHandler {
         return ServerError(
           errorMessage: dioError.message ?? 'Opps UnExpected Error',
         );
-      default:
-        return ServerError(
-          errorMessage: dioError.message ?? 'Opps UnExpected Error',
-        );
     }
   }
 

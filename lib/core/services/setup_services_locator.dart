@@ -1,6 +1,4 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:vodafon/core/services/api_services.dart';
 import 'package:vodafon/feature/add_transaction/data/repo/add_transaction_repo.dart';
 import 'package:vodafon/feature/add_transaction/presentation/manager/addtransactionstatic_cubit.dart';
 import 'package:vodafon/feature/ads/data/repo/ads_repo_impl.dart';
@@ -18,6 +16,8 @@ import '../../feature/add_transaction/data/repo/add_transaction_repo_impl.dart';
 import '../../feature/ads/presentation/manager/ads_cubit.dart';
 import '../../feature/login/data/services/login_services_impl.dart';
 import '../../feature/login/presentation/manager/login_cubit/login_cubit.dart';
+import '../../feature/sharing_image/data/repos/sharing_image_repo.dart';
+import '../../feature/sharing_image/presentation/manager/ocrfromapi/ocrfromapi_cubit.dart';
 import '../../feature/transaction/data/repos/transaction_repo_impl.dart';
 import '../../feature/vodafone_cash/presentation/manager/second_ads_cubit.dart';
 import '../../feature/vodafone_cash/repo/vodafone_cache_repo.dart';
@@ -27,10 +27,7 @@ import 'dio_services/dio_services.dart';
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
-  getIt.registerFactory<SharingImageCubit>(
-    () => SharingImageCubit(SharingImageRepoImpl(ApiServices(Dio()))),
-  );
-
+ 
   getIt.registerLazySingleton<DioServices>(() => DioServices());
   getIt.registerSingleton(AdsRepoImpl(getIt<DioServices>()));
   getIt.registerFactory(() => AdsCubit(getIt<AdsRepoImpl>()));
@@ -60,4 +57,9 @@ void setupServiceLocator() {
     () => AddTransactionRepoImpl(getIt<DioServices>()),
   );
   getIt.registerFactory<AddtransactionstaticCubit>(() => AddtransactionstaticCubit(getIt<AddTransactionRepo>()));
+  getIt.registerLazySingleton<SharingImageRepo>(
+    () => SharingImageRepoImpl(getIt<DioServices>()),
+  );
+  getIt.registerFactory<SharingImageCubit>(() => SharingImageCubit(getIt<SharingImageRepo>()));
+  getIt.registerLazySingleton<OcrfromapiCubit>(() => OcrfromapiCubit(getIt<SharingImageRepo>()));
 }

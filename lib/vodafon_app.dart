@@ -5,6 +5,7 @@ import 'package:vodafon/feature/sharing_image/presentation/manager/sharing_image
 import 'package:vodafon/feature/sharing_image/presentation/views/sharing_image_view.dart';
 import 'package:vodafon/start_app_view.dart';
 import 'core/services/setup_services_locator.dart';
+import 'feature/sharing_image/presentation/manager/ocrfromapi/ocrfromapi_cubit.dart';
 import 'generated/l10n.dart';
 
 class VodafonApp extends StatelessWidget {
@@ -12,16 +13,24 @@ class VodafonApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<SharingImageCubit>()
-        ..loadInitialMedia()
-        ..listenToMediaStream(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => getIt<SharingImageCubit>()
+            ..loadInitialMedia()
+            ..listenToMediaStream(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<OcrfromapiCubit>(),
+        ),
+      ],
       child: BlocListener<SharingImageCubit, SharingImageState>(
         listener: (context, state) {
           if (state is SharingImageLoaded && state.mediaFiles.isNotEmpty) {
             navigatorKey.currentState?.pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (_) => SharingImageView(sharedFiles: state.mediaFiles),
+                builder: (_) =>
+                    SharingImageView(sharedFiles: state.mediaFiles),
               ),
               (route) => false,
             );
@@ -37,7 +46,6 @@ class VodafonApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: [const Locale('ar')],
-
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           home: AppStartView(),

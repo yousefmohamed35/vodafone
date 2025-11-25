@@ -37,7 +37,6 @@ class ApiServices {
       );
       return response;
     } catch (e) {
-      print('❌ POST Error: $e');
       rethrow;
     }
   }
@@ -62,7 +61,6 @@ class ApiServices {
       final response = await _dio.post('ocr', data: formData);
       return response;
     } catch (e) {
-      print('❌ Upload Error: $e');
       rethrow;
     }
   }

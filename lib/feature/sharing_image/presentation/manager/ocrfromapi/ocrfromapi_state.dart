@@ -7,9 +7,9 @@ class OcrfromapiInitial extends OcrfromapiState {}
 class OcrfromapiLoading extends OcrfromapiState {}
 
 class OcrfromapiSuccess extends OcrfromapiState {
-  final TransactionResponse transactionResponse;
+  final String message;
 
-  OcrfromapiSuccess({required this.transactionResponse});
+  OcrfromapiSuccess({required this.message});
 }
 
 class OcrfromapiFailure extends OcrfromapiState {

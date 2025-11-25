@@ -4,10 +4,10 @@ class DioFactory {
   static Dio create() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: "https://voda.arkanzax.com", // غيّرها
+        baseUrl: "https://voda.arkanzax.com",
         connectTimeout: const Duration(seconds: 15),
-        receiveTimeout: const Duration(seconds: 15),
-        sendTimeout: const Duration(seconds: 15),
+        sendTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 500),
         headers: {"Accept": "application/json"},
       ),
     );
