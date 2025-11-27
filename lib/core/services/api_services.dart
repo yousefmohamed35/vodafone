@@ -57,7 +57,7 @@ class ApiServices {
       );
     }
 
-    try {
+    try { 
       final response = await _dio.post('ocr', data: formData);
       return response;
     } catch (e) {

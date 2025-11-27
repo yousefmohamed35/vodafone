@@ -75,7 +75,7 @@ class SharingImageRepoImpl implements SharingImageRepo {
   //     final model = GenerativeModel(model: 'gemini-2.5-flash', apiKey: apiKey);
 
   //     final data = await extractPath(sharedMediaFile);
-  //     final prompt = """ 
+  //     final prompt = """
   //     You are an expert in finacial data extractor.
   //     extract all key-value pairs (Arabic and English) from this transaction image.
   //     Detrmine the transaction direction as 'In' (incoming) or 'Out (outgoing)'.
@@ -146,38 +146,35 @@ class SharingImageRepoImpl implements SharingImageRepo {
   // }
 
   @override
-  Future<void> updateTotalAmount({
-    required double amount,
-    required bool type,
-  }) async {
+  Future<void> updateTotalAmount({required double amount}) async {
     try {
-      final value = await SharedPrefHelper.getAmount();
-      if (value != null) {
-        final newAmount = type ? value + amount : value - amount;
-        await SharedPrefHelper.saveAmount(newAmount);
-        log('Total amount updated to $newAmount');
-      } else {
-        log('No previous amount found, initializing...');
-        await SharedPrefHelper.saveAmount(amount);
-      }
+      await SharedPrefHelper.saveAmount(amount);
     } catch (e) {
       log('Error while updating total amount: $e');
     }
   }
 
   @override
-  Future<Either<Failure,bool>> getDataFromApiOCR({
+  Future<Either<Failure, int>> getDataFromApiOCR({
     required List<SharedMediaFile> images,
   }) async {
-    try{
-     final clientId = await SharedPrefHelper.getInt('client_id');
-     final addTransactionOcrModel =
-        AddTransactionOcrModel(clientId: clientId.toString(), images: images);
+    try {
+      final clientId = await SharedPrefHelper.getInt('client_id');
+      final addTransactionOcrModel = AddTransactionOcrModel(
+        clientId: clientId.toString(),
+        images: images,
+      );
 
       final formData = await addTransactionOcrModel.toFormData();
-      final response = await _dioServices.postRequestFormData('/public/api/ocr', data: formData);
+      final response = await _dioServices.postRequestFormData(
+        '/public/api/ocr',
+        data: formData,
+      );
+      if (response.data['data'] != null) {
+        await updateTotalAmount(amount: response.data['data'].toDouble());
+      }
       log('✅ OCR Response: ${response.data}');
-      return Right(true);
+      return Right(response.data['data']);
     } on ApplicationException catch (e) {
       return Left(await dioExceptionsDecoder(e));
     } catch (e) {

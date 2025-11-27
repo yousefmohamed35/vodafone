@@ -18,8 +18,8 @@ class TransactionCard extends StatelessWidget {
           shape: BoxShape.circle,
           color: transaction.type == 'in' ? Colors.green : Colors.red,
         ),
-        child: Icon(
-          transaction.type == 'in' ? Icons.arrow_downward : Icons.arrow_upward,
+        child: Image.asset(
+          transaction.type == 'in' ? 'assets/transfer.png' : 'assets/out.png',
           color: Colors.white,
         ),
       ),
