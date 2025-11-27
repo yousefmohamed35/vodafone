@@ -16,7 +16,6 @@ class AddTransactionRepoImpl extends AddTransactionRepo {
   @override
   Future<Either<Failure, bool>> addTransaction({
     required AddTransactionModel transaction,
-    
   }) async {
     try {
       final clientId = await SharedPrefHelper.getInt('client_id');
@@ -26,10 +25,18 @@ class AddTransactionRepoImpl extends AddTransactionRepo {
           data: transaction.toJson()..addAll({'client_id': clientId}),
         ),
       );
-      await updateTotalAmount(
-        amount: transaction.amount!.toDouble(),
-        type: transaction.type == 'in',
-      );
+      if (transaction.type == 'in') {
+        await updateTotalAmount(
+          amount: transaction.amount!.toDouble() + transaction.fee!.toDouble(),
+          type: true,
+        );
+      } else {
+        await updateTotalAmount(
+          amount: transaction.amount!.toDouble() - transaction.fee!.toDouble(),
+          type: false,
+        );
+      }
+
       return Right(true);
     } on ApplicationException catch (e) {
       return Left(await dioExceptionsDecoder(e));

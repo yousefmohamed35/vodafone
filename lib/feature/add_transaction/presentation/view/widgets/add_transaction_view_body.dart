@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vodafon/core/widgets/loading_widget.dart';
 import 'package:vodafon/feature/add_transaction/presentation/manager/addtransactionstatic_cubit.dart';
 import 'package:vodafon/feature/add_transaction/presentation/view/widgets/custom_text_form_transaction.dart';
 
@@ -64,19 +65,19 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                 controller: amount,
               ),
               SizedBox(height: 20),
-              // CustomTextFormTransaction(
-              //   isPrice: true,
-              //   validator: (value) {
-              //     if (value!.isEmpty) {
-              //       return 'ادخل رسوم المعامله';
-              //     }
-              //     return null;
-              //   },
-              //   label: 'رسوم المعامله',
-              //   title: 'رسوم المعامله',
-              //   controller: fee,
-              // ),
-              //SizedBox(height: 20),
+              CustomTextFormTransaction(
+                isPrice: true,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'ادخل رسوم المعامله';
+                  }
+                  return null;
+                },
+                label: 'رسوم المعامله',
+                title: 'رسوم المعامله',
+                controller: fee,
+              ),
+              SizedBox(height: 20),
               CustomTextFormTransaction(
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -121,15 +122,25 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
               >(
                 listener: (context, state) {
                   if (state is AddtransactionstaticError) {
+                    Navigator.pop(context);
                     ScaffoldMessenger.of(
                       context,
                     ).showSnackBar(SnackBar(content: Text(state.message)));
                   }
                   if (state is AddtransactionstaticSuccess) {
+                    Navigator.pop(context);
                     ScaffoldMessenger.of(
                       context,
                     ).showSnackBar(SnackBar(content: Text(state.message)));
                     Navigator.pop(context);
+                  }
+                  if (state is Addtransactionstaticloading) {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) =>
+                          const Center(child: LoadingWidget()),
+                    );
                   }
                 },
                 builder: (context, state) {
@@ -147,7 +158,7 @@ class _AddTransactionViewBodyState extends State<AddTransactionViewBody> {
                         final transaction = AddTransactionModel(
                           name: name.text,
                           amount: int.parse(amount.text),
-
+                          fee: int.parse(fee.text),
                           reference: referenceNumber.text,
                           type: transactionType,
                           time: date,

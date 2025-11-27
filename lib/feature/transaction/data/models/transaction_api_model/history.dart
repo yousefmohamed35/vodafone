@@ -3,6 +3,7 @@ class History {
   int? clientId;
   String? type;
   String? name;
+  num? fee;
   String? insert;
   String? amount;
   String? reference;
@@ -21,6 +22,7 @@ class History {
     this.time,
     this.createdAt,
     this.updatedAt,
+    this.fee
   });
 
   factory History.fromJson(Map<String, dynamic> json) => History(
@@ -28,6 +30,7 @@ class History {
     clientId: json['client_id'] as int?,
     type: json['type'] as String?,
     name: json['name'] as String?,
+    fee: json['fee'] as num?,
     insert: json['insert'] as String?,
     amount: json['amount'] as String?,
     reference: json['reference'] as String?,
@@ -46,6 +49,7 @@ class History {
     'type': type,
     'name': name,
     'insert': insert,
+    'fee': fee,
     'amount': amount,
     'reference': reference,
     'time': time,
@@ -59,6 +63,7 @@ class History {
     String? type,
     String? name,
     String? insert,
+    num? fee,
     String? amount,
     String? reference,
     String? time,
@@ -69,6 +74,7 @@ class History {
       id: id ?? this.id,
       clientId: clientId ?? this.clientId,
       type: type ?? this.type,
+      fee: fee ?? this.fee,
       name: name ?? this.name,
       insert: insert ?? this.insert,
       amount: amount ?? this.amount,

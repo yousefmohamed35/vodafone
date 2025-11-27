@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vodafon/core/helper/cashe_helper.dart';
 import '../../data/models/transaction_api_model/transaction_api_model.dart';
 import '../../data/repos/transaction_repo.dart';
 
@@ -14,9 +15,13 @@ class TransactionDataCubit extends Cubit<TransactionDataState> {
     final transactions = await transactionRepo.getTransactionFromApi();
     transactions.fold(
       (failure) => emit(TransactionDataError(message: failure.toString())),
-      (data) => emit(TransactionDataLoaded(transactions: data)),
+      (data) async {
+        await SharedPrefHelper.saveAmount(double.parse(data.data!.balance!));
+        emit(TransactionDataLoaded(transactions: data));
+      },
     );
   }
+
   Future<void> updateTransactionName({
     required int transactionId,
     required String newName,

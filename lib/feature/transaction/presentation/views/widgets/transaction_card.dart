@@ -56,7 +56,10 @@ class TransactionCard extends StatelessWidget {
             transaction.name ?? '--',
             style: TextStyle(fontSize: 14, color: Colors.black),
           ),
-
+          Text(
+            'رسوم المعاملة: ${transaction.fee ?? 0} جنيه',
+            style: TextStyle(fontSize: 14, color: Colors.black),
+          ),
           Text(
             formatDateTime(
               parseTransactionDate(
