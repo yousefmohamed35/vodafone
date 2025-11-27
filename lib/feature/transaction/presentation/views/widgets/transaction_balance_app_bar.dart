@@ -15,9 +15,36 @@ class TransactionBalanceAppBar extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: Text(
-        'الرصيد الحالي: $amount جنيه',
-        style: TextStyle(color: Colors.white, fontSize: 20),
+      child: Row(
+        children: [
+          Text(
+            'الرصيد الحالي ',
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$amount',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  'جنيه',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

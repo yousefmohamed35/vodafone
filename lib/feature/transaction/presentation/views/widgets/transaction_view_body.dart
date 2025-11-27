@@ -19,6 +19,31 @@ class TransactionViewBody extends StatelessWidget {
                   amount: double.parse(transactionHistories.data!.balance!),
                 ),
               ),
+              SliverToBoxAdapter(
+                child: Container(
+                  // height: 100,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.error_outline, color: Colors.black),
+                      SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'عرض المعاملات للشهر الماضي فقط. لعرض المزيد من المعاملات السابقة. يرجي تحديد نطاق تاريخ معين',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               TransactionCardListView(
                 transactions: transactionHistories.data!.histories!,
               ),

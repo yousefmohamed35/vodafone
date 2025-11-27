@@ -6,6 +6,7 @@ class AddTransactionModel {
   num? fee;
   String? reference;
   String? time;
+  String? phone;
 
   AddTransactionModel({
     this.clientId,
@@ -14,7 +15,8 @@ class AddTransactionModel {
     this.amount,
     this.reference,
     this.time,
-    this.fee
+    this.fee,
+    this.phone,
   });
 
   factory AddTransactionModel.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class AddTransactionModel {
       amount: json['amount'] as num?,
       reference: json['reference'] as String?,
       time: json['time'] as String?,
+      phone: json['phone'] as String?,
     );
   }
 
@@ -37,6 +40,7 @@ class AddTransactionModel {
     'reference': reference,
     'time': time,
     'fee': fee,
+    'phone': phone,
   };
 
   AddTransactionModel copyWith({
@@ -47,6 +51,7 @@ class AddTransactionModel {
     String? reference,
     String? time,
     num? fee,
+    String? phone,
   }) {
     return AddTransactionModel(
       clientId: clientId ?? this.clientId,
@@ -56,6 +61,7 @@ class AddTransactionModel {
       reference: reference ?? this.reference,
       time: time ?? this.time,
       fee: fee ?? this.fee,
+      phone: phone ?? this.phone,
     );
   }
 }

@@ -21,7 +21,6 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
           const SizedBox(height: 20),
           HeadAppBar(),
           TransactionBalanceAppBar(amount: amount),
-
           FilterSection(),
           Column(
             mainAxisSize: MainAxisSize.max,
@@ -34,10 +33,10 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 200;
+  double get maxExtent => 240;
 
   @override
-  double get minExtent => 200;
+  double get minExtent => 240;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

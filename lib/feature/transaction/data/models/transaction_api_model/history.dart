@@ -10,6 +10,7 @@ class History {
   String? time;
   DateTime? createdAt;
   DateTime? updatedAt;
+  String? phone;
 
   History({
     this.id,
@@ -22,7 +23,8 @@ class History {
     this.time,
     this.createdAt,
     this.updatedAt,
-    this.fee
+    this.fee,
+    this.phone,
   });
 
   factory History.fromJson(Map<String, dynamic> json) => History(
@@ -41,6 +43,7 @@ class History {
     updatedAt: json['updated_at'] == null
         ? null
         : DateTime.parse(json['updated_at'] as String),
+    phone: json['phone'] as String?,
   );
 
   Map<String, dynamic> toJson() => {
@@ -55,6 +58,7 @@ class History {
     'time': time,
     'created_at': createdAt?.toIso8601String(),
     'updated_at': updatedAt?.toIso8601String(),
+    'phone': phone,
   };
 
   History copyWith({
@@ -69,6 +73,7 @@ class History {
     String? time,
     DateTime? createdAt,
     DateTime? updatedAt,
+    String? phone,
   }) {
     return History(
       id: id ?? this.id,
@@ -82,6 +87,7 @@ class History {
       time: time ?? this.time,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      phone: phone ?? this.phone,
     );
   }
 }
