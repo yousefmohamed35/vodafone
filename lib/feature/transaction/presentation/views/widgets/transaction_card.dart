@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vodafon/feature/transaction/presentation/manager/transaction_data_cubit.dart';
 import '../../../../../core/function/date_formate.dart';
 import '../../../data/models/transaction_api_model/history.dart';
+import '../update_transaction_name.dart';
 
 class TransactionCard extends StatelessWidget {
   const TransactionCard({super.key, required this.transaction});
@@ -10,6 +13,20 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () async {
+        final result = await Navigator.push(
+          context,
+          (MaterialPageRoute(
+            builder: (context) => UpdateTransactionName(
+              transactionId: transaction.id!,
+              currentName: transaction.name ?? '--',
+            ),
+          )),
+        );
+        if (result == true) {
+          context.read<TransactionDataCubit>().getAllTransaction();
+        }
+      },
       contentPadding: const EdgeInsets.all(8),
       leading: Container(
         width: 40,

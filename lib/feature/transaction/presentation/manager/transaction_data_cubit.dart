@@ -17,4 +17,19 @@ class TransactionDataCubit extends Cubit<TransactionDataState> {
       (data) => emit(TransactionDataLoaded(transactions: data)),
     );
   }
+  Future<void> updateTransactionName({
+    required int transactionId,
+    required String newName,
+  }) async {
+    emit(TransactionDataLoading());
+
+    final result = await transactionRepo.updateTransactionName(
+      transactionId: transactionId,
+      newName: newName,
+    );
+    result.fold(
+      (failure) => emit(TransactionDataError(message: failure.toString())),
+      (success) => emit(TransactionNameUpdated()),
+    );
+  }
 }

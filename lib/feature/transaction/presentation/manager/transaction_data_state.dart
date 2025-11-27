@@ -15,3 +15,10 @@ class TransactionDataError extends TransactionDataState {
   final String message;
   TransactionDataError({required this.message});
 }
+
+
+
+class TransactionNameUpdated extends TransactionDataState {
+  final String message;
+  TransactionNameUpdated({this.message = 'تم تحديث الاسم بنجاح'});
+}

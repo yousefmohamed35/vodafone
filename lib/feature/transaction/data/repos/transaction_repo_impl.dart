@@ -45,4 +45,24 @@ class TransactionRepoImpl implements TransactionRepo {
       return Left(ClientFailure.unknown(message: 'حدث خطأ ما'));
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> updateTransactionName({
+    required int transactionId,
+    required String newName,
+  }) async {
+    try {
+      await resolveOrThrow(
+        () => dio.putRequest(
+          "/public/api/history/update-name/$transactionId",
+          data: {'name': newName},
+        ),
+      );
+      return Right(true);
+    } on ApplicationException catch (e) {
+      return Left(await dioExceptionsDecoder(e));
+    } catch (e) {
+      return Left(ClientFailure.unknown(message: 'حدث خطأ ما'));
+    }
+  }
 }

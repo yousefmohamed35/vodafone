@@ -7,4 +7,8 @@ import '../../../../core/error/failure/failure.dart';
 abstract class TransactionRepo {
   List<Transaction> getAllTransaction();
   Future<Either<Failure, TransactionApiModel>> getTransactionFromApi();
+  Future<Either<Failure,bool>> updateTransactionName({
+    required int transactionId,
+    required String newName,
+  });
 }
