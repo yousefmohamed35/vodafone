@@ -51,6 +51,7 @@ class _CustomPinPutState extends State<CustomPinPut>
                 style: TextStyle(fontSize: 16),
               ),
             ),
+
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -92,6 +93,24 @@ class _CustomPinPutState extends State<CustomPinPut>
                   ),
                 ),
               ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Container(
+                  width: 20,
+                  height: 20,
+                  margin: EdgeInsets.only(right: 16),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text('?', style: TextStyle(color: Colors.white)),
+                ),
+                SizedBox(width: 8),
+                const Text("نسيت الرقم السري", style: TextStyle(fontSize: 16)),
+              ],
             ),
             const SizedBox(height: 20),
             Container(

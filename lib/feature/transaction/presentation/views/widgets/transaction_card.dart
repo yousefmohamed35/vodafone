@@ -33,11 +33,10 @@ class TransactionCard extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: transaction.type == 'in' ? Colors.green : Colors.red,
+          color: Colors.transparent,
         ),
         child: Image.asset(
           transaction.type == 'in' ? 'assets/transfer.png' : 'assets/out.png',
-          color: Colors.white,
         ),
       ),
       title: Text(
@@ -56,6 +55,10 @@ class TransactionCard extends StatelessWidget {
             transaction.name ?? '--',
             style: TextStyle(fontSize: 14, color: Colors.black),
           ),
+          // Text(
+          //   transaction. ?? '--',
+          //   style: TextStyle(fontSize: 14, color: Colors.black),
+          // ),
           Text(
             'رسوم المعاملة: ${transaction.fee ?? 0} جنيه',
             style: TextStyle(fontSize: 14, color: Colors.black),
