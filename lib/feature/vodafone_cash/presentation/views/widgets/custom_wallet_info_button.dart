@@ -35,7 +35,7 @@ class CustomWalletInfoButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: Colors.black,
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
           ),

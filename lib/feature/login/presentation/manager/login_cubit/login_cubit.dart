@@ -22,6 +22,7 @@ class LoginCubit extends Cubit<LoginState> {
         await SharedPrefHelper.saveAmount(double.parse(data.data!.balance!));
         await SharedPrefHelper.setBoolean('isLogin', true);
         await SharedPrefHelper.saveInt('client_id', data.data!.id!);
+        await SharedPrefHelper.saveString('phone', phone);
         emit(LoginSuccess(data: data));
       },
     );

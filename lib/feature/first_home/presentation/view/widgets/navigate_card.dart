@@ -24,7 +24,7 @@ class NavigationCard extends StatelessWidget {
                 cardModel.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),

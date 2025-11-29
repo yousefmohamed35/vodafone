@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vodafon/feature/ads/presentation/view/ads_view.dart';
-import 'package:vodafon/feature/home/presentation/view/home_view.dart';
+import 'package:vodafon/feature/useless_feature/presentation/view/useless_view.dart';
 import '../../../add_transaction/presentation/view/add_transaction_view.dart';
 import '../../data/models/navigate_card_model.dart';
 import 'widgets/navigate_card.dart';
@@ -23,7 +23,7 @@ class FirstHome extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeView()),
+                    MaterialPageRoute(builder: (context) => UselessView()),
                   );
                 },
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vodafon/core/extension/to_arabic_number.dart';
 import 'package:vodafon/core/helper/cashe_helper.dart';
 import 'package:vodafon/core/widgets/custom_model_bottom_sheet.dart';
 
@@ -45,14 +46,14 @@ class _BalanceDataState extends State<BalanceData> {
         children: [
           Text(
             getBalance ? 'لديك في محفظتك' : 'اضغط هنا لاظهار',
-            style: TextStyle(fontSize: 18, color: Colors.black),
+            style: TextStyle(fontSize: 14, color: Colors.black),
           ),
           Text(
             getBalance
-                ? '$balance جنيه'
+                ? '$balance جنيه'.toArabicNumbers
                 : 'رصيدك', //'$balance.toString() : 'your balance',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: getBalance ? 18 : 24,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),

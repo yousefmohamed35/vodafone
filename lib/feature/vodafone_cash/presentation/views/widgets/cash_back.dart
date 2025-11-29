@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vodafon/core/extension/to_arabic_number.dart';
 
 class CashBack extends StatelessWidget {
   const CashBack({super.key});
@@ -19,13 +20,13 @@ class CashBack extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               color: Colors.black,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
             ),
           ),
           Row(
             children: [
               Text(
-                '0.0 جنيه',
+                '0.0 جنيه'.toArabicNumbers,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

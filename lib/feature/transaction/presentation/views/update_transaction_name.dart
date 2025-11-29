@@ -6,8 +6,6 @@ import 'package:vodafon/core/services/setup_services_locator.dart';
 import 'package:vodafon/core/widgets/app_button.dart';
 import 'package:vodafon/core/widgets/loading_widget.dart';
 import 'package:vodafon/feature/add_transaction/presentation/view/widgets/custom_text_form_transaction.dart';
-import 'package:vodafon/feature/login/presentation/view/widgets/number_text_field.dart';
-
 import '../manager/transaction_data_cubit.dart';
 
 class UpdateTransactionName extends StatefulWidget {

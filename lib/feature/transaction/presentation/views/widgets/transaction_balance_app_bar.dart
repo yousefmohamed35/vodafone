@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vodafon/core/extension/to_arabic_number.dart';
 
 class TransactionBalanceAppBar extends StatelessWidget {
   const TransactionBalanceAppBar({super.key, required this.amount});
@@ -27,10 +28,10 @@ class TransactionBalanceAppBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '$amount',
+                  '$amount'.toArabicNumbers,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -45,7 +46,7 @@ class TransactionBalanceAppBar extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset('assets/cache.png', width: 70, height: 70),
+          Image.asset('assets/cache.png', width: 50, height: 50),
         ],
       ),
     );

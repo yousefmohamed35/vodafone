@@ -52,7 +52,7 @@ class ConsumptionCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    color: Color(0xffaf0000),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(

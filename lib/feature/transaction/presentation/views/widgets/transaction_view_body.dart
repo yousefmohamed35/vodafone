@@ -38,9 +38,26 @@ class TransactionViewBody extends StatelessWidget {
                       Expanded(
                         child: Text(
                           'عرض المعاملات للشهر الماضي فقط. لعرض المزيد من المعاملات السابقة. يرجي تحديد نطاق تاريخ معين',
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    'هذا الشهر',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.grey[600],
+                    ),
                   ),
                 ),
               ),

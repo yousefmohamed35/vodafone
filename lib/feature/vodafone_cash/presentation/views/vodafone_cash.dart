@@ -17,7 +17,7 @@ class VodafoneCash extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('فوادفون كاش'),
+          title: Text('ڤودافون كاش'),
           foregroundColor: Colors.white,
           backgroundColor: Colors.transparent,
         ),

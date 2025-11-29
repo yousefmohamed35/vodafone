@@ -9,10 +9,14 @@ class FilterSection extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          Text('تصنيف المعاملات:', style: TextStyle(fontSize: 20)),
+          Text(
+            'تصنيف المعاملات:',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+          ),
           Spacer(),
-          Icon(Icons.search),
-          Icon(Icons.date_range),
+          Icon(Icons.search_sharp, size: 32, color: Colors.grey[800]),
+          SizedBox(width: 8),
+          Icon(Icons.date_range, size: 32, color: Colors.grey[700]),
         ],
       ),
     );

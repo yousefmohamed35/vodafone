@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vodafon/core/extension/to_arabic_number.dart';
 import 'package:vodafon/feature/transaction/presentation/manager/transaction_data_cubit.dart';
 import '../../../../../core/function/date_formate.dart';
 import '../../../data/models/transaction_api_model/history.dart';
@@ -44,27 +45,39 @@ class TransactionCard extends StatelessWidget {
         transaction.type == 'in' ? 'استلام أموال' : 'تحويل أموال',
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 16,
           color: Colors.black,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w400,
         ),
       ),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (transaction.name != null)
-          Text(
-            transaction.name!,
-            style: TextStyle(fontSize: 14, color: Colors.black),
-          ),
+            Text(
+              transaction.name!,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[800],
+                fontWeight: FontWeight.w300,
+              ),
+            ),
           if (transaction.phone != null)
             Text(
-              transaction.phone!,
-              style: TextStyle(fontSize: 14, color: Colors.black),
+              transaction.phone!.toArabicNumbers,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[800],
+                fontWeight: FontWeight.w300,
+              ),
             ),
           Text(
-            'رسوم المعاملة: ${transaction.fee ?? 0} جنيه',
-            style: TextStyle(fontSize: 14, color: Colors.black),
+            'رسوم المعاملة: ${transaction.fee ?? 0} جنيه'.toArabicNumbers,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.black,
+              fontWeight: FontWeight.w400,
+            ),
           ),
           Text(
             formatDateTime(
@@ -72,9 +85,9 @@ class TransactionCard extends StatelessWidget {
                 transaction.time ?? transaction.createdAt!.toIso8601String(),
               )!,
             ),
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
-              color: Colors.grey,
+              color: Colors.grey[700],
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -89,7 +102,7 @@ class TransactionCard extends StatelessWidget {
             size: 20,
           ),
           Text(
-            '${transaction.amount} جنيه',
+            '${transaction.amount} جنيه'.toArabicNumbers,
             style: TextStyle(
               fontSize: 16,
               color: transaction.type == 'in' ? Colors.green : Colors.red,
