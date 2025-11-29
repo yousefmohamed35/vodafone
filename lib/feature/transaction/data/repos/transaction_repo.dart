@@ -10,5 +10,6 @@ abstract class TransactionRepo {
   Future<Either<Failure,bool>> updateTransactionName({
     required int transactionId,
     required String newName,
+    required String phone,
   });
 }

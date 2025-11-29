@@ -17,9 +17,10 @@ class ConsumptionCard extends StatelessWidget {
               children: [
                 Text(
                   'استهلاكك',
-                  style: TextTheme.of(context).bodyMedium?.copyWith(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+                  style: TextTheme.of(context).labelSmall?.copyWith(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black87,
                   ),
                 ),
                 Row(
@@ -38,15 +39,11 @@ class ConsumptionCard extends StatelessWidget {
             SizedBox(height: 20),
             Text(
               'انتهت صلاحية باقتك جدد دلوقتي',
-              style: TextTheme.of(
-                context,
-              ).bodyMedium?.copyWith(fontSize: 18, fontWeight: FontWeight.w700),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
             Text(
               'علشان تستخدم من فليكساتك.',
-              style: TextTheme.of(
-                context,
-              ).bodyMedium?.copyWith(fontSize: 18, fontWeight: FontWeight.w700),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
             SizedBox(height: 20),
             Row(
@@ -61,9 +58,9 @@ class ConsumptionCard extends StatelessWidget {
                   child: Text(
                     'جدد',
                     style: TextTheme.of(context).bodyMedium?.copyWith(
-                      fontSize: 24,
+                      fontSize: 20,
                       color: Colors.white,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),

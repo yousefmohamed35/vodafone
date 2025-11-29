@@ -19,13 +19,15 @@ class VodafoneCashCard extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        height: 80,
+        padding: EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
           gradient: LinearGradient(
             begin: AlignmentGeometry.topLeft,
             end: AlignmentGeometry.bottomRight,
             colors: [
+              Colors.black,
               Colors.black,
               const Color.fromARGB(255, 85, 12, 7),
               Colors.red,
@@ -37,11 +39,12 @@ class VodafoneCashCard extends StatelessWidget {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'فودافون',
+                  'ڤودافون',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -49,14 +52,14 @@ class VodafoneCashCard extends StatelessWidget {
                 Text(
                   'كاش',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
               ],
             ),
-            Icon(Icons.arrow_forward_ios, color: Colors.white),
+            Image.asset('assets/cache.png', width: 50, height: 50),
           ],
         ),
       ),

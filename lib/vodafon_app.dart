@@ -20,17 +20,14 @@ class VodafonApp extends StatelessWidget {
             ..loadInitialMedia()
             ..listenToMediaStream(),
         ),
-        BlocProvider(
-          create: (_) => getIt<OcrfromapiCubit>(),
-        ),
+        BlocProvider(create: (_) => getIt<OcrfromapiCubit>()),
       ],
       child: BlocListener<SharingImageCubit, SharingImageState>(
         listener: (context, state) {
           if (state is SharingImageLoaded && state.mediaFiles.isNotEmpty) {
             navigatorKey.currentState?.pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (_) =>
-                    SharingImageView(sharedFiles: state.mediaFiles),
+                builder: (_) => SharingImageView(sharedFiles: state.mediaFiles),
               ),
               (route) => false,
             );
@@ -48,6 +45,7 @@ class VodafonApp extends StatelessWidget {
           supportedLocales: [const Locale('ar')],
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(fontFamily: 'GE_SS_Two'),
           home: AppStartView(),
         ),
       ),

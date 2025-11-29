@@ -21,6 +21,7 @@ class TransactionBalanceAppBar extends StatelessWidget {
             'الرصيد الحالي ',
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
+          SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,6 +45,7 @@ class TransactionBalanceAppBar extends StatelessWidget {
               ],
             ),
           ),
+          Image.asset('assets/cache.png', width: 70, height: 70),
         ],
       ),
     );

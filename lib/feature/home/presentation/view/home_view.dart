@@ -14,11 +14,24 @@ class HomeView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'فودافون',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          leading: Padding(
+            padding: const EdgeInsets.all(8),
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset('assets/voda.png'),
+            ),
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                backgroundColor: Colors.grey[200],
+                child: Icon(Icons.search, color: Colors.grey),
+              ),
+            ),
+          ],
           foregroundColor: Colors.red,
           backgroundColor: Colors.transparent,
         ),

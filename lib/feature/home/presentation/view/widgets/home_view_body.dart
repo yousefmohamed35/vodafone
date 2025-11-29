@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vodafon/core/widgets/loading_widget.dart';
 import 'package:vodafon/feature/home/presentation/manager/first_ads_cubit.dart';
 import 'package:vodafon/feature/home/presentation/manager/first_ads_state.dart';
+import 'package:vodafon/feature/home/presentation/view/widgets/entertainments.dart';
+import 'package:vodafon/feature/home/presentation/view/widgets/online_shop.dart';
 
 import '../../../../vodafone_cash/presentation/views/widgets/auto_scroll_banner.dart';
 import 'consumption_card.dart';
@@ -24,7 +26,7 @@ class HomeViewBody extends StatelessWidget {
         } else if (state is FirstAdsLoaded) {
           return SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   if (state.firstAds.data != null &&
@@ -37,9 +39,17 @@ class HomeViewBody extends StatelessWidget {
                   SizedBox(height: 10),
                   Row(
                     children: [
-                      Expanded(child: VodafoneCashCard()),
-                      SizedBox(width: 5),
                       Expanded(child: Recharge()),
+                      SizedBox(width: 12),
+                      Expanded(child: OnlineShop()),
+                    ],
+                  ),
+                  SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(child: VodafoneCashCard()),
+                      SizedBox(width: 12),
+                      Expanded(child: Entertainments()),
                     ],
                   ),
                 ],

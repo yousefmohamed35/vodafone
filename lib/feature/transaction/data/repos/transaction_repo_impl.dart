@@ -50,12 +50,13 @@ class TransactionRepoImpl implements TransactionRepo {
   Future<Either<Failure, bool>> updateTransactionName({
     required int transactionId,
     required String newName,
+    required String phone,
   }) async {
     try {
       await resolveOrThrow(
         () => dio.putRequest(
           "/public/api/history/update-name/$transactionId",
-          data: {'name': newName},
+          data: {'name': newName,'phone':phone},
         ),
       );
       return Right(true);

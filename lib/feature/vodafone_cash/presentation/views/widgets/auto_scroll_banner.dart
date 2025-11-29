@@ -52,8 +52,7 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
     return Column(
       children: [
         SizedBox(
-          height: 140,
-
+          height: 160,
           child: PageView.builder(
             controller: _pageController,
             itemCount: widget.ads.length,
@@ -61,17 +60,13 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
               setState(() => _currentPage = index);
             },
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Card(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: CachedNetworkImage(
-                      imageUrl: widget.ads[index].imageUrl!,
-                      fit: BoxFit.fill,
-
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                    ),
+              return Card(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: CachedNetworkImage(
+                    imageUrl: widget.ads[index].imageUrl!,
+                    fit: BoxFit.fill,
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
               );
@@ -87,9 +82,9 @@ class _AutoScrollBannerState extends State<AutoScrollBanner> {
               duration: const Duration(milliseconds: 300),
               margin: const EdgeInsets.symmetric(horizontal: 4),
               width: isActive ? 12 : 8,
-              height: 8,
+              height: isActive ? 12 : 8,
               decoration: BoxDecoration(
-                color: isActive ? Colors.red : Colors.grey,
+                color: isActive ? Colors.red : Colors.grey[300],
                 borderRadius: BorderRadius.circular(8),
               ),
             );

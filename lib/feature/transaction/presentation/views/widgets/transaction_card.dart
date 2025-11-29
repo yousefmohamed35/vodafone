@@ -19,7 +19,8 @@ class TransactionCard extends StatelessWidget {
           (MaterialPageRoute(
             builder: (context) => UpdateTransactionName(
               transactionId: transaction.id!,
-              currentName: transaction.name ?? '--',
+              currentName: transaction.name ?? '',
+              phone: transaction.phone ?? '',
             ),
           )),
         );
@@ -36,7 +37,7 @@ class TransactionCard extends StatelessWidget {
           color: Colors.transparent,
         ),
         child: Image.asset(
-          transaction.type == 'in' ? 'assets/transfer.png' : 'assets/out.png',
+          transaction.type == 'in' ? 'assets/in.png' : 'assets/transfer.png',
         ),
       ),
       title: Text(
@@ -51,14 +52,16 @@ class TransactionCard extends StatelessWidget {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (transaction.name != null)
           Text(
-            transaction.name ?? '--',
+            transaction.name!,
             style: TextStyle(fontSize: 14, color: Colors.black),
           ),
-          Text(
-            transaction.phone ?? '--',
-            style: TextStyle(fontSize: 14, color: Colors.black),
-          ),
+          if (transaction.phone != null)
+            Text(
+              transaction.phone!,
+              style: TextStyle(fontSize: 14, color: Colors.black),
+            ),
           Text(
             'رسوم المعاملة: ${transaction.fee ?? 0} جنيه',
             style: TextStyle(fontSize: 14, color: Colors.black),

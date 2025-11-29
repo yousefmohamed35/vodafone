@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vodafon/core/extension/to_arabic_number.dart';
 
-class Recharge extends StatelessWidget {
-  const Recharge({super.key});
+class Entertainments extends StatelessWidget {
+  const Entertainments({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,30 +26,11 @@ class Recharge extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'شحن الرصيد',
+              'الترفيه',
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 0),
-            Row(
-              children: [
-                Text(
-                  '9.83 '.toArabicNumbers,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyMedium?.copyWith(fontSize: 18),
-                ),
-                const Text(
-                  'جنيه',
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
-                ),
-                Spacer(),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.red.withOpacity(0.7),
-                  size: 22,
-                ),
-              ],
-            ),
+            Row(children: [Spacer(), Icon(Icons.arrow_forward_ios, size: 22)]),
           ],
         ),
       ),
